@@ -17,17 +17,19 @@ export default function ScrollHeader() {
   }, []);
 
   return (
-    <header
-      className={style.header}
-    >
-      <div className={`${style.link_container} ${scrolled ? style.link_container_scrolled : ""}`}>
+    <header className={style.header}>
+      <div
+        className={`${style.link_container} ${
+          scrolled ? style.link_container_scrolled : ""
+        }`}
+      >
         {props.links.map((link) => (
           <a className={style.link} href={link.href} key={link.href}>
             {link.name}
           </a>
         ))}
       </div>{" "}
-      <Logo scrolled={scrolled}/>
+      <Logo scrolled={scrolled} />{" "}
     </header>
   );
 }

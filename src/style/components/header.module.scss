@@ -5,11 +5,9 @@
     top: 0;
     width: 100%;
     padding: 2rem 0;  
-
+    z-index: 9999;
   }
-  
-
-  
+    
   .link{
     color: $primaryColor;
     text-decoration: none;
