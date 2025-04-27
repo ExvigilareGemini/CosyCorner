@@ -1,0 +1,32 @@
+@import "../variables";
+
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 2rem 0;  
+
+  }
+  
+
+  
+  .link{
+    color: $primaryColor;
+    text-decoration: none;
+    padding: 0.8rem 1.3rem;
+    border-radius: 35px;
+    font-size: 1rem;
+    &_container{
+      height: fit-content;
+      width: fit-content;
+      margin-left: 2rem;
+      padding: 1.2rem 1.7rem;
+      border-radius: 35px;
+      transition: all ease 0.5s;
+
+      &_scrolled {
+        background-color: $secondaryColor;
+        transition: all ease 0.5s;
+      }
+    }
+  }

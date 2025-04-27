@@ -1,0 +1,9 @@
+@import "../variables";
+
+.infocards{
+    &_container{
+        display: flex;
+        grid-column: 6/15;
+        margin: 8rem 0 0 2rem;
+    }
+}

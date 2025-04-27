@@ -1,0 +1,89 @@
+@import "../variables";
+
+.infocard {
+  height: 600px;
+  width: 320px;
+  margin-right: 1rem;
+  position: relative;
+
+  &_image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: black;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  &_hidden::after {
+    opacity: 0.5;
+  }
+
+  &_text {
+    &_container {
+      color: $primaryColor;
+      position: relative;
+      top: -100%;
+      padding: 2rem;
+      z-index: -100;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      &_hidden {
+        opacity: 1;
+        transition: opacity 0.3s ease;
+        z-index: 100;
+      }
+    }
+    &_cross{
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 20px;
+      cursor: pointer;
+      z-index: 100;
+      &:hover{
+        color: darken($primaryColor, 10%);
+        transition: color 0.3s ease;
+        cursor: pointer;
+        }
+
+    }
+  }
+
+  &_title {
+    &::after {
+      content: "";
+      display: block;
+      height: 2px;
+      background-color: darken($primaryColor, 10%);
+      width: 70%;
+    }
+  }
+  &_learnMore {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: white;
+    color: black;
+    padding: 0 0.5rem;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    transition: opacity 0.3s ease;
+    cursor: pointer;
+    &_hidden{
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: -100;
+    }
+  }
+}

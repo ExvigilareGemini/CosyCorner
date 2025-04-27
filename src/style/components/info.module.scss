@@ -1,0 +1,28 @@
+@import "../variables";
+
+.info {
+  &_container {
+    display: grid;
+    grid-template-columns:repeat(15, 1fr);
+    width: 100%;
+    margin: 2rem 0;
+  }
+  &_text {
+    &_container{
+        grid-column: 2/6;
+    }
+    &_title {
+      font-size: 2rem;
+      &::after {
+        content: "";
+        display: block;
+        height: 3px;
+        background-color: darken($secondaryColor, 10%);
+        width: 70%;
+      }
+    }
+    &_text{
+        width: 80%;
+    }
+  }
+}
