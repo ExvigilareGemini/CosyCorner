@@ -1,6 +1,6 @@
 @font-face {
-  font-family: "Coustard";
-  src: url("/fonts/Coustard-Regular.ttf") format("truetype");
+  font-family: "Garamond";
+  src: url("/fonts/EBGaramond-VariableFont_wght.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -11,5 +11,6 @@ body {
 }
 
 .main {
-  font-family: "Coustard", sans-serif;
+  font-family: "Garamond", sans-serif;
+  font-size: larger;
 }

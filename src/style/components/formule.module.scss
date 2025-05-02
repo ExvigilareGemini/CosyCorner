@@ -19,13 +19,13 @@
   }
 
   &_text {
+    margin: 0.5rem 0;
     &_container {
       align-self: flex-end;
     }
     &_wrapper {
       width: 70%;
       padding: 1rem 3rem;
-      line-height: 0.5rem;
       background-color: $secondaryColor;
       color: $primaryColor;
     }
