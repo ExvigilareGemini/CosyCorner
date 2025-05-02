@@ -1,4 +1,5 @@
-@use '../variables' as *;
+@use "../variables" as *;
+@use "../mixins" as *;
 
 .header {
   position: fixed;
@@ -11,45 +12,48 @@
 }
 
 .link {
-  position: relative;
-  color: $primaryColor;
-  text-decoration: none;
-  padding: 0.8rem 1.3rem;
-  border-radius: 35px;
-  font-size: 1rem;
-  pointer-events: all;
-  z-index: 1;
-
-  &::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: white;
+  @include for-desktop-up {
+    position: relative;
+    color: $primaryColor;
+    text-decoration: none;
+    padding: 0.8rem 1.3rem;
     border-radius: 35px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: -1;
-  }
-
-  &.link_active {
-    color: black;
-
+    font-size: 1rem;
+    pointer-events: all;
+    z-index: 1;
     &::after {
-      opacity: 1;
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: white;
+      border-radius: 35px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: -1;
+    }
+
+    &.link_active {
+      color: black;
+
+      &::after {
+        opacity: 1;
+      }
     }
   }
 
   &_container {
-    height: fit-content;
-    width: fit-content;
-    margin-left: 2rem;
-    padding: 1.2rem 1.7rem;
-    border-radius: 35px;
-    transition: all ease 0.5s;
-
-    &_scrolled {
-      background-color: $secondaryColor;
+    @include for-big-desktop-up {
+      height: fit-content;
+      width: fit-content;
+      margin-left: 2rem;
+      padding: 1.2rem 1.7rem;
+      border-radius: 35px;
       transition: all ease 0.5s;
+
+      &_scrolled {
+        background-color: $secondaryColor;
+        transition: all ease 0.5s;
+      }
     }
   }
 }

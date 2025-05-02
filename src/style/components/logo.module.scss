@@ -1,15 +1,24 @@
+@use "../mixins" as *;
+
 .logo {
   position: relative;
+  margin-left: 50%;
+  transform: translate(-50%, 50%) scale(1.8);
   background-color: white;
   border-radius: 50%;
-  margin-left: 50%;
-  transform: translate(-50%, -30%) scale(0.8);
   top: 0;
   padding: 1rem;
   transition: all ease 1s;
+  @include for-big-desktop-up {
+    margin-left: 50%;
+    transform: translate(-50%, -30%) scale(0.8);
+  }
   &_scrolled {
     padding: 0.2rem;
-    transform: translate(-50%, -55%) scale(0.3);
     transition: all ease 1s;
+    transform: translate(-50%, -10%) scale(0.8);
+    @include for-big-desktop-up {
+    transform: translate(-50%, -55%) scale(0.3);
+    }
   }
 }
