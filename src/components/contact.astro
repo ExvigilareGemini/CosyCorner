@@ -1,0 +1,29 @@
+---
+import outdoor from "../assets/img/outdoor.jpg";
+import Image from "astro/components/Image.astro";
+import style from "../style/components/contact.module.scss";
+import Map from "../components/map.jsx";
+---
+
+<section class={style.contact} id="contact">
+  <div class={style.contact_info_container} >
+    <h2 class={style.contact_title}>Contact</h2>
+    <p>
+      Afin de réserver le spa, veuillez nous contacter soit par téléphone ou par
+      mail.
+    </p>
+    <p class={style.contact_phoneNumber}>+32 491 59 96 67</p>
+    <a href="mailto:cosy.corner.waterloo@gmail.com" class={style.contact_mail}
+      >cosy.corner.waterloo@gmail.com</a
+    >
+    <p>Acceuil:</p>
+    <p>Possibilité Check-in/Check-out autonome ou par un membre de l'équipe.</p>
+    <div class={style.contact_image_container}>
+      <Image src={outdoor} alt="outdoor" class={style.contact_image} />
+    </div>
+  </div>
+  <div class={style.contact_map_container}>
+    <p>Chaussée de Bruxelles 446, 1410 Waterloo</p>
+    <Map client:only />
+  </div>
+</section>

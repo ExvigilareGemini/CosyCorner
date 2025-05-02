@@ -1,0 +1,60 @@
+@use "../variables" as *;
+
+.footer {
+  display: flex;
+  justify-content: space-around;
+  margin: 8rem 0 0 0;
+  background-color: $secondaryColor;
+  color: $primaryColor;
+  padding: 2rem 0;
+
+  &_contact {
+    &_mail {
+      color: $primaryColor;
+    }
+    &_container {
+      display: flex;
+      flex-direction: column;
+      width: 20%;
+      font-size: 0.8rem;
+    }
+    &_title{
+        font-size: 1.5rem;
+        margin: 1rem 0 0.5rem;
+    }
+  }
+
+  &_menu {
+    &_link {
+      text-decoration: none;
+      color: $primaryColor;
+    }
+    &_container {
+      display: flex;
+      flex-direction: column;
+      width: 20%;
+      
+    }
+    &_title{
+        font-size: 1.5rem;
+        margin: 1rem 0 0.5rem;
+    }
+
+  }
+
+  &_social {
+    &_container {
+      width: 20%;
+    }
+    &_logo {
+      width: 60px;
+      height: auto;
+      fill: $primaryColor;
+    }
+    &_title{
+        font-size: 1.5rem;
+        margin: 1rem 0 0.5rem;
+    }
+
+  }
+}

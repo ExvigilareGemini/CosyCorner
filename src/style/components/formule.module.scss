@@ -1,0 +1,33 @@
+@use '../variables' as *;
+
+.formule {
+  display: flex;
+  &_image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    display: block;
+    &_container {
+      max-width: 40vw;
+      margin-left: 6rem;
+    }
+  }
+  &_title{
+    font-size: 3rem;
+    margin: 0 1rem;
+    color: $secondaryColor;
+  }
+
+  &_text {
+    &_container {
+      align-self: flex-end;
+    }
+    &_wrapper {
+      width: 70%;
+      padding: 1rem 3rem;
+      line-height: 0.5rem;
+      background-color: $secondaryColor;
+      color: $primaryColor;
+    }
+  }
+}

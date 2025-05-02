@@ -1,0 +1,38 @@
+---
+import style from "../style/components/footer.module.scss";
+import { headerProps } from "../props/headerProps";
+import FbLogo from "../assets/svg/facebook-svgrepo-com.svg";
+import InstaLogo from "../assets/svg/instagram-svgrepo-com.svg";
+---
+
+<footer class={style.footer}>
+  <div class={style.footer_contact_container}>
+    <h3 class={style.footer_contact_title}>Contact</h3>
+    <p>+32 491 59 96 67</p>
+    <a class={style.footer_contact_mail} href="mailto:cosy.corner.waterloo@gmail.com"
+      >cosy.corner.waterloo@gmail.com</a
+    >
+    <p>Chaussée de Bruxelles 446, 1410 Waterloo</p>
+  </div>
+
+  <div class={style.footer_menu_container}>
+    <h3 class={style.footer_menu_title}>Menu</h3>
+    {
+      headerProps.links.map((link) => (
+        <a className={style.footer_menu_link} href={link.href} key={link.href}>
+          {link.name}
+        </a>
+      ))
+    }
+  </div>
+
+  <div class={style.footer_social_container}>
+    <h3 class={style.footer_social_title}>Réseaux sociaux</h3>
+    <a href="https://www.facebook.com/profile.php?id=61557682445457">
+      <FbLogo fill="currentColor" class={style.footer_social_logo}/>
+    </a>
+    <a href="https://www.instagram.com/cosy_corner_waterloo?igsh=ZjhoZGpkMXR6a20w&utm_source=qr">
+      <InstaLogo fill="currentColor" class={style.footer_social_logo}/>
+    </a>
+  </div>
+</footer>
