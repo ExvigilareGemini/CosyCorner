@@ -1,0 +1,10 @@
+@use "../mixins" as *;
+
+.mapContainer{
+    height: 70vw;
+    width: 70vw;
+@include for-desktop-up {
+    height: 25vw;
+    width: 30vw;
+}
+}
