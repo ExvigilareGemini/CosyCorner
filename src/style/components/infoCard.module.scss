@@ -1,11 +1,16 @@
-@use '../variables' as *;
+@use "../variables" as *;
+@use "../mixins" as *;
 
 .infocard {
-  height: 600px;
-  width: 320px;
-  margin-right: 1rem;
-  position: relative;
-
+  width: 80%;
+  height: 150vw;
+  margin: 10%;
+  @include for-desktop-up {
+    height: 600px;
+    width: 320px;
+    margin-right: 1rem;
+    position: relative;
+  }
 
   &_image {
     height: 100%;
@@ -44,19 +49,24 @@
         z-index: 100;
       }
     }
-    &_cross{
+    &_cross {
       position: absolute;
-      top: 15px;
-      right: 20px;
-      font-size: 20px;
+      top: 0;
+      right: 0;
+      padding: 1.5rem 3rem;
       cursor: pointer;
       z-index: 100;
-      &:hover{
+      font-size: 5rem;
+      @include for-desktop-up {
+        top: 15px;
+      right: 20px;
+        font-size: 20px;
+      }
+      &:hover {
         color: darken($primaryColor, 10%);
         transition: color 0.3s ease;
         cursor: pointer;
-        }
-
+      }
     }
   }
 
@@ -69,6 +79,7 @@
       width: 70%;
     }
   }
+
   &_learnMore {
     position: absolute;
     bottom: 0;
@@ -81,7 +92,7 @@
     align-items: center;
     transition: opacity 0.3s ease;
     cursor: pointer;
-    &_hidden{
+    &_hidden {
       opacity: 0;
       transition: opacity 0.3s ease;
       z-index: -100;

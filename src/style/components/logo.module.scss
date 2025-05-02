@@ -3,7 +3,7 @@
 .logo {
   position: relative;
   margin-left: 50%;
-  transform: translate(-50%, 50%) scale(1.8);
+  transform: translate(-50%, 40%) scale(1.5);
   background-color: white;
   border-radius: 50%;
   top: 0;
@@ -16,7 +16,7 @@
   &_scrolled {
     padding: 0.2rem;
     transition: all ease 1s;
-    transform: translate(-50%, -10%) scale(0.8);
+    transform: translate(-50%, -10%) scale(0.7);
     @include for-big-desktop-up {
     transform: translate(-50%, -55%) scale(0.3);
     }

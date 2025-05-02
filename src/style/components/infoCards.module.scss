@@ -1,9 +1,12 @@
 @use "../variables";
+@use "../mixins" as *;
 
-.infocards{
-    &_container{
-        display: flex;
-        grid-column: 6/15;
-        margin: 8rem 0 0 2rem;
+.infocards {
+  &_container {
+    @include for-desktop-up {
+      display: flex;
+      grid-column: 6/15;
+      margin: 8rem 0 0 2rem;
     }
+  }
 }
