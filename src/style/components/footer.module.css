@@ -1,0 +1,72 @@
+.footer {
+  display: flex;
+  justify-content: space-around;
+  margin: 8rem 0 0 0;
+  background-color: #5D5E60;
+  color: #fff;
+  padding: 2rem 0;
+}
+.footer_contact_mail {
+  color: #fff;
+}
+.footer_contact_container {
+  display: none;
+}
+@media (min-width: 1200px) {
+  .footer_contact_container {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    font-size: 0.8rem;
+  }
+}
+.footer_contact_title {
+  font-size: 1.5rem;
+  margin: 1rem 0 0.5rem;
+}
+.footer_menu_link {
+  text-decoration: none;
+  color: #fff;
+}
+.footer_menu_container {
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 1200px) {
+  .footer_menu_container {
+    width: 20%;
+  }
+}
+.footer_menu_title {
+  font-size: 3rem;
+}
+@media (min-width: 1200px) {
+  .footer_menu_title {
+    font-size: 1.5rem;
+    margin: 1rem 0 0.5rem;
+  }
+}
+@media (min-width: 1200px) {
+  .footer_social_container {
+    width: 20%;
+  }
+}
+.footer_social_logo {
+  width: 10rem;
+  height: auto;
+  fill: #fff;
+}
+@media (min-width: 1200px) {
+  .footer_social_logo {
+    width: 60px;
+  }
+}
+.footer_social_title {
+  font-size: 3rem;
+}
+@media (min-width: 1200px) {
+  .footer_social_title {
+    font-size: 1.5rem;
+    margin: 1rem 0 0.5rem;
+  }
+}/*# sourceMappingURL=footer.module.css.map */

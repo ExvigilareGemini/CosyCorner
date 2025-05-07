@@ -1,0 +1,70 @@
+.contact {
+  display: flex;
+  flex-direction: column;
+  margin: 10%;
+}
+@media (min-width: 1200px) {
+  .contact {
+    margin: 4rem 0 0 6rem;
+    flex-direction: row;
+  }
+}
+@media (min-width: 1200px) {
+  .contact_info_container {
+    width: 45%;
+  }
+}
+.contact_title {
+  font-size: 5rem;
+}
+@media (min-width: 1200px) {
+  .contact_title {
+    font-size: 2rem;
+  }
+}
+.contact_phoneNumber {
+  margin: 0.5rem 0;
+}
+@media (min-width: 1200px) {
+  .contact_phoneNumber {
+    font-size: 1.5rem;
+  }
+}
+.contact_mail {
+  color: black;
+}
+@media (min-width: 1200px) {
+  .contact_mail {
+    font-size: 1.5rem;
+  }
+}
+.contact_image {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+}
+.contact_image_container {
+  display: flex;
+  height: 400px;
+}
+@media (min-width: 1200px) {
+  .contact_image_container {
+    width: 70%;
+  }
+}
+.contact_map_container {
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  margin: 4rem 0 0 0;
+  padding: 0 2rem 2rem 2rem;
+  background-color: #5D5E60;
+  color: #fff;
+}
+.contact_map .leaflet-container {
+  width: 100%;
+  height: 100%;
+}/*# sourceMappingURL=contact.module.css.map */

@@ -1,0 +1,10 @@
+.mapContainer {
+  height: 70vw;
+  width: 70vw;
+}
+@media (min-width: 1200px) {
+  .mapContainer {
+    height: 25vw;
+    width: 30vw;
+  }
+}/*# sourceMappingURL=leaflet.module.css.map */

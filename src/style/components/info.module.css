@@ -1,0 +1,38 @@
+.info_container {
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 1200px) {
+  .info_container {
+    display: grid;
+    grid-template-columns: repeat(15, 1fr);
+    width: 100%;
+    margin: 2rem 0;
+  }
+}
+.info_text_container {
+  margin: 10%;
+}
+@media (min-width: 1200px) {
+  .info_text_container {
+    grid-column: 2/6;
+  }
+}
+.info_text_title {
+  font-size: 5rem;
+}
+@media (min-width: 1200px) {
+  .info_text_title {
+    font-size: 2rem;
+  }
+}
+.info_text_title::after {
+  content: "";
+  display: block;
+  height: 3px;
+  background-color: #444546;
+  width: 70%;
+}
+.info_text_text {
+  width: 80%;
+}/*# sourceMappingURL=info.module.css.map */

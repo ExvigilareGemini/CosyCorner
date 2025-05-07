@@ -1,0 +1,55 @@
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 2rem 0;
+  height: -moz-fit-content;
+  height: fit-content;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+@media (min-width: 1200px) {
+  .link {
+    position: relative;
+    color: #fff;
+    text-decoration: none;
+    padding: 0.8rem 1.3rem;
+    border-radius: 35px;
+    font-size: 1rem;
+    pointer-events: all;
+    z-index: 1;
+  }
+  .link::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: white;
+    border-radius: 35px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+  }
+  .link.link_active {
+    color: black;
+  }
+  .link.link_active::after {
+    opacity: 1;
+  }
+}
+@media (min-width: 1800px) {
+  .link_container {
+    height: -moz-fit-content;
+    height: fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    margin-left: 2rem;
+    padding: 1.2rem 1.7rem;
+    border-radius: 35px;
+    transition: all ease 0.5s;
+  }
+  .link_container_scrolled {
+    background-color: #5D5E60;
+    transition: all ease 0.5s;
+  }
+}/*# sourceMappingURL=header.module.css.map */

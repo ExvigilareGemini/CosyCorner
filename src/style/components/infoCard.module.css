@@ -1,0 +1,93 @@
+.infocard {
+  width: 80%;
+  height: 150vw;
+  margin: 10%;
+}
+@media (min-width: 1200px) {
+  .infocard {
+    height: 600px;
+    width: 320px;
+    margin-right: 1rem;
+    position: relative;
+  }
+}
+.infocard_image {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+}
+.infocard::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: black;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+.infocard_hidden::after {
+  opacity: 0.5;
+}
+.infocard_text_container {
+  color: #fff;
+  position: relative;
+  top: -100%;
+  padding: 2rem;
+  z-index: -100;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.infocard_text_container_hidden {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  z-index: 100;
+}
+.infocard_text_cross {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1.5rem 3rem;
+  cursor: pointer;
+  z-index: 100;
+  font-size: 5rem;
+}
+@media (min-width: 1200px) {
+  .infocard_text_cross {
+    top: 15px;
+    right: 20px;
+    font-size: 20px;
+  }
+}
+.infocard_text_cross:hover {
+  color: #e6e6e6;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+.infocard_title::after {
+  content: "";
+  display: block;
+  height: 2px;
+  background-color: #e6e6e6;
+  width: 70%;
+}
+.infocard_learnMore {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: white;
+  color: black;
+  padding: 0 0.5rem;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+.infocard_learnMore_hidden {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -100;
+}/*# sourceMappingURL=infoCard.module.css.map */

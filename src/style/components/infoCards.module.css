@@ -1,0 +1,7 @@
+@media (min-width: 1200px) {
+  .infocards_container {
+    display: flex;
+    grid-column: 6/15;
+    margin: 8rem 0 0 2rem;
+  }
+}/*# sourceMappingURL=infoCards.module.css.map */
