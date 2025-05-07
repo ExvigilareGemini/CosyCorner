@@ -7,6 +7,11 @@ export default function ScrollHeader() {
   const props = headerProps;
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   // Change class of logo
   // Logo's class change when scrolling more than 100px
@@ -21,60 +26,71 @@ export default function ScrollHeader() {
   // Link's class change when scrolling to their section
   useEffect(() => {
     const sections = document.querySelectorAll("section[id]");
-    
+
     // Function to determine which section is most visible in the viewport
     const determineActiveSection = () => {
       // Get the middle point of the viewport
       const viewportMiddle = window.innerHeight / 2;
-      
+
       let mostVisibleSection = null;
       let maxVisibility = 0;
-      
+
       sections.forEach((section) => {
         const rect = section.getBoundingClientRect();
-        
+
         // Calculate how much of the section is visible in the viewport
         const visibleTop = Math.max(0, rect.top);
         const visibleBottom = Math.min(window.innerHeight, rect.bottom);
         const visibleHeight = Math.max(0, visibleBottom - visibleTop);
-        
+
         // Calculate how close the section is to the middle of the viewport
-        const distanceFromMiddle = Math.abs((visibleTop + visibleBottom) / 2 - viewportMiddle);
-        
+        const distanceFromMiddle = Math.abs(
+          (visibleTop + visibleBottom) / 2 - viewportMiddle
+        );
+
         // Combine visibility and proximity to middle for a weighted score
         // Sections that are more visible and closer to the middle get higher scores
-        const visibilityScore = visibleHeight * (1 - distanceFromMiddle / window.innerHeight);
-        
+        const visibilityScore =
+          visibleHeight * (1 - distanceFromMiddle / window.innerHeight);
+
         if (visibilityScore > maxVisibility) {
           maxVisibility = visibilityScore;
           mostVisibleSection = section;
         }
       });
-      
+
       if (mostVisibleSection) {
         setActiveSection(mostVisibleSection.id);
       } else {
         setActiveSection("");
       }
     };
-    
+
     // Call the function on scroll
     window.addEventListener("scroll", determineActiveSection);
-    
+
     // Initial determination
     determineActiveSection();
-    
+
     return () => {
       window.removeEventListener("scroll", determineActiveSection);
     };
   }, []);
-
+// TODO: styling the links to make it fit the design and styling the burger menu when it's open
   return (
     <header className={style.header}>
+      <div className={style.menuBurger} onClick={toggleMenu}>
+        <span className={style.menuBurger_line}></span>
+      </div>
+      <span
+        className={`${style.menuBurger_circle} ${
+          isMenuOpen ? style.menuBurger_circle_open : ""
+        }`}
+      ></span>
       <div
         className={`${style.link_container} ${
           scrolled ? style.link_container_scrolled : ""
-        }`}
+        } ${isMenuOpen ? style.link_container_open : ""}`}
       >
         {props.links.map((link) => {
           const targetId = link.href.replace("#", "");
@@ -91,6 +107,7 @@ export default function ScrollHeader() {
           );
         })}
       </div>
+
       <Logo scrolled={scrolled} />
     </header>
   );

@@ -5,16 +5,16 @@
   position: fixed;
   top: 0;
   width: 100%;
-  padding: 2rem 0;
   height: fit-content;
-  z-index: 9999;
+  z-index: 1000;
   pointer-events: none;
 }
 
 .link {
+  color: $primaryColor;
+  
   @include for-desktop-up {
     position: relative;
-    color: $primaryColor;
     text-decoration: none;
     padding: 0.8rem 1.3rem;
     border-radius: 35px;
@@ -42,6 +42,14 @@
   }
 
   &_container {
+    position: relative;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 3000;
+    &_open {
+      opacity: 1;
+      transition: opacity 0.5s ease;z-index: 3000;
+    }
     @include for-big-desktop-up {
       height: fit-content;
       width: fit-content;
@@ -49,11 +57,62 @@
       padding: 1.2rem 1.7rem;
       border-radius: 35px;
       transition: all ease 0.5s;
-
+      background-color: unset;
+      opacity: 1;
       &_scrolled {
         background-color: $secondaryColor;
         transition: all ease 0.5s;
       }
     }
   }
+}
+
+.menuBurger {
+  width: fit-content;
+  height: fit-content;
+  pointer-events: all;
+  z-index: 3000;
+  &_line {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    margin-top: -5px;
+    width: 80px;
+    height: 10px;
+    background-color: $primaryColor;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    z-index: 3000;
+    &::after,
+    &::before {
+      position: absolute;
+      content: "";
+      width: inherit;
+      height: inherit;
+      background-color: inherit;
+      border-radius: inherit;
+      transition: all 0.3s ease;
+    }
+
+    &::after {
+      top: 20px;
+    }
+
+    &::before {
+      top: -20px;
+    }
+  }
+  &_circle{      background-color: $secondaryColor;
+      position: absolute;
+      z-index: 2000;
+      transform: translate(-200vh, -200vh);
+      transition: 0.3s ease;
+      border-radius: 50%;
+      width: 200vh;
+      height: 200vh;
+      &_open {
+        opacity: 1;
+        transform: translate(-130vh, -130vh);
+        transition: 0.3s ease;
+      }}
 }
