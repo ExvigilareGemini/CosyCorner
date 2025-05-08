@@ -2,19 +2,20 @@ import { useEffect, useState } from "react";
 import { headerProps } from "../props/headerProps";
 import style from "../style/components/header.module.scss";
 import Logo from "./logo";
+import classnames from "classnames";
 
 export default function ScrollHeader() {
   const props = headerProps;
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(true);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  // Change class of logo
-  // Logo's class change when scrolling more than 100px
+  // Change class of logo and menuBurger
+  // classes change when scrolling more than 100px
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 100);
     window.addEventListener("scroll", handleScroll);
@@ -76,11 +77,18 @@ export default function ScrollHeader() {
       window.removeEventListener("scroll", determineActiveSection);
     };
   }, []);
-// TODO: styling the links to make it fit the design and styling the burger menu when it's open
+
+const menuBurgerClass = classnames(style.menuBurger, {
+  [style.menuBurger_scrolled]: scrolled,
+});
+
+
   return (
     <header className={style.header}>
-      <div className={style.menuBurger} onClick={toggleMenu}>
-        <span className={style.menuBurger_line}></span>
+      <div className={menuBurgerClass} onClick={toggleMenu}>
+        <span className={`${style.menuBurger_line} ${
+          isMenuOpen ? style.menuBurger_line_open : ""
+        }`}></span>
       </div>
       <span
         className={`${style.menuBurger_circle} ${
@@ -101,6 +109,7 @@ export default function ScrollHeader() {
               key={link.href}
               href={link.href}
               className={`${style.link} ${isActive ? style.link_active : ""}`}
+              onClick={toggleMenu}
             >
               {link.name}
             </a>

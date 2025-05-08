@@ -12,10 +12,20 @@
 
 .link {
   color: $primaryColor;
-  
+  text-decoration: none;
+  padding: 2rem;
+  font-size: 4rem;
+  border-radius: 50px;
+  &.link_active {
+    background-color: $primaryColor;
+    color: $secondaryColor;
+
+    &::after {
+      opacity: 1;
+    }
+  }
   @include for-desktop-up {
     position: relative;
-    text-decoration: none;
     padding: 0.8rem 1.3rem;
     border-radius: 35px;
     font-size: 1rem;
@@ -42,13 +52,24 @@
   }
 
   &_container {
-    position: relative;
-    opacity: 0;
-    transition: opacity 0.5s ease;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 30vh;
+    width: 100%;
+    justify-content: space-around;
     z-index: 3000;
+    transition: opacity 0.5s ease;
+    opacity: 0;
+    margin-top: 4rem;
+    @include for-big-desktop-up {
+    }
     &_open {
       opacity: 1;
-      transition: opacity 0.5s ease;z-index: 3000;
+      transition: opacity 0.5s ease;
+      z-index: 3000;
+      pointer-events: all;
     }
     @include for-big-desktop-up {
       height: fit-content;
@@ -68,21 +89,35 @@
 }
 
 .menuBurger {
-  width: fit-content;
-  height: fit-content;
+  width: 80px;
+  height: 10px;
+  padding: 3rem 1.5rem;
+  border-radius: 20px;
   pointer-events: all;
-  z-index: 3000;
+  z-index: 4000;
+  position: absolute;
+  top: 5rem;
+  right: 3rem;
+  margin-top: -5px;
   &_line {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    margin-top: -5px;
+    position: relative;
     width: 80px;
     height: 10px;
+    display: block;
     background-color: $primaryColor;
     border-radius: 20px;
     transition: all 0.3s ease;
-    z-index: 3000;
+    z-index: 4000;
+    &_open {
+      transform: rotate(45deg);
+      &::before {
+        transform: translate(40px, 65px) rotate(-90deg);
+      }
+      &::after {
+        // opacity: 0;
+        transform: translate(0, -25px);
+      }
+    }
     &::after,
     &::before {
       position: absolute;
@@ -92,27 +127,37 @@
       background-color: inherit;
       border-radius: inherit;
       transition: all 0.3s ease;
+      transform-origin: center left;
+      
     }
 
     &::after {
-      top: 20px;
+      top: 25px;
     }
 
     &::before {
-      top: -20px;
+      top: -25px;
     }
   }
-  &_circle{      background-color: $secondaryColor;
-      position: absolute;
-      z-index: 2000;
-      transform: translate(-200vh, -200vh);
+  &_circle {
+    background-color: $secondaryColor;
+    position: absolute;
+    z-index: 2000;
+    transform: translate(200vh, -200vh);
+    transition: 0.3s ease;
+    border-radius: 50%;
+    width: 200vh;
+    height: 200vh;
+    &_open {
+      opacity: 1;
+      transform: translate(-20vh, -130vh);
       transition: 0.3s ease;
-      border-radius: 50%;
-      width: 200vh;
-      height: 200vh;
-      &_open {
-        opacity: 1;
-        transform: translate(-130vh, -130vh);
-        transition: 0.3s ease;
-      }}
+    }
+    @include for-big-desktop-up {
+      opacity: 0;
+    }
+  }
+  &_scrolled{
+    background-color: $secondaryColor;
+  }
 }
