@@ -5,8 +5,7 @@
   &_container {
     @include for-desktop-up {
       display: flex;
-      grid-column: 6/15;
-      margin: 8rem 0 0 2rem;
+      margin: 4rem;
     }
   }
 }

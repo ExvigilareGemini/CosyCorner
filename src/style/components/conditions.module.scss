@@ -4,7 +4,9 @@
   margin: 30% 10%;
   @include for-desktop-up {
     margin: 20rem 0 20rem 6rem;
-    width: 60%;
-
+    width: 80%;
+  }
+    @include for-big-desktop-up {
+    margin: 20rem 10% ;
   }
 }

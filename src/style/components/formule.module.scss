@@ -9,6 +9,9 @@
     flex-direction: row;
     margin: 0;
   }
+  @include for-big-desktop-up {
+    margin: 4rem 10% 0;
+  }
   &_image {
     height: 100%;
     width: 100%;
@@ -19,6 +22,9 @@
         max-width: 40vw;
         margin-left: 6rem;
       }
+          @include for-big-desktop-up{
+      margin: 0;
+    }
     }
   }
   &_title {
@@ -37,7 +43,7 @@
     &_container {
       align-self: flex-end;
     }
-    &_wrapper {     
+    &_wrapper {
       padding: 2rem 5rem;
       background-color: $secondaryColor;
       color: $primaryColor;
@@ -46,7 +52,7 @@
         width: 80%;
       }
     }
-    &_division{
+    &_division {
       padding: 2rem;
       margin: 5rem 0;
       background-color: $primaryColor;
@@ -57,7 +63,6 @@
         padding: 1rem;
         box-shadow: 2px 2px 5px black;
         border-radius: 10px;
-
       }
     }
   }

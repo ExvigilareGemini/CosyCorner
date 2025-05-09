@@ -6,13 +6,17 @@
   flex-direction: column;
   margin: 10%;
   @include for-desktop-up {
-    margin: 4rem 0 0 6rem;
+    justify-content: space-between;
+    margin: 4rem 6rem 0 6rem;
     flex-direction: row;
+  }
+    @include for-big-desktop-up {
+    margin: 4rem 10% 0;
   }
   &_info {
     &_container {
       @include for-desktop-up {
-        width: 45%;
+        width: 50%;
       }
     }
   }

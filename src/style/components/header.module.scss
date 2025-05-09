@@ -28,7 +28,7 @@
     position: relative;
     padding: 0.8rem 1.3rem;
     border-radius: 35px;
-    font-size: 1rem;
+    font-size: 1.2rem;
     pointer-events: all;
     z-index: 1;
     &::after {
@@ -40,6 +40,10 @@
       opacity: 0;
       transition: opacity 0.3s ease;
       z-index: -1;
+    }
+
+    @include for-big-desktop-up {
+      font-size: 1.5rem;
     }
 
     &.link_active {
@@ -63,7 +67,8 @@
     transition: opacity 0.5s ease;
     opacity: 0;
     margin-top: 4rem;
-    @include for-big-desktop-up {
+    @include for-desktop-up {
+      flex-direction: row;
     }
     &_open {
       opacity: 1;
@@ -71,11 +76,11 @@
       z-index: 3000;
       pointer-events: all;
     }
-    @include for-big-desktop-up {
+    @include for-desktop-up {
       height: fit-content;
       width: fit-content;
-      margin-left: 2rem;
-      padding: 1.2rem 1.7rem;
+      margin-left: 4rem;
+      padding: 0.6rem 1.3rem;
       border-radius: 35px;
       transition: all ease 0.5s;
       background-color: unset;
@@ -84,6 +89,9 @@
         background-color: $secondaryColor;
         transition: all ease 0.5s;
       }
+    }
+    @include for-big-desktop-up {
+      margin-left: 10%;
     }
   }
 }
@@ -99,6 +107,23 @@
   top: 5rem;
   right: 3rem;
   margin-top: -5px;
+  @include for-desktop-up {
+    display: none;
+  }
+    &::after {
+    content: "";
+    position: absolute;
+    border-radius: 20px;
+    inset: 0;
+    background-color: $secondaryColor;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 1;
+  }
+  &_scrolled::after {
+    opacity: 0.7;
+  }
   &_line {
     position: relative;
     width: 80px;
@@ -128,7 +153,6 @@
       border-radius: inherit;
       transition: all 0.3s ease;
       transform-origin: center left;
-      
     }
 
     &::after {
@@ -153,11 +177,8 @@
       transform: translate(-20vh, -130vh);
       transition: 0.3s ease;
     }
-    @include for-big-desktop-up {
+    @include for-desktop-up {
       opacity: 0;
     }
-  }
-  &_scrolled{
-    background-color: $secondaryColor;
   }
 }
