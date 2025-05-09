@@ -13,8 +13,14 @@ import formuleImage from "../../public/assets/img/tableau.jpeg";
     <h2 class={style.formule_title}>Formule tarifaire</h2>
     <div class={style.formule_text_wrapper}>
       {
-        formuleProps.map((formule) => (
-          <p class={style.formule_text}>{formule.text}</p>
+        formuleProps.map((formule, index) => (
+          <div key={index} class={style.formule_text_division}>
+            {formule.map((item, itemIndex) => (
+              <p class={style.formule_text} key={itemIndex}>
+                {item.text}
+              </p>
+            ))}
+          </div>
         ))
       }
     </div>

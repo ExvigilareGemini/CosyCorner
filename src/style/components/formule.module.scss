@@ -4,8 +4,8 @@
 .formule {
   display: flex;
   flex-direction: column;
-  margin: 10%;
   @include for-desktop-up {
+    margin: 10%;
     flex-direction: row;
     margin: 0;
   }
@@ -23,6 +23,7 @@
   }
   &_title {
     font-size: 7rem;
+    text-align: center;
     @include for-desktop-up {
       font-size: 3rem;
       margin: 0 1rem;
@@ -36,14 +37,28 @@
     &_container {
       align-self: flex-end;
     }
-    &_wrapper {
-      @include for-desktop-up {
-        width: 70%;
-      }
-
-      padding: 1rem 3rem;
+    &_wrapper {     
+      padding: 2rem 5rem;
       background-color: $secondaryColor;
       color: $primaryColor;
+      @include for-desktop-up {
+        padding: 1rem 3rem;
+        width: 80%;
+      }
+    }
+    &_division{
+      padding: 2rem;
+      margin: 5rem 0;
+      background-color: $primaryColor;
+      color: $secondaryColor;
+      border-radius: 20px;
+      @include for-desktop-up {
+        margin: 1rem 0;
+        padding: 1rem;
+        box-shadow: 2px 2px 5px black;
+        border-radius: 10px;
+
+      }
     }
   }
 }
