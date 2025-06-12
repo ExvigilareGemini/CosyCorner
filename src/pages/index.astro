@@ -8,15 +8,18 @@ import Contact from "../components/contact.astro"
 import Conditions from "../components/conditions.astro"
 import Footer from "../components/footer.astro"
 
+import homepageContent from "../content/homepage.md";
+
+const { cover, info, formule, contact, conditions } = homepageContent.frontmatter;
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 <main class="main">
-	<Header client:load></Header>
-	<Cover/>
-	<Info/>
-	<Formule/>
-	<Contact/>
-	<Conditions/>
-	<Footer/>
+	<Header client:load />
+	<Cover content={cover} />
+	<Info content={info} />
+	<Formule content={formule} />
+	<Contact content={contact} />
+	<Conditions content={conditions} />
+	<Footer />
 </main>

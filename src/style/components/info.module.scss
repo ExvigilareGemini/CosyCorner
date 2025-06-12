@@ -1,5 +1,6 @@
 @use "../variables" as *;
 @use "../mixins" as *;
+@use "sass:color";
 
 .info {
   &_container {
@@ -11,8 +12,9 @@
       width: 100%;
       margin: 4rem 0 0 6rem;
     }
-    @include for-big-desktop-up{
+    @include for-big-desktop-up {
       margin: 4rem 10% 0;
+      width: unset;
     }
   }
   &_text {
@@ -32,7 +34,7 @@
         content: "";
         display: block;
         height: 3px;
-        background-color: darken($secondaryColor, 10%);
+        background-color: color.adjust($secondaryColor, $lightness: -10%);
         width: 70%;
       }
     }

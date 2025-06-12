@@ -6,6 +6,7 @@
     @include for-desktop-up {
       display: flex;
       margin: 4rem;
+      justify-content: center;
     }
   }
 }
