@@ -30,7 +30,7 @@ export default function InfoCard({ card, index }) {
       <div className={`${style.infocard_learnMore} ${
           isHidden ? style.infocard_learnMore_hidden : ""
         }`} onClick={toggleHidden}>
-        <p>En savoir plus</p>
+        <p>{title}</p>
       </div>
     </div>
   );

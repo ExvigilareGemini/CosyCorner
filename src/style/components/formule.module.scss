@@ -49,7 +49,7 @@
       color: $primaryColor;
       @include for-desktop-up {
         padding: 1rem 3rem;
-        width: 80%;
+        // width: 80%;
       }
     }
     &_division {

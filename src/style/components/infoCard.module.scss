@@ -9,6 +9,7 @@
   @include for-desktop-up {
     height: 600px;
     width: 25%;
+    min-width: 280px;
     margin: 2rem 1rem;
     position: relative;
   }

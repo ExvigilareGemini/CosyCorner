@@ -2,6 +2,8 @@
 import { Image } from "astro:assets";
 import coverImage from "../../public/assets/img/cover.jpeg";
 import style from "../style/components/cover.module.scss";
+
+const {content} = Astro.props;
 ---
 
 <section class={style.cover_section}>
@@ -11,12 +13,10 @@ import style from "../style/components/cover.module.scss";
     class={style.cover_image}
   />
   <div class={style.cover_text_container}>
-    <h1 class={style.cover_text_title}>Cosy Corner</h1>
-    <h2 class={style.cover_text_subtitle}>Spa privatif</h2>
+    <h1 class={style.cover_text_title}>{content.title}</h1>
+    <h2 class={style.cover_text_subtitle}>{content.subtitle}</h2>
     <p class={style.cover_text}>
-      Lorem ipsum dolor sit amet consectetur. Vitae morbi sed dictum volutpat.
-      Eget sagittis vitae aliquet mi. Mi porttitor amet pulvinar lorem est
-      faucibus elementum interdum donec. Amet ut tincidunt odio est.
+      {content.text}
     </p>
   </div>
   <div class={style.arrow_container}>

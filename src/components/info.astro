@@ -1,19 +1,16 @@
 ---
 import style from "../style/components/info.module.scss";
-import InfoCards from "./infoCards.astro"
+import InfoCards from "./infoCards.astro";
+const { content } = Astro.props;
 ---
 
 <section class={style.info_container} id="acceuil">
   <div class={style.info_text_container}>
     <h2 class={style.info_text_title}>
-      Lorem ipsum dolor sit amet consectetur.
+      {content.title}
     </h2>
     <p class={style.info_text_text}>
-      Lorem ipsum dolor sit amet consectetur. Ipsum risus eget bibendum tempor
-      faucibus rhoncus ornare varius tincidunt. Pellentesque bibendum tortor sed
-      blandit vel tellus. Ut at ac ac massa varius a maecenas. Aliquet dictum
-      suscipit cursus urna. Ut aenean arcu dui sed nisi consectetur mauris at.
-      Amet ultricies potenti elit habitasse cursus.
+      {content.text}
     </p>
   </div>
   <InfoCards />
