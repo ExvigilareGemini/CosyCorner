@@ -1,0 +1,101 @@
+---
+import style from "../style/components/contactForm.module.scss";
+// Formulaire de contact sécurisé
+export const prerender = false;
+import { actions, isInputError } from "astro:actions";
+const result = Astro.getActionResult(actions.sendContactEmail);
+const inputErrors = isInputError(result);
+console.log("---- Start of console, from contactForm ----")
+console.log("---- Is input error ? ----")
+console.log(inputErrors);
+console.log("---- Result coming from astro:action after validating the form ----")
+console.log(result);
+console.log("---- End of console, from contactForm ----")
+---
+
+<h1>Formulaire de Contact</h1>
+
+<!-- Formulaire utilisant astro:actions pour la sécurité -->
+<form method="POST" action={actions.sendContactEmail}>
+  <!-- Champ honeypot : invisible aux utilisateurs, détecte les bots -->
+  <div class={style.honeypot} aria-hidden="true">
+    <label for="website">Laissez ce champ vide&nbsp;:</label>
+    <input
+      type="text"
+      id="website"
+      name="website"
+      tabindex="-1"
+      autocomplete="off"
+    />
+  </div>
+
+  <!-- Token de temps pour détecter les soumissions trop rapides -->
+  <input type="hidden" name="timestamp" id="timestamp" />
+
+
+
+
+  <!-- Champs visibles du formulaire -->
+  <div>
+    <label for="name">Nom *</label>
+    <input
+      type="text"
+      id="name"
+      name="name"
+      required
+      maxlength="100"
+      pattern="[a-zA-ZÀ-ÿ\s\-']+"
+      title="Seuls les lettres, espaces, traits d'union et apostrophes sont autorisés"
+    />
+  </div>
+
+    <div>
+    <label for="firstName">Prénom *</label>
+    <input
+      type="text"
+      id="firstName"
+      name="firstName"
+      required
+      maxlength="100"
+      pattern="[a-zA-ZÀ-ÿ\s\-']+"
+      title="Seuls les lettres, espaces, traits d'union et apostrophes sont autorisés"
+    />
+  </div>
+
+  <div>
+    <label for="email">Email *</label>
+    <input type="email" id="email" name="email" required maxlength="254" />
+  </div>
+
+  <div>
+    <label for="tel">Téléphone *</label>
+    <input type="tel" id="tel" name="tel" required maxlength="254" />
+  </div>
+
+  <div>
+    <label for="message">Message *</label>
+    <textarea id="message" name="message" required maxlength="2000" rows="6"
+    ></textarea>
+  </div>
+
+  <button type="submit">Envoyer</button>
+</form>
+
+<script>
+  // Ajoute un timestamp pour détecter les soumissions trop rapides (protection anti-bot)
+  document.getElementById("timestamp").value = Date.now().toString();
+
+  // Protection supplémentaire : délai minimum avant soumission
+  const form = document.querySelector("form");
+  const startTime = Date.now();
+
+  form.addEventListener("submit", function (e) {
+    const timeSpent = Date.now() - startTime;
+    // Si moins de 3 secondes, probablement un bot
+    if (timeSpent < 3000) {
+      e.preventDefault();
+      alert("Veuillez prendre le temps de remplir le formulaire correctement.");
+      return false;
+    }
+  });
+</script>

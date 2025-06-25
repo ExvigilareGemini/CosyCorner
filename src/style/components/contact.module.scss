@@ -13,6 +13,11 @@
     @include for-big-desktop-up {
     margin: 4rem 10% 0;
   }
+
+&_datasText{
+  font-size: 1.7rem;
+}
+
   &_info {
     &_container {
       @include for-desktop-up {
@@ -31,9 +36,10 @@
       font-size: 1.5rem;
     }
     margin: 0.5rem 0;
+    color: rgb(228, 151, 9);
   }
   &_mail {
-    color: black;
+    color: rgb(228, 151, 9);
     @include for-desktop-up {
       font-size: 1.5rem;
     }
