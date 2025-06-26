@@ -2,21 +2,13 @@
 import style from "../style/components/contactForm.module.scss";
 // Formulaire de contact sécurisé
 export const prerender = false;
-import { actions, isInputError } from "astro:actions";
-const result = Astro.getActionResult(actions.sendContactEmail);
-const inputErrors = isInputError(result);
-console.log("---- Start of console, from contactForm ----")
-console.log("---- Is input error ? ----")
-console.log(inputErrors);
-console.log("---- Result coming from astro:action after validating the form ----")
-console.log(result);
-console.log("---- End of console, from contactForm ----")
+import { actions } from "astro:actions";
 ---
 
-<h1>Formulaire de Contact</h1>
+<h2>Formulaire de Contact</h2>
 
 <!-- Formulaire utilisant astro:actions pour la sécurité -->
-<form method="POST" action={actions.sendContactEmail}>
+<form method="POST" action={actions.sendContactEmail} class={style.contactForm}>
   <!-- Champ honeypot : invisible aux utilisateurs, détecte les bots -->
   <div class={style.honeypot} aria-hidden="true">
     <label for="website">Laissez ce champ vide&nbsp;:</label>
@@ -32,13 +24,11 @@ console.log("---- End of console, from contactForm ----")
   <!-- Token de temps pour détecter les soumissions trop rapides -->
   <input type="hidden" name="timestamp" id="timestamp" />
 
-
-
-
   <!-- Champs visibles du formulaire -->
-  <div>
-    <label for="name">Nom *</label>
+  <div class={style.contactForm_input_Container}>
+    <label class={style.contactForm_label} for="name">Nom* :</label>
     <input
+      class={style.contactForm_input}
       type="text"
       id="name"
       name="name"
@@ -49,9 +39,9 @@ console.log("---- End of console, from contactForm ----")
     />
   </div>
 
-    <div>
-    <label for="firstName">Prénom *</label>
-    <input
+  <div class={style.contactForm_input_Container}>
+    <label class={style.contactForm_label} for="firstName">Prénom* :</label>
+    <input class={style.contactForm_input}
       type="text"
       id="firstName"
       name="firstName"
@@ -62,23 +52,23 @@ console.log("---- End of console, from contactForm ----")
     />
   </div>
 
-  <div>
-    <label for="email">Email *</label>
-    <input type="email" id="email" name="email" required maxlength="254" />
+  <div class={style.contactForm_input_Container}>
+    <label class={style.contactForm_label} for="email">Email* :</label>
+    <input class={style.contactForm_input} type="email" id="email" name="email" required maxlength="254" />
   </div>
 
-  <div>
-    <label for="tel">Téléphone *</label>
-    <input type="tel" id="tel" name="tel" required maxlength="254" />
+  <div class={style.contactForm_input_Container}>
+    <label class={style.contactForm_label} for="tel">Téléphone* :</label>
+    <input class={style.contactForm_input} type="tel" id="tel" name="tel" required maxlength="254" />
   </div>
 
-  <div>
-    <label for="message">Message *</label>
-    <textarea id="message" name="message" required maxlength="2000" rows="6"
+  <div class={style.contactForm_input_Container}>
+    <label class={style.contactForm_label} for="message">Message* :</label>
+    <textarea class={style.contactForm_input_large} id="message" name="message" required maxlength="2000" rows="6"
     ></textarea>
   </div>
 
-  <button type="submit">Envoyer</button>
+  <button class={style.contactForm_button} type="submit">ENVOYER</button>
 </form>
 
 <script>

@@ -1,5 +1,63 @@
-.honeypot{
-  position:absolute;
-  left:-9999px;   /* assez loin pour être invisible */
-  top:0;
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+}
+
+.contactForm {
+  display: flex;
+  flex-direction: column;
+
+  &_label {
+    @include for-desktop-up {
+      font-size: 1.3rem;
+    }
+  }
+
+  &_input {
+    width: 80%;
+    margin: 1rem 0;
+    font-size: 2.5rem;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid black;
+    border-top: none;
+    @include for-desktop-up {
+      width: 50%;
+      font-size: 1rem;
+    }
+    &_large {
+      margin: 1rem 0;
+      font-size: 2.5rem;
+      border: 1px solid black;
+      @include for-desktop-up {
+        width: 50%;
+        font-size: 1rem;
+      }
+    }
+    &_Container {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+  }
+
+  &_button {
+    padding: 3rem 5rem;
+    margin: 2rem 0;
+    border: none;
+    background-color: $secondaryColor;
+    color: $primaryColor;
+    font-size: 3.5rem;
+    cursor: pointer;
+    @include for-desktop-up {
+      width: 51%;
+          padding: 2rem 4rem;
+
+      font-size: 2rem;
+    }
+  }
 }

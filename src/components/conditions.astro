@@ -1,8 +1,15 @@
 ---
 import style from "../style/components/conditions.module.scss"
+const { content } = Astro.props;
+const lines = content.split("\n").filter(line => line.trim() !== "");
 ---
 
 <section class={style.conditions} id="condition">
     <h2 class={style.conditions_title}>Règlement et conditions</h2>
-    <p class={style.conditions_text}>Lorem ipsum dolor sit amet consectetur. Elit malesuada amet suspendisse enim. Scelerisque potenti quam magna odio arcu. Sit vitae amet placerat pretium semper id suspendisse egestas. Lorem vel gravida quam eget netus at. Adipiscing pulvinar consectetur diam cras quis sed aliquam sit. Purus dignissim rhoncus fames ornare nulla eget et donec scelerisque. Etiam odio purus adipiscing lorem lectus eu. Nunc venenatis nullam pretium dictum. Ultrices dictum consectetur egestas dolor sed luctus eget imperdiet aenean. Elementum non porta volutpat pharetra sapien luctus enim neque. Vitae sed tempus blandit purus elementum feugiat a elit. Cras eros adipiscing in dignissim odio. Amet dui tempus proin lacus fermentum feugiat. Id feugiat dignissim libero velit quam. Sit quis amet augue volutpat urna in enim elit maecenas. Eget aliquet id condimentum nunc. Viverra risus elementum placerat vitae proin cras fusce orci. Pellentesque elementum justo ac vestibulum. Egestas lacus mi sit nunc gravida tincidunt nisi enim.</p>
+    <p class={style.conditions_text}>{lines[0]}</p>
+    <ul class={style.conditions_list}>
+        {lines.filter((_, idx) => idx !== 0).map((line) => (
+            <li>{line}</li>
+        ))}
+    </ul>
 </section>

@@ -4,30 +4,29 @@ import Image from "astro/components/Image.astro";
 import style from "../style/components/contact.module.scss";
 import Map from "../components/map.jsx";
 import ContactForm from "./contactForm.astro";
+const { content } = Astro.props;
 ---
 
 <section class={style.contact} id="contact">
   <div class={style.contact_info_container}>
     <h2 class={style.contact_title}>Contactez nous</h2>
-    <p class={style.contact_datasText}>Téléphone : <a href="tel:+32491599667" class={style.contact_phoneNumber}>+32 491 59 96 67</a></p>
-    
-    <p class={style.contact_datasText}>Email : <a href="mailto:cosy.corner.waterloo@gmail.com" class={style.contact_mail}
-      >cosy.corner.waterloo@gmail.com</a
-    ></p>
+    <p class={style.contact_datasText}>
+      Téléphone : <a href=`tel:${content.tel}` class={style.contact_phoneNumber}
+        >{content.tel}</a>
+    </p>
+
+    <p class={style.contact_datasText}>
+      Email : <a href=`mailto:${content.mail}` class={style.contact_mail}
+        >{content.mail}</a>
+    </p>
 
     <ContactForm />
-    <p>
-      Afin de réserver le spa, veuillez nous contacter soit par téléphone ou par
-      mail.
-    </p>
-    <p>Acceuil:</p>
-    <p>Possibilité Check-in/Check-out autonome ou par un membre de l'équipe.</p>
     <div class={style.contact_image_container}>
       <Image src={outdoor} alt="outdoor" class={style.contact_image} />
     </div>
   </div>
   <div class={style.contact_map_container}>
-    <p>Chaussée de Bruxelles 446, 1410 Waterloo</p>
+    <p>{content.adress}</p>
     <Map client:only />
   </div>
 </section>

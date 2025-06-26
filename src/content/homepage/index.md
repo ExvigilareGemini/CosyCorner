@@ -14,9 +14,21 @@ formule:
     - "Détails de la formule 1..."
     - "Détails de la formule 2..."
 contact:
-  mail: "contact@mon-site.com"
-  tel: "+33 1 23 45 67 89"
+  mail: "cosy.corner.waterloo@gmail.com"
+  tel: "+32 491 59 96 67"
+  adress: "Chaussée de Bruxelles 446, 1410 Waterloo"
 conditions: |
-  - Condition 1...
-  - Condition 2...
+  Pour garantir une expérience agréable, nous vous demandons de respecter les conditions suivantes :
+  Arriver 5 minutes avant l'heure réservée afin de profiter pleinement du spa
+  Le temps consacré à la visite, à l'habillage et au déshabillage est inclus dans la durée de la réservation
+  Il est obligatoire de prendre une douche avant d'utiliser les installations
+  Le port des pantoufles est éxigé pour des raisons d'hygiène et de sécurité
+  Pour les groupes de 4 personnes et plus, une copie de la carte d'identité sera demandée
+  Une caution de 50€ est demandée à l'arrivée et restituée uniquement si toutes les règles sont respectées
+  La direction se réserve le droit d'admission
+  Les ballons et toute forme de drogues sont interdits dans l'établissement
+  L'établissement est non-fumeur, merci de fumer uniquement dans le jardin
+  Chaque utilisateur est responsable de l'utilisation correcte des équipements
+  Cosy Corner décline toute responsabilité en cas d'accident ou d'incident causé par une  utilisation imprudente ou incorrecte des installations
+  Les frais de réparation à d'éventuels dégâts seront à la charge du responsable
 ---

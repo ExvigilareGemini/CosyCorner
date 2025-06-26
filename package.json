@@ -9,6 +9,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/node": "^9.2.2",
     "@astrojs/react": "^4.3.0",
     "@types/dompurify": "^3.0.5",
     "@types/nodemailer": "^6.4.17",
