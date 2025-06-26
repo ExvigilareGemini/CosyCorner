@@ -6,11 +6,14 @@
     margin: 20rem 0 20rem 6rem;
     width: 80%;
   }
-    @include for-big-desktop-up {
-    margin: 20rem 10% ;
+  @include for-big-desktop-up {
+    margin: 20rem 10%;
   }
 
-  &_list{
-    font-size: 1.2rem;
+  &_list {
+    
+    @include for-desktop-up {
+      font-size: 1.2rem;
+    }
   }
 }

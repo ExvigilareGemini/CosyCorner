@@ -11,6 +11,8 @@
   display: flex;
   flex-direction: column;
 
+
+
   &_label {
     @include for-desktop-up {
       font-size: 1.3rem;
@@ -26,7 +28,7 @@
     border-bottom: 1px solid black;
     border-top: none;
     @include for-desktop-up {
-      width: 50%;
+      width: 100%;
       font-size: 1rem;
     }
     &_large {
@@ -34,7 +36,7 @@
       font-size: 2.5rem;
       border: 1px solid black;
       @include for-desktop-up {
-        width: 50%;
+        width: 100%;
         font-size: 1rem;
       }
     }
@@ -54,8 +56,7 @@
     font-size: 3.5rem;
     cursor: pointer;
     @include for-desktop-up {
-      width: 51%;
-          padding: 2rem 4rem;
+      padding: 2rem 4rem;
 
       font-size: 2rem;
     }

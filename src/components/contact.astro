@@ -8,6 +8,7 @@ const { content } = Astro.props;
 ---
 
 <section class={style.contact} id="contact">
+  <span class={style.contact_bg}></span>
   <div class={style.contact_info_container}>
     <h2 class={style.contact_title}>Contactez nous</h2>
     <p class={style.contact_datasText}>
@@ -21,10 +22,11 @@ const { content } = Astro.props;
     </p>
 
     <ContactForm />
-    <div class={style.contact_image_container}>
+    <!-- <div class={style.contact_image_container}>
       <Image src={outdoor} alt="outdoor" class={style.contact_image} />
-    </div>
+    </div> -->
   </div>
+
   <div class={style.contact_map_container}>
     <p>{content.adress}</p>
     <Map client:only />

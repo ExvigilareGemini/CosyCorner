@@ -14,6 +14,21 @@
     margin: 4rem 10% 0;
   }
 
+  &_bg {
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 100vw;
+    // padding: 35rem 1rem;
+    // margin: -2rem;
+    z-index: -500;
+    background-color: $secondaryColor;
+    @include for-desktop-up {
+      height: 85%;
+      margin: -2rem;
+    }
+  }
+
   &_datasText {
     font-size: 2.5rem;
     @include for-desktop-up {
@@ -23,8 +38,11 @@
 
   &_info {
     &_container {
+      background-color: $primaryColor;
+      padding: 2rem;
       @include for-desktop-up {
-        width: 50%;
+        padding: 0 2rem;
+        width: 30%;
       }
     }
   }
@@ -69,6 +87,13 @@
       padding: 0 2rem 2rem 2rem;
       background-color: $secondaryColor;
       color: $primaryColor;
+
+      @include for-desktop-up {
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
     }
     .leaflet-container {
       width: 100%;

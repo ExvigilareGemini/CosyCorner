@@ -4,6 +4,10 @@
 .infocards {
   &_container {
     @include for-desktop-up {
+            display: flex;
+      margin: 4rem 0;
+    }
+    @include for-big-desktop-up {
       display: flex;
       margin: 4rem;
       justify-content: center;

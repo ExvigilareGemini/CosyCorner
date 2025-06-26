@@ -21,7 +21,7 @@
     transition: all ease 1s;
     transform: translate(-50%) scale(0.7);
     @include for-desktop-up {
-    transform: translate(-50%, 0) scale(0.3);
+    transform: translate(-50%, -15%) scale(0.3);
     }
   }
 }
