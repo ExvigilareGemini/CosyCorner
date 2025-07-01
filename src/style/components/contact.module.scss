@@ -20,20 +20,16 @@
 
   &_bg {
     height: 100%;
-    // padding: 35rem 1rem;
-    // margin: -2rem;
     background-color: $secondaryColor;
-    // @include for-desktop-up {
-      padding: 2rem 0;
-      position: absolute;
-      top: -2rem;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      width: 100vw;
-      margin-left: calc(-50vw + 50%);
-      z-index: -1;
-    // }
+    padding: 2rem 0;
+    position: absolute;
+    top: -2rem;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    z-index: -1;
   }
 
   &_datasText {
@@ -87,6 +83,13 @@
   }
 
   &_map {
+
+    &_adress{
+
+      color: $primaryColor;
+      margin: 2rem;
+    }
+
     &_container {
       width: fit-content;
       height: fit-content;
