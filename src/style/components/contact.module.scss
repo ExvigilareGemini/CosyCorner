@@ -11,11 +11,11 @@
 
   @include for-desktop-up {
     justify-content: space-between;
-    margin: 4rem 6rem 0 6rem;
+    margin: 8rem 6rem 0 6rem;
     flex-direction: row;
   }
   @include for-big-desktop-up {
-    margin: 4rem 10% 0;
+    margin: 8rem 10% 0;
   }
 
   &_bg {
@@ -43,6 +43,7 @@
     &_container {
       background-color: $primaryColor;
       padding: 2rem;
+      border-radius: 16px;
       @include for-desktop-up {
         padding: 0 2rem;
         width: 30%;

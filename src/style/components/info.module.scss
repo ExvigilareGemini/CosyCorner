@@ -8,12 +8,12 @@
     flex-direction: column;
     @include for-desktop-up {
       width: 100%;
-      margin: 4rem 0 0 6rem;
+      margin: 8rem 0 0 6rem;
     }
     @include for-big-desktop-up {
       align-items: center;
       flex-direction: row;
-      margin: 4rem 10% 0;
+      margin: 8rem 10% 0;
       width: unset;
     }
   }
