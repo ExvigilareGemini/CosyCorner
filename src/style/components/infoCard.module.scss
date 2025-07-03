@@ -1,17 +1,19 @@
 @use "../variables" as *;
 @use "../mixins" as *;
-@use 'sass:color';
+@use "sass:color";
 
 .infocard {
   width: 80%;
   height: 150vw;
   margin: 10%;
+  opacity: 0;
   @include for-desktop-up {
     height: 600px;
     width: 25%;
     min-width: 280px;
     margin: 2rem 1rem;
     position: relative;
+    transform: translateX(-10000px);
   }
 
   &_image {
@@ -62,11 +64,11 @@
       @include for-desktop-up {
         padding: 10px;
         top: 10px;
-      right: 10px;
+        right: 10px;
         font-size: 20px;
       }
       &:hover {
-        color: color.adjust($primaryColor,$lightness: -10%);
+        color: color.adjust($primaryColor, $lightness: -10%);
         transition: color 0.3s ease;
         cursor: pointer;
       }
@@ -78,7 +80,7 @@
       content: "";
       display: block;
       height: 2px;
-      background-color: color.adjust($secondaryColor,$lightness: -10%);
+      background-color: color.adjust($secondaryColor, $lightness: -10%);
       width: 70%;
     }
   }
@@ -100,5 +102,54 @@
       transition: opacity 0.3s ease;
       z-index: -100;
     }
+  }
+}
+
+.isVisible {
+  opacity: 1;
+  transform: translateX(0px);
+      animation-duration: 450ms;
+    animation-name: bouncingEffect;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+
+}
+
+.offset_0 {
+  @include for-desktop-up {
+    margin-top: 0px;
+    transition: all 1.6s;
+    animation-delay: 1.7s;
+  }
+}
+
+.offset_1 {
+  @include for-desktop-up {
+    margin-top: -20px;
+    transition: all 1.3s;
+    animation-delay: 1.4s;
+  }
+}
+
+.offset_2 {
+  @include for-desktop-up {
+    margin-top: -40px;
+    transition: all 1s;
+    animation-delay: 1.1s;
+  }
+}
+
+@keyframes bouncingEffect {
+  0% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(-5px);
+  }
+  80% {
+    transform: translateX(-2px);
+  }
+  100% {
+    transform: translateX(0px);
   }
 }

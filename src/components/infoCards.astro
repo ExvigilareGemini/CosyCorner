@@ -6,8 +6,8 @@ import style from "../style/components/infoCards.module.scss";
 
 <div class={style.infocards_container}>
   {
-    infoCardProps.map((card) => (
-      <InfoCard client:load card={card} key={card.index} index={card.index}/>
+    infoCardProps.map((card, index) => (
+      <InfoCard client:load card={card} key={card.index} index={index}/>
     ))
   }
 </div>

@@ -7,8 +7,8 @@
     display: flex;
     flex-direction: column;
     @include for-desktop-up {
-      width: 100%;
       margin: 8rem 0 0 6rem;
+
     }
     @include for-big-desktop-up {
       align-items: center;
@@ -16,6 +16,7 @@
       margin: 8rem 10% 0;
       width: unset;
     }
+
   }
   &_text {
     &_container {
@@ -23,6 +24,7 @@
       @include for-desktop-up {
         width: 70%;
         margin: 2rem 0;
+        opacity: 0;
       }
     }
     &_title {
@@ -43,4 +45,9 @@
       // width: 80%;
     }
   }
+}
+
+.isVisible{
+  opacity: 1;
+  transition: 2s;
 }
