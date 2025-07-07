@@ -47,6 +47,9 @@
       z-index: -100;
       opacity: 0;
       transition: opacity 0.3s ease;
+      @include for-big-desktop-up{
+        font-size: 1.2rem;
+      }
       &_hidden {
         opacity: 1;
         transition: opacity 0.3s ease;

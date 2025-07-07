@@ -1,42 +1,49 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect  } from "react";
+import clsx from 'clsx';
 import style from "../style/components/infoCard.module.scss";
 
 export default function InfoCard({ card, index }) {
   const { link, title, text, alt } = card;
   const [isHidden, setIsHidden] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
-  const cardRef = useRef(null);
 
   const toggleHidden = () => {
     setIsHidden((prev) => !prev);
   };
 
-  // Synchroniser avec la classe ajoutée par l'Intersection Observer
-  useEffect(() => {
-    const element = cardRef.current;
-    if (!element) return;
-
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-          setIsVisible(element.classList.contains(style.isVisible));
-        }
-      });
-    });
-
-    observer.observe(element, { attributes: true });
-
-    return () => observer.disconnect();
-  }, []);
-
   const offsetClass = style[`offset_${index}`];
 
+  const divRef = useRef(null);
+
+useEffect(() => {
+  if (!divRef.current) return;
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        setIsVisible(true);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  observer.observe(divRef.current);
+
+  return () => observer.disconnect();
+}, []);
+
   return (
-    <div
-      ref={cardRef}
-      className={`${style.infocard} ${isHidden ? style.infocard_hidden : ""} ${offsetClass || ""} ${isVisible ? style.isVisible : ''}`}
+    <div ref={divRef}
+      // className={`${style.infocard} ${offsetClass || ""} `}
+            className={clsx(
+        style.infocard,
+        offsetClass || "",
+        {
+          [style.infocard_hidden]: isHidden,
+          [style.isVisible]: isVisible
+        }
+      )}
     >
-      {/* Reste du composant identique */}
       <img src={link} alt={alt} className={style.infocard_image}></img>
       <div
         className={`${style.infocard_text_container} ${

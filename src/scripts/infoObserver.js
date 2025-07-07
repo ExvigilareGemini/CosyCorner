@@ -8,8 +8,6 @@ const titleElement = document.querySelector(`.${styleInfo.info_text_container}`)
 const callback = (entries, observer) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
-      console.log("Visible");
-      console.log(entry.target.classList);
       cardElements.forEach((card) => card.classList.add(styleCard.isVisible));
       titleElement.classList.add(styleInfo.isVisible)
       observer.unobserve(entry.target);
