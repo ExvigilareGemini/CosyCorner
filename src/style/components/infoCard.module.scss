@@ -3,6 +3,7 @@
 @use "sass:color";
 
 .infocard {
+  position: relative;
   width: 80%;
   height: 150vw;
   margin: 10%;
@@ -12,7 +13,6 @@
     width: 25%;
     min-width: 280px;
     margin: 2rem 1rem;
-    position: relative;
     transform: translateX(-10000px);
   }
 
@@ -47,7 +47,7 @@
       z-index: -100;
       opacity: 0;
       transition: opacity 0.3s ease;
-      @include for-big-desktop-up{
+      @include for-big-desktop-up {
         font-size: 1.2rem;
       }
       &_hidden {
@@ -110,12 +110,15 @@
 
 .isVisible {
   opacity: 1;
-  transform: translateX(0px);
-      animation-duration: 450ms;
+  transition: all 1s;
+  @include for-desktop-up {
+    opacity: 1;
+    transform: translateX(0px);
+    animation-duration: 450ms;
     animation-name: bouncingEffect;
     animation-timing-function: linear;
     animation-fill-mode: forwards;
-
+  }
 }
 
 .offset_0 {
