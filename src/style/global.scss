@@ -22,5 +22,9 @@ body {
   width: 100vw;
   @include for-desktop-up {
     font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 }

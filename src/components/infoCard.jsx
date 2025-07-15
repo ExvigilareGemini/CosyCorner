@@ -2,6 +2,7 @@ import { useState, useRef, useEffect  } from "react";
 import clsx from 'clsx';
 import style from "../style/components/infoCard.module.scss";
 
+
 export default function InfoCard({ card, index }) {
   const { link, title, text, alt } = card;
   const [isHidden, setIsHidden] = useState(false);

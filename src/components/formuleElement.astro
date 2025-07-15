@@ -1,0 +1,43 @@
+---
+import { Image } from "astro:assets";
+import style from "../style/components/formuleElement.module.scss";
+const formuleProps = Astro.props;
+---
+
+<div
+  class={`${formuleProps.key % 2 === 0 ? style.formuleElement : style.formuleElementRight}`}
+>
+  <div
+    class={`${formuleProps.key % 2 === 0 ? style.formuleElement_text_container : style.formuleElementRight_text_container}`}
+    data-movable="text"
+  >
+    <div>
+      {
+        formuleProps.formule.textItems.map((item) => {
+          return <p class={style.formuleElement_text}>{item.text}</p>;
+        })
+      }
+    </div>
+  </div>
+
+  <Image
+    src={formuleProps.formule.link}
+    alt="Tableau"
+    class={`${formuleProps.key % 2 === 0 ? style.formuleElement_image : style.formuleElementRight_image}`}
+    width={250}
+    height={250}
+    data-movable="image"
+  />
+  
+  <div
+    class={`${formuleProps.key % 2 === 0 ? style.formuleElement_text_container_hider : style.formuleElementRight_text_container_hider}`}
+    data-movable="hider"
+  >
+  </div>
+
+  <button
+    type="button"
+    data-button
+    style="position:absolute; top:0; height:100px; width:100px; z-index:150;"
+  ></button>
+</div>

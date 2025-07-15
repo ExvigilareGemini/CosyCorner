@@ -1,6 +1,4 @@
 ---
-import outdoor from "../../public/assets/img/outdoor.jpg";
-import Image from "astro/components/Image.astro";
 import style from "../style/components/contact.module.scss";
 import Map from "../components/map.jsx";
 import ContactForm from "./contactForm.astro";
@@ -22,9 +20,6 @@ const { content } = Astro.props;
     </p>
 
     <ContactForm />
-    <!-- <div class={style.contact_image_container}>
-      <Image src={outdoor} alt="outdoor" class={style.contact_image} />
-    </div> -->
   </div>
 
   <div class={style.contact_map_container}>

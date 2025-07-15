@@ -1,28 +1,14 @@
 ---
 import { formuleProps } from "../props/formuleProps";
+import FormuleElement from "./formuleElement.astro";
 import style from "../style/components/formule.module.scss";
-import { Image } from "astro:assets";
-import formuleImage from "../../public/assets/img/tableau.jpeg";
 ---
 
 <section class={style.formule} id="formule">
-  <div class={style.formule_image_container}>
-    <Image src={formuleImage} alt="Tableau" class={style.formule_image} />
-  </div>
-  <div class={style.formule_text_container}>
-    <h2 class={style.formule_title}>Formule tarifaire</h2>
-    <div class={style.formule_text_wrapper}>
-      {
-        formuleProps.map((formule, index) => (
-          <div key={index} class={style.formule_text_division}>
-            {formule.map((item, itemIndex) => (
-              <p class={style.formule_text} key={itemIndex}>
-                {item.text}
-              </p>
-            ))}
-          </div>
-        ))
-      }
-    </div>
-  </div>
+  {
+    formuleProps.map((formule, index) => (
+      <FormuleElement formule={formule} key={index} />
+    ))
+  }
+
 </section>
