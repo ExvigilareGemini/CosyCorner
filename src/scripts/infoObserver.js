@@ -22,5 +22,4 @@ const options = {
 };
 
 const observer = new IntersectionObserver(callback, options);
-
 observer.observe(target);

@@ -13,6 +13,7 @@
     width: 25%;
     min-width: 280px;
     margin: 2rem 1rem;
+    
     transform: translateX(-10000px);
   }
 
@@ -20,7 +21,7 @@
     height: 100%;
     width: 100%;
     object-fit: cover;
-    display: block;
+    display: block;border-radius: 25px;
   }
 
   &::after {
@@ -32,6 +33,7 @@
     transition: opacity 0.3s ease;
     pointer-events: none;
     z-index: 1;
+    border-radius: 25px;
   }
 
   &_hidden::after {
