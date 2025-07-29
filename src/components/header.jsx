@@ -78,17 +78,18 @@ export default function ScrollHeader() {
     };
   }, []);
 
-const menuBurgerClass = classnames(style.menuBurger, {
-  [style.menuBurger_scrolled]: scrolled,
-});
-
+  const menuBurgerClass = classnames(style.menuBurger, {
+    [style.menuBurger_scrolled]: scrolled,
+  });
 
   return (
     <header className={style.header}>
       <div className={menuBurgerClass} onClick={toggleMenu}>
-        <span className={`${style.menuBurger_line} ${
-          isMenuOpen ? style.menuBurger_line_open : ""
-        }`}></span>
+        <span
+          className={`${style.menuBurger_line} ${
+            isMenuOpen ? style.menuBurger_line_open : ""
+          }`}
+        ></span>
       </div>
       <span
         className={`${style.menuBurger_circle} ${
@@ -116,8 +117,7 @@ const menuBurgerClass = classnames(style.menuBurger, {
           );
         })}
       </div>
-
-      <Logo scrolled={scrolled} />
+        <Logo scrolled={scrolled} />
     </header>
   );
 }

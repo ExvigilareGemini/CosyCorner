@@ -4,6 +4,7 @@
 .header {
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
   height: fit-content;
   z-index: 1000;
@@ -59,15 +60,16 @@
     position: absolute;
     display: flex;
     flex-direction: column;
+    margin-top: 4rem;
     align-items: center;
+    justify-content: space-around;
     height: 30vh;
     width: 100%;
-    justify-content: space-around;
     z-index: 3000;
-    transition: opacity 0.5s ease;
     opacity: 0;
-    margin-top: 4rem;
+    transition: opacity 0.5s ease;
     @include for-desktop-up {
+      right: 0;
       margin-top: 1rem;
       flex-direction: row;
     }
@@ -80,19 +82,36 @@
     @include for-desktop-up {
       height: fit-content;
       width: fit-content;
-      margin-left: 4rem;
+      margin-right: 4rem;
       padding: 0.6rem 1.3rem;
       border-radius: 35px;
       transition: all ease 0.5s;
       background-color: unset;
       opacity: 1;
+          &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      transition: opacity 0.3s ease;
+      transition-delay: 0ms;
+      pointer-events: none;
+      z-index: -1;
+      border-radius: 80px;
+      opacity: 0;
+      background: rgba(93, 94, 96, 0.8);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(5.5px);
+      -webkit-backdrop-filter: blur(8.5px);
+    }
       &_scrolled {
-        background-color: $secondaryColor;
         transition: all ease 0.5s;
+        &::after{
+          opacity: 1;
+        }
       }
     }
     @include for-big-desktop-up {
-      margin-left: 10%;
+      margin-right: 8%;
     }
   }
 }
