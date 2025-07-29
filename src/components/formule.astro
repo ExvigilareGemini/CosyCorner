@@ -5,6 +5,7 @@ import style from "../style/components/formule.module.scss";
 ---
 
 <section class={style.formule} id="formule">
+  <h2 class={style.formule_title}>Formules</h2>
   {
     formuleProps.map((formule, index) => (
       <FormuleElement formule={formule} key={index} />

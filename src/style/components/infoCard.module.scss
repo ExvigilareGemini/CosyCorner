@@ -13,15 +13,17 @@
     width: 25%;
     min-width: 280px;
     margin: 2rem 1rem;
-    
+    box-shadow: 0 0px 15px rgba(0, 0, 0, 0.4);
     transform: translateX(-10000px);
+    border-radius: 25px;
   }
 
   &_image {
     height: 100%;
     width: 100%;
     object-fit: cover;
-    display: block;border-radius: 25px;
+    display: block;
+    border-radius: 25px;
   }
 
   &::after {
@@ -49,6 +51,7 @@
       z-index: -100;
       opacity: 0;
       transition: opacity 0.3s ease;
+      
       @include for-big-desktop-up {
         font-size: 1.2rem;
       }
