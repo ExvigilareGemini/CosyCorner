@@ -56,6 +56,9 @@
         width: 20%;
       }
     }
+    &_link{
+      text-decoration: none;
+    }
     &_logo {
       @include for-desktop-up {
         width: 60px;

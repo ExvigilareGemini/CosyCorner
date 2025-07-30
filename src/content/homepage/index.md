@@ -30,5 +30,5 @@ conditions: |
   L'établissement est non-fumeur, merci de fumer uniquement dans le jardin
   Chaque utilisateur est responsable de l'utilisation correcte des équipements
   Cosy Corner décline toute responsabilité en cas d'accident ou d'incident causé par une  utilisation imprudente ou incorrecte des installations
-  Les frais de réparation à d'éventuels dégâts seront à la charge du responsable
+  Les frais de réparation liées à d'éventuels dégâts seront à la charge du responsable
 ---
