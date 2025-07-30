@@ -28,7 +28,7 @@
       }
     }
     &_title {
-      font-size: 5rem;
+      font-size: 3.5rem;
       @include for-desktop-up {
         font-size: 2rem;
         padding: 0 1rem;
@@ -42,7 +42,7 @@
       }
     }
     &_text {
-      // width: 80%;
+      font-size: 1.5rem;
     }
   }
 }

@@ -13,19 +13,20 @@
     position: relative;
   }
   &_image {
-    border-radius: 80px;
+    border-radius: 40px;
     order: -1;
     width: 100%;
     height: auto;
     @include for-desktop-up {
-      z-index: 100;
-      transition: all 1s;
-      min-width: 250px;
-      height: 250px;
-      width: 250px;
       margin: 0 0 0 75%;
+      width: 250px;
+      height: 250px;
+      min-width: 250px;
+      z-index: 100;
       transform: translateX(-50%);
-          box-shadow: 5px 0 12px rgba(0, 0, 0, 0.4);
+      box-shadow: 5px 0 12px rgba(0, 0, 0, 0.4);
+      border-radius: 80px;
+      transition: all 1s;
     }
     &.moved {
       @include for-desktop-up {
@@ -42,15 +43,15 @@
     &_container {
       position: absolute;
       bottom: 0;
-      padding: 2rem;
+      width: 64vw;
+      padding: 1rem 8vw;
       background: rgba(93, 94, 96, 0.72);
-      border-radius: 0 0 80px 80px;
+      border-radius: 0 0 40px 40px;
       opacity: 0;
       transition: all 1s;
       box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
       backdrop-filter: blur(5px);
       -webkit-backdrop-filter: blur(5px);
-      border: 1px solid rgba(255, 255, 255, 0.3);
       color: $primaryColor;
       @include for-desktop-up {
         display: flex;
@@ -64,6 +65,7 @@
         right: calc(25% - $formuleElementBoxSize/2);
         padding-left: calc($formuleElementBoxSize + 2rem);
         justify-content: center;
+        border-radius: 0 0 80px 80px;
         color: $primaryColor;
         background-color: $secondaryColor;
         border: unset;

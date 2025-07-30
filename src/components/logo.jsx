@@ -8,7 +8,7 @@ export default function Logo(props) {
         scrolled ? style.logo_container_scrolled : ""
       }`}
     >
-      <a href="#acceuil">
+      <a class={style.logo_link} href="#acceuil">
         <svg
           className={`${style.logo} ${scrolled ? style.logo_scrolled : ""}`}
           width="100.02"

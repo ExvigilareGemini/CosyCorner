@@ -14,8 +14,8 @@
 .link {
   color: $primaryColor;
   text-decoration: none;
-  padding: 2rem;
-  font-size: 4rem;
+  padding: 1rem;
+  font-size: 2rem;
   border-radius: 50px;
   &.link_active {
     background-color: $primaryColor;
@@ -117,23 +117,22 @@
 }
 
 .menuBurger {
-  width: 80px;
-  height: 10px;
-  padding: 3rem 1.5rem;
-  border-radius: 20px;
-  pointer-events: all;
-  z-index: 4000;
+  // width: 80px;
+  // height: 10px;
   position: absolute;
-  top: 5rem;
-  right: 3rem;
-  margin-top: -5px;
+  top: 20px;
+  right: 20px;
+  padding: 1.5rem 0.5rem;
+  z-index: 4000;
+  border-radius: 5px;
+  pointer-events: all;
   @include for-desktop-up {
     display: none;
   }
     &::after {
     content: "";
     position: absolute;
-    border-radius: 20px;
+    border-radius: 10px;
     inset: 0;
     background-color: $secondaryColor;
     opacity: 0;
@@ -146,21 +145,21 @@
   }
   &_line {
     position: relative;
-    width: 80px;
-    height: 10px;
+    width: 40px;
+    height: 5px;
     display: block;
     background-color: $primaryColor;
-    border-radius: 20px;
+    border-radius: 5px;
     transition: all 0.3s ease;
     z-index: 4000;
     &_open {
       transform: rotate(45deg);
       &::before {
-        transform: translate(40px, 65px) rotate(-90deg);
+        transform: translate(20px, 35px) rotate(-90deg);
       }
       &::after {
         // opacity: 0;
-        transform: translate(0, -25px);
+        transform: translate(0, -15px);
       }
     }
     &::after,
@@ -176,11 +175,11 @@
     }
 
     &::after {
-      top: 25px;
+      top: 15px;
     }
 
     &::before {
-      top: -25px;
+      top: -15px;
     }
   }
   &_circle {
@@ -192,6 +191,11 @@
     border-radius: 50%;
     width: 200vh;
     height: 200vh;
+          background: rgba(93, 94, 96, 0.8);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(5.5px);
+      -webkit-backdrop-filter: blur(8.5px);
+
     &_open {
       opacity: 1;
       transform: translate(-20vh, -130vh);

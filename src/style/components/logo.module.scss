@@ -3,21 +3,22 @@
 
 .logo {
   position: relative;
-  transform: translate(-50%) scale(1.5);
   transform-origin: top center;
   transition: all ease 1s;
   fill: none;
   stroke: $primaryColor;
+  transform: scale(3);
   @include for-desktop-up {
     transform: scale(3.5);
+    width: unset;
     height: auto;
   }
 
   &_scrolled {
-    padding: 0.2rem;
     transition: all ease 1s;
-    transform: translate(-50%) scale(0.7);
+    transform: translate(0) scale(0.7);
     @include for-desktop-up {
+      padding: 0.2rem;
       transform: translateY(5%) scale(1);
     }
   }
@@ -37,9 +38,13 @@
   &_container {
     border-radius: 80px;
     width: fit-content;
-    margin: 1rem 0 0 50%;
-    transform: translateX(-50%);
+    margin: 0 0 0 50%;
     transition: all 1s;
+    transform: translate(-50%, 50%);
+    @include for-desktop-up {
+      margin: 1rem 0 0 50%;
+      transform: translateX(-50%);
+    }
     &::after {
       content: "";
       position: absolute;
@@ -50,22 +55,37 @@
       z-index: -1;
       border-radius: 80px;
       opacity: 0;
-      width: 70%;
-      left: 16%;
-      top: 2%;
-      height: 80%;
       background: rgba(93, 94, 96, 0.8);
       box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
       backdrop-filter: blur(5.5px);
       -webkit-backdrop-filter: blur(8.5px);
+      width: 51%;
+      left: 25%;
+      top: -2%;
+      height: 59%;
+      @include for-desktop-up {
+        width: 70%;
+        left: 16%;
+        top: 2%;
+        height: 80%;
+      }
     }
     &_scrolled {
-      transform: translateX(-38vw);
       pointer-events: all;
+      transform: translate(-48vw, 1rem);
+      @include for-desktop-up {
+        transform: translateX(-38vw);
+      }
       &::after {
         opacity: 1;
         transition-delay: 1s;
       }
     }
+  }
+
+  &_link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }

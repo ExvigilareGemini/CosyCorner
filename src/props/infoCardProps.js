@@ -4,7 +4,7 @@ export const infoCardProps = [
     link: "/assets/img/jacuzzi.jpeg", 
     alt: "Jacuzzi",
     title: "Nuitées",
-    text: "Les nuitées vous offrent un acc_s exclusif à l'ensemble de l'établissement et à toutes ses installations. Du jacuzzi au saune infrarouge, de l'espace de luminothérapie au salon, en passant par la chambre avec lit rond, la table de massage, la cuisine et les deux salle de bain.",
+    text: "Les nuitées vous offrent un accès exclusif à l'ensemble de l'établissement et à toutes ses installations. Du jacuzzi au saune infrarouge, de l'espace de luminothérapie au salon, en passant par la chambre avec lit rond, la table de massage, la cuisine et les deux salle de bain.",
   },
   {
     index: "2",
