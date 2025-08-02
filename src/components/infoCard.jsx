@@ -35,7 +35,6 @@ useEffect(() => {
 
   return (
     <div ref={divRef}
-      // className={`${style.infocard} ${offsetClass || ""} `}
             className={clsx(
         style.infocard,
         offsetClass || "",

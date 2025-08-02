@@ -45,6 +45,10 @@
       padding: 2rem;
       margin: 4rem 0 2rem 0;
       border-radius: 16px;
+      @include for-tablet-portrait-up{
+        width: 50%;
+        align-self: center;
+      }
       @include for-desktop-up {
         padding: 0 2rem;
         width: 30%;
@@ -55,15 +59,16 @@
     font-size: 3rem;
   }
   &_phoneNumber {
+    font-size: 1.3rem;
+    margin: 0.5rem 0;
+    color: rgb(228, 151, 9);
     @include for-desktop-up {
       font-size: 1.5rem;
     }
-    margin: 0.5rem 0;
-    color: rgb(228, 151, 9);
   }
   &_mail {
     color: rgb(228, 151, 9);
-      font-size: 1rem;
+      font-size: 1.3rem;
   }
   &_image {
     height: 100%;
@@ -98,12 +103,12 @@
       padding: 0 2rem 2rem 2rem;
       background-color: $secondaryColor;
       color: $primaryColor;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
 
       @include for-desktop-up {
         width: 70%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
       }
     }
     .leaflet-container {

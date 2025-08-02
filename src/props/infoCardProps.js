@@ -4,7 +4,7 @@ export const infoCardProps = [
     link: "/assets/img/jacuzzi.jpeg", 
     alt: "Jacuzzi",
     title: "Nuitées",
-    text: "Les nuitées vous offrent un accès exclusif à l'ensemble de l'établissement et à toutes ses installations. Du jacuzzi au saune infrarouge, de l'espace de luminothérapie au salon, en passant par la chambre avec lit rond, la table de massage, la cuisine et les deux salle de bain.",
+    text: "Les nuitées vous offrent un accès exclusif à l'ensemble de l'établissement et à toutes ses installations. Du jacuzzi au sauna infrarouge, de l'espace de luminothérapie au salon, en passant par la chambre avec lit rond, la table de massage, la cuisine et les deux salles de bain.",
   },
   {
     index: "2",
@@ -17,7 +17,7 @@ export const infoCardProps = [
     index: "3",
     link: "/assets/img/chambre.jpg", 
     alt: "Chambre",
-    title: "Préstation",
-    text: "Des boissons telles que des cocktails individuels, bouteiile de champagne et une sélection de softs, ainsi que de petites gourmandises comme des chips ou des Raffaello sont à disposition tout au long du séjour. Ces options, payantes, peuvent être consommées librement selon les envies.",
+    title: "Prestations",
+    text: "Des boissons telles que des cocktails individuels, bouteiiles de champagne et une sélection de softs, ainsi que de petites gourmandises comme des chips ou des Raffaello sont à disposition tout au long du séjour. Ces options, payantes, peuvent être consommées librement selon les envies.",
   },
 ];

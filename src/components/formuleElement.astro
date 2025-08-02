@@ -14,7 +14,7 @@ const formuleProps = Astro.props;
     <div>
       {
         formuleProps.formule.textItems.map((item) => {
-          return <p class={style.formuleElement_text}>{item.text}</p>;
+          return <p class={`${formuleProps.key % 2 === 0 ? style.formuleElement_text : style.formuleElementRight_text}`}>{item.text}</p>;
         })
       }
     </div>

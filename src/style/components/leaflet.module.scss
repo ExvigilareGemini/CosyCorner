@@ -3,6 +3,11 @@
 .mapContainer{
     height: 70vw;
     width: 100%;
+    @include for-tablet-portrait-up{
+        width: 80vw;
+        height: 60vw;
+        margin-top: 2rem;
+    }
 @include for-desktop-up {
     height: 35vw;
     width: 40vw;

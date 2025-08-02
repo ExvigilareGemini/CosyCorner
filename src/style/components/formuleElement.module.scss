@@ -7,17 +7,29 @@
   margin: 1rem 0;
   display: flex;
   flex-direction: column;
+  @include for-tablet-landscape-up {
+   grid-column: 1 / 4;
+    position: relative;
+        width: 90%;
+    margin: 1rem 15%;
+  }
   @include for-desktop-up {
     width: 100%;
     grid-column: 1 / 3;
-    position: relative;
+    margin:1rem 0;
+
   }
   &_image {
     border-radius: 40px;
     order: -1;
     width: 100%;
     height: auto;
-    @include for-desktop-up {
+    object-fit: cover;
+    
+    @include for-tablet-portrait-up{
+      height: 450px;
+    }
+    @include for-tablet-landscape-up {
       margin: 0 0 0 75%;
       width: 250px;
       height: 250px;
@@ -29,14 +41,22 @@
       transition: all 1s;
     }
     &.moved {
-      @include for-desktop-up {
-        transform: translateX(calc(-30vw - $formuleElementBoxSize/2 - 2rem));
+      @include for-tablet-landscape-up {
+        transform: translateX(calc(-60vw - $formuleElementBoxSize/2 - 2rem));
       }
+      @include for-desktop-up {
+          transform: translateX(calc(-30vw - $formuleElementBoxSize/2 - 2rem));
+    
+  }
     }
   }
 
   &_text {
-    @include for-desktop-up {
+    @include for-tablet-portrait-up{
+      font-size: 1.5rem;
+      margin: 0.5rem;
+    }
+    @include for-tablet-landscape-up {
       font-size: 1.2rem;
       margin: 0.3rem;
     }
@@ -53,11 +73,11 @@
       backdrop-filter: blur(5px);
       -webkit-backdrop-filter: blur(5px);
       color: $primaryColor;
-      @include for-desktop-up {
+      @include for-tablet-landscape-up {
         display: flex;
         flex-direction: column;
         height: 250px;
-        width: 30vw;
+        width: 60vw;
         min-width: fit-content;
         margin: 0;
         padding: unset;
@@ -65,7 +85,6 @@
         right: calc(25% - $formuleElementBoxSize/2);
         padding-left: calc($formuleElementBoxSize + 2rem);
         justify-content: center;
-        border-radius: 0 0 80px 80px;
         color: $primaryColor;
         background-color: $secondaryColor;
         border: unset;
@@ -74,11 +93,14 @@
         opacity: 0;
         transition: all 1s;
       }
+      @include for-desktop-up{
+        width: 30vw;
+      }
       &.moved {
         opacity: 1;
       }
       &_hider {
-        @include for-desktop-up {
+        @include for-tablet-landscape-up {
           position: absolute;
           height: 100%;
           width: 100%;
@@ -89,11 +111,17 @@
           border-radius: 40px;
         }
         &.moved {
-          @include for-desktop-up {
+          @include for-tablet-landscape-up {
             transform: translateX(
-              calc(-30vw - $formuleElementBoxSize/2 - 2rem)
+              calc(-60vw - $formuleElementBoxSize/2 - 2rem)
             );
           }
+          @include for-desktop-up {
+              transform: translateX(
+                calc(-30vw - $formuleElementBoxSize/2 - 2rem)
+              );
+    
+  }
         }
       }
     }
@@ -102,12 +130,18 @@
 
 .formuleElementRight {
   @extend .formuleElement;
+  @include for-tablet-landscape-up {
+    grid-column: 1 / 4;
+    margin-left: 0;
+  }
   @include for-desktop-up {
-    grid-column: 2 / 4;
+      grid-column: 2 / 4;
+    margin: 1rem 0;
+    
   }
   &_image {
     @extend .formuleElement_image;
-    @include for-desktop-up {
+    @include for-tablet-landscape-up {
       margin: 0 0 0 25%;
       order: 1;
       transform: translateX(-50%);
@@ -115,34 +149,45 @@
 
     }
     &.moved {
-      @include for-desktop-up {
-        transform: translateX(calc(30vw - $formuleElementBoxSize/2));
+      @include for-tablet-landscape-up {
+        transform: translateX(calc(60vw - $formuleElementBoxSize/2));
       }
+      @include for-desktop-up {
+          transform: translateX(calc(30vw - $formuleElementBoxSize/2));
+    
+  }
     }
   }
   &_text {
+    @extend .formuleElement_text;
+    @include for-desktop-up{
+      width: 80%;
+    }
     &_container {
       @extend .formuleElement_text_container;
-      @include for-desktop-up {
+      @include for-tablet-landscape-up {
         order: 2;
         padding-left: 2rem;
         padding-right: calc($formuleElementBoxSize - 2rem);
         left: calc(25% - $formuleElementBoxSize/2);
         border-radius: 25px 80px 80px 25px;
       }
-      &.moved {
-      }
+
       &_hider {
         @extend .formuleElement_text_container_hider;
-        @include for-desktop-up {
+        @include for-tablet-landscape-up {
           right: unset;
           left: calc(25% - $formuleElementBoxSize/2);
         }
         &.moved {
-          @include for-desktop-up {
+          @include for-tablet-landscape-up {
+            transform: translateX(calc(60vw + $formuleElementBoxSize/2));
+          }  @include for-desktop-up {
             transform: translateX(calc(30vw + $formuleElementBoxSize/2));
-          }
+    
+  }
         }
+        
       }
     }
   }

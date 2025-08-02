@@ -1,15 +1,12 @@
 ---
 import style from "../style/components/contactForm.module.scss";
-// Formulaire de contact sécurisé
 export const prerender = false;
 import { actions } from "astro:actions";
 ---
 
-<h2>Formulaire de Contact</h2>
+<h2 class={style.contactForm_title}>Formulaire de Contact</h2>
 
-<!-- Formulaire utilisant astro:actions pour la sécurité -->
 <form method="POST" action={actions.sendContactEmail} class={style.contactForm}>
-  <!-- Champ honeypot : invisible aux utilisateurs, détecte les bots -->
   <div class={style.honeypot} aria-hidden="true">
     <label for="website">Laissez ce champ vide&nbsp;:</label>
     <input
@@ -21,10 +18,8 @@ import { actions } from "astro:actions";
     />
   </div>
 
-  <!-- Token de temps pour détecter les soumissions trop rapides -->
   <input type="hidden" name="timestamp" id="timestamp" />
 
-  <!-- Champs visibles du formulaire -->
   <div class={style.contactForm_input_Container}>
     <label class={style.contactForm_label} for="name">Nom* :</label>
     <input
@@ -71,17 +66,15 @@ import { actions } from "astro:actions";
   <button class={style.contactForm_button} type="submit">ENVOYER</button>
 </form>
 
+<!-- Sécurity script -->
 <script>
-  // Ajoute un timestamp pour détecter les soumissions trop rapides (protection anti-bot)
   document.getElementById("timestamp").value = Date.now().toString();
 
-  // Protection supplémentaire : délai minimum avant soumission
   const form = document.querySelector("form");
   const startTime = Date.now();
 
   form.addEventListener("submit", function (e) {
     const timeSpent = Date.now() - startTime;
-    // Si moins de 3 secondes, probablement un bot
     if (timeSpent < 3000) {
       e.preventDefault();
       alert("Veuillez prendre le temps de remplir le formulaire correctement.");

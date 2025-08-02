@@ -3,29 +3,60 @@
 
 .footer {
   display: flex;
-  justify-content: space-around;
+  flex-wrap: wrap;
+  justify-content: space-between;
   width: 100vw;
   margin: 8rem 0 0 0;
   background-color: $secondaryColor;
   color: $primaryColor;
   padding: 2rem 0;
+  @include for-tablet-portrait-up {
+    justify-content: space-around;
+  }
 
   &_contact {
+    &_tel {
+      color: $primaryColor;
+      @include for-tablet-landscape-up {
+        margin: -0.7rem 0;
+      }
+    }
     &_mail {
       color: $primaryColor;
+      @include for-tablet-landscape-up {
+        margin: -0.7rem 0;
+      }
+    }
+    &_adress {
+      color: $primaryColor;
+      @include for-tablet-landscape-up {
+        margin: -0.7rem 0;
+      }
     }
     &_container {
-      display: none;
-      @include for-desktop-up {
+      width: 50%;
+      order: 4;
+      margin: 0 auto 0 2rem;
+      @include for-tablet-portrait-up {
+        margin: unset;
+        order: 0;
+        width: 20%;
+        word-wrap: break-word;
+      }
+      @include for-tablet-landscape-up {
         display: flex;
         flex-direction: column;
+        justify-content: end;
         width: 20%;
-        font-size: 1rem;
+        font-size: 1.2rem;
       }
     }
     &_title {
-      font-size: 1.5rem;
-      margin: 1rem 0 0.5rem;
+      font-size: 2rem;
+      @include for-desktop-up {
+        font-size: 1.5rem;
+        margin: 1rem 0 0.5rem;
+      }
     }
   }
 
@@ -34,10 +65,14 @@
       text-decoration: none;
       color: $primaryColor;
       font-size: 1.5rem;
+      @include for-tablet-landscape-up {
+        font-size: 1.4rem;
+      }
     }
     &_container {
       display: flex;
       flex-direction: column;
+      margin: 0 0 0 2rem;
       @include for-desktop-up {
         width: 20%;
       }
@@ -45,6 +80,7 @@
     &_title {
       font-size: 2rem;
       @include for-desktop-up {
+        margin: unset;
         font-size: 1.5rem;
         margin: 1rem 0 0.5rem;
       }
@@ -58,12 +94,14 @@
       flex-direction: column;
       justify-content: end;
       align-self: start;
+      margin: 0 2rem 0 0;
       @include for-desktop-up {
+        margin: unset;
         width: 20%;
         display: block;
       }
     }
-    &_link{
+    &_link {
       text-decoration: none;
     }
     &_logo {

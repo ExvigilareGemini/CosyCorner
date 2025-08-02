@@ -10,6 +10,15 @@
   opacity: 0;
   box-shadow: 0 0px 15px rgba(0, 0, 0, 0.4);
   border-radius: 25px;
+  @include for-tablet-portrait-up {
+    height: 400px;
+  }
+  @include for-tablet-landscape-up {
+    width: 30%;
+    height: 500px;
+    margin: 0;
+    transform: translateX(-10000px);
+  }
   @include for-desktop-up {
     height: 600px;
     width: 25%;
@@ -52,6 +61,12 @@
       opacity: 0;
       transition: opacity 0.3s ease;
       font-size: 1.5rem;
+      @include for-tablet-landscape-up {
+        font-size: 1.2rem;
+      }
+      @include for-desktop-up {
+        font-size: 1.5rem;
+      }
       @include for-big-desktop-up {
         font-size: 1.2rem;
       }
@@ -117,7 +132,7 @@
 .isVisible {
   opacity: 1;
   transition: all 1s;
-  @include for-desktop-up {
+  @include for-tablet-landscape-up {
     opacity: 1;
     transform: translateX(0px);
     animation-duration: 450ms;
@@ -128,6 +143,13 @@
 }
 
 .offset_0 {
+
+  @include for-tablet-landscape-up{
+        margin-top: 10px;
+    transition: all 1.6s;
+    animation-delay: 1.7s;
+  }
+
   @include for-desktop-up {
     margin-top: 20px;
     transition: all 1.6s;
@@ -136,6 +158,13 @@
 }
 
 .offset_1 {
+
+    @include for-tablet-landscape-up{
+        margin-top: -20px;
+    transition: all 1.3s;
+    animation-delay: 1.4s;
+  }
+
   @include for-desktop-up {
     margin-top: -20px;
     transition: all 1.3s;
@@ -144,6 +173,13 @@
 }
 
 .offset_2 {
+
+    @include for-tablet-landscape-up{
+        margin-top: -40px;
+    transition: all 1s;
+    animation-delay: 1.1s;
+  }
+
   @include for-desktop-up {
     margin-top: -60px;
     transition: all 1s;

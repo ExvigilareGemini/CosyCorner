@@ -3,9 +3,16 @@
 
 .infocards {
   &_container {
+    @include for-tablet-landscape-up {
+      display: flex;
+      justify-content: space-between;
+      margin: 0 10%;
+    }
     @include for-desktop-up {
-            display: flex;
       margin: 4rem 0;
+      justify-content: space-between;
+      grid-column: 2 / 12;
+      grid-row: 2;
     }
     @include for-big-desktop-up {
       display: flex;

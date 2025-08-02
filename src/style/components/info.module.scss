@@ -7,24 +7,29 @@
     display: flex;
     flex-direction: column;
     @include for-desktop-up {
-      margin: 8rem 0 0 6rem;
-
+      margin: 8rem 0 0 0;
+      display: grid;
+      grid-template-rows: repeat(2, auto);
+      grid-template-columns: repeat(12, 1fr);
     }
     @include for-big-desktop-up {
+      display: flex;
       align-items: center;
       flex-direction: row;
       margin: 8rem 10% 0;
       width: unset;
     }
-
   }
   &_text {
     &_container {
       margin: 10%;
       @include for-desktop-up {
-        width: 70%;
-        margin: 2rem 0;
+        grid-column: 2 / 12;
+        grid-row: 1;
         opacity: 0;
+        width: 70%;
+        margin: 0;
+
       }
     }
     &_title {
@@ -47,7 +52,7 @@
   }
 }
 
-.isVisible{
+.isVisible {
   opacity: 1;
   transition: 2s;
 }

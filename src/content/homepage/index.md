@@ -2,10 +2,10 @@
 cover:
   title: "Cosy Corner"
   subtitle: "Spa privatif"
-  text: "Bienvenue au Cosy Corner, un cocon de douceur dédié à la détente et au bien-être. Lumière tamisées, chaleur enveloppante, douceur des bulles du jacuzzi,... chaque détail a été pensé pour vous offrir une parenthèse de calme et de sérénité."
+  text: "Bienvenue au Cosy Corner, un cocon de douceur dédié à la détente et au bien-être. Lumières tamisées, chaleur enveloppante, douceur des bulles du jacuzzi,... chaque détail a été pensé pour vous offrir une parenthèse de calme et de sérénité."
 info:
   title: "A définir"
-  text: "L'espace wellness du Cosy Corner offre un véritable voyage sensoriel, dans un cadre chaleureux et intimiste. Il comprend un jacuzzi relaxant, un sauna pour une chaleur douce et profonde, ainsu qu'un espace de luminothérapie dévorisant la détente et l'équilibre. Peignoirs, essuies de bain et pantougles sont fournis pour un confort optimal. Un grand salon incite au repas, complété par deux douches au rez-de-chaussée. La chambre avec un grand lit rond, la table de massage, la cuisine et une seconde salle de bain complètent cet espace, pour une ambiance paisible et propice au lâcher-prise."
+  text: "L'espace wellness du Cosy Corner offre un véritable voyage sensoriel, dans un cadre chaleureux et intimiste. Il comprend un jacuzzi relaxant, un sauna pour une chaleur douce et profonde, ainsi qu'un espace de luminothérapie favorisant la détente et l'équilibre. Peignoirs, essuies de bain et pantoufles sont fournis pour un confort optimal. Un grand salon incite au repas, complété par deux douches au rez-de-chaussée. La chambre avec un grand lit rond, la table de massage, la cuisine et une seconde salle de bain complètent cet espace, pour une ambiance paisible et propice au lâcher-prise."
 formule:
   titres:
     - "Formule 1"
@@ -15,7 +15,7 @@ formule:
     - "Détails de la formule 2..."
 contact:
   mail: "cosy.corner.waterloo@gmail.com"
-  tel: "+32 491 59 96 67"
+  tel: "+32491599667"
   adress: "Chaussée de Bruxelles 446, 1410 Waterloo"
 conditions: |
   Pour garantir une expérience agréable, nous vous demandons de respecter les conditions suivantes :
