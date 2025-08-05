@@ -1,0 +1,67 @@
+---
+import "../style/components/swiper.css";
+import {
+  Swiper,
+  SwiperWrapper,
+  SwiperSlide,
+  SwiperButtonPrev,
+  SwiperButtonNext,
+} from "astro-swiper";
+
+const images = [
+  "../../public/assets/img/chambre.jpg",
+  "../../public/assets/img/cover.jpeg",
+  "../../public/assets/img/jacuzzi.jpeg",
+  "../../public/assets/img/outdoor.jpg",
+  "../../public/assets/img/salon.jpeg",
+  "../../public/assets/img/tableau.jpeg",
+];
+---
+
+<Swiper
+  uniqueClass="myswiper-main"
+  linkToThumbUniqueClass="myswiper-thumbnail"
+  options={{
+    // check options at https://swiperjs.com/swiper-api
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    loop: true,
+  }}
+>
+  <SwiperWrapper>
+    {
+      images.map((image) => (
+        <SwiperSlide>
+          <img src={image} alt="" />
+        </SwiperSlide>
+      ))
+    }
+  </SwiperWrapper>
+
+  <SwiperButtonPrev />
+  <SwiperButtonNext />
+</Swiper>
+
+<Swiper
+  uniqueClass="myswiper-thumbnail"
+  options={{
+    // check options at https://swiperjs.com/swiper-api
+    spaceBetween: 10,
+    slidesPerView: 4,
+    freeMode: true,
+    watchSlidesProgress: true,
+    loop: true,
+  }}
+>
+  <SwiperWrapper>
+    {
+      images.map((image) => (
+        <SwiperSlide>
+          <img src={image} alt="" />
+        </SwiperSlide>
+      ))
+    }
+  </SwiperWrapper>
+</Swiper>

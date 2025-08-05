@@ -1,0 +1,90 @@
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.myswiper-thumbnail {
+  height: 25%;
+  margin-top: 1rem;
+}
+
+.myswiper-thumbnail .swiper-wrapper {
+  box-sizing: border-box;
+  padding: 10px 0;
+  height: 150px;
+}
+
+.myswiper-thumbnail .swiper-slide {
+  width: 25%;
+  height: 100%;
+  opacity: 0.4;
+}
+
+.myswiper-thumbnail .swiper-slide-thumb-active {
+  opacity: 1;
+}
+
+@media (min-width: 900px) {
+  .swiper {
+    margin-top: 10rem;
+    width: 70vw;
+    height: 39vw;
+    object-fit: cover;
+  }
+  .myswiper-thumbnail {
+    height: 25%;
+    margin-top: 0;
+  }
+}
+@media (min-width: 600px) {
+  .swiper {
+    margin-top: 10rem;
+    width: 80vw;
+    height: 45vw;
+    object-fit: cover;
+  }
+  .myswiper-thumbnail {
+    height: 25%;
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 599px) {
+  .swiper {
+    margin-top: 7rem;
+    width: 100vw;
+    height: 56vw;
+    object-fit: cover;
+  }
+  .myswiper-thumbnail {
+    height: 25%;
+    margin-top: 0;
+  }
+}
+
+/* @media (min-width: 1200px) {
+  .swiper {
+    margin-top: 10rem;
+    width: 60vw;
+    height: 33vw;
+    object-fit: cover;
+  }
+  .myswiper-thumbnail {
+    height: 25%;
+    margin-top: 1rem;
+  }
+} */
+
+@media (min-width: 1600px) {
+  .swiper {
+    margin-top: 10rem;
+    width: 50vw;
+    height: 28vw;
+    object-fit: cover;
+  }
+  .myswiper-thumbnail {
+    height: 25%;
+    margin-top: 1rem;
+  }
+}
