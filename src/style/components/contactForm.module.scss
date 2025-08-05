@@ -61,8 +61,11 @@
     cursor: pointer;
     @include for-desktop-up {
       padding: 2rem 4rem;
-
       font-size: 2rem;
+      transition: all 0.3s;
+          &:hover {
+      transform: scale(1.02);
+    }
     }
   }
 }

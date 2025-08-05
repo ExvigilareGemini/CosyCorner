@@ -1,7 +1,6 @@
-import { useState, useRef, useEffect  } from "react";
-import clsx from 'clsx';
+import { useState, useRef, useEffect } from "react";
+import clsx from "clsx";
 import style from "../style/components/infoCard.module.scss";
-
 
 export default function InfoCard({ card, index }) {
   const { link, title, text, alt } = card;
@@ -16,48 +15,61 @@ export default function InfoCard({ card, index }) {
 
   const divRef = useRef(null);
 
-useEffect(() => {
-  if (!divRef.current) return;
+  useEffect(() => {
+    if (!divRef.current) return;
 
-  const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        setIsVisible(true);
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.5 });
+    const observer = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
 
-  observer.observe(divRef.current);
+    observer.observe(divRef.current);
 
-  return () => observer.disconnect();
-}, []);
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <div ref={divRef}
-            className={clsx(
-        style.infocard,
-        offsetClass || "",
-        {
-          [style.infocard_hidden]: isHidden,
-          [style.isVisible]: isVisible
-        }
-      )}
+    <div
+      ref={divRef}
+      className={clsx(style.infocard, offsetClass || "", {
+        [style.infocard_hidden]: isHidden,
+        [style.isVisible]: isVisible,
+      })}
     >
-      <img src={link} alt={alt} className={style.infocard_image}></img>
-      <div
-        className={`${style.infocard_text_container} ${
-          isHidden ? style.infocard_text_container_hidden : ""
-        }`}
-      >
-        <h2 className={style.infocard_title}>{title}</h2>
-        <p className={style.infocard_text}>{text}</p>
-        <span className={style.infocard_text_cross} onClick={toggleHidden}>X</span>
-      </div>
-      <div className={`${style.infocard_learnMore} ${
-          isHidden ? style.infocard_learnMore_hidden : ""
-        }`} onClick={toggleHidden}>
-        <p>{title}</p>
+      <div className={`${style.infocard_wrapper} ${
+            isHidden ? style.infocard_wrapper_hidden : ""
+          }`}>
+        <img
+          src={link}
+          alt={alt}
+          className={style.infocard_image}
+          onClick={toggleHidden}
+        ></img>
+        <div
+          className={`${style.infocard_text_container} ${
+            isHidden ? style.infocard_text_container_hidden : ""
+          }`}
+        >
+          <h2 className={style.infocard_title}>{title}</h2>
+          <p className={style.infocard_text}>{text}</p>
+          <span className={style.infocard_text_cross} onClick={toggleHidden}>
+            X
+          </span>
+        </div>
+        <div
+          className={`${style.infocard_learnMore} ${
+            isHidden ? style.infocard_learnMore_hidden : ""
+          }`}
+        >
+          <p>{title}</p>
+        </div>
       </div>
     </div>
   );

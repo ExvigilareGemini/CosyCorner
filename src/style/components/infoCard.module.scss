@@ -25,6 +25,23 @@
     min-width: 280px;
     margin: 2rem 1rem;
     transform: translateX(-10000px);
+    transition: all 0.3s;
+  }
+
+  &_wrapper {
+    height: 100%;
+    cursor: pointer;
+    transition: all 0.3s;
+    &:hover {
+      transform: scale(1.02);
+    }
+    &_hidden {
+      &:hover {
+        transform: none;
+        cursor: default;
+        pointer-events: none;
+      }
+    }
   }
 
   &_image {
@@ -35,25 +52,8 @@
     border-radius: 25px;
   }
 
-  &::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-color: black;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    pointer-events: none;
-    z-index: 1;
-    border-radius: 25px;
-  }
-
-  &_hidden::after {
-    opacity: 0.5;
-  }
-
   &_text {
     &_container {
-      color: $primaryColor;
       position: relative;
       top: -100%;
       padding: 2rem;
@@ -61,6 +61,8 @@
       opacity: 0;
       transition: opacity 0.3s ease;
       font-size: 1.5rem;
+      color: $primaryColor;
+      cursor: default;
       @include for-tablet-landscape-up {
         font-size: 1.2rem;
       }
@@ -82,6 +84,7 @@
       right: 0;
       padding: 1.5rem 1.5rem;
       cursor: pointer;
+      pointer-events: all;
       z-index: 100;
       font-size: 2rem;
       @include for-desktop-up {
@@ -89,11 +92,11 @@
         top: 10px;
         right: 10px;
         font-size: 20px;
-      }
-      &:hover {
-        color: color.adjust($primaryColor, $lightness: -10%);
-        transition: color 0.3s ease;
-        cursor: pointer;
+        &:hover {
+          opacity: 0.8;
+          transition: opacity 0.3s ease;
+          cursor: pointer;
+        }
       }
     }
   }
@@ -127,6 +130,22 @@
       z-index: -100;
     }
   }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: black;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 1;
+    border-radius: 25px;
+  }
+
+  &_hidden::after {
+    opacity: 0.5;
+  }
 }
 
 .isVisible {
@@ -143,9 +162,8 @@
 }
 
 .offset_0 {
-
-  @include for-tablet-landscape-up{
-        margin-top: 10px;
+  @include for-tablet-landscape-up {
+    margin-top: 10px;
     transition: all 1.6s;
     animation-delay: 1.7s;
   }
@@ -158,9 +176,8 @@
 }
 
 .offset_1 {
-
-    @include for-tablet-landscape-up{
-        margin-top: -20px;
+  @include for-tablet-landscape-up {
+    margin-top: -20px;
     transition: all 1.3s;
     animation-delay: 1.4s;
   }
@@ -173,9 +190,8 @@
 }
 
 .offset_2 {
-
-    @include for-tablet-landscape-up{
-        margin-top: -40px;
+  @include for-tablet-landscape-up {
+    margin-top: -40px;
     transition: all 1s;
     animation-delay: 1.1s;
   }

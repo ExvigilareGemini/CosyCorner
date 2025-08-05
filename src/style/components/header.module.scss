@@ -31,6 +31,12 @@
     font-size: 1.2rem;
     pointer-events: all;
     z-index: 1;
+    transition: all 0.1s;
+    &:hover {
+      opacity: 0.9;
+      transform: scale(1.03);
+      &::after{opacity: 0.1;}
+    }
     &::after {
       content: "";
       position: absolute;
@@ -44,11 +50,11 @@
 
     @include for-big-desktop-up {
       font-size: 1.5rem;
+      margin: 0 0.5rem;
     }
 
     &.link_active {
       color: black;
-
       &::after {
         opacity: 1;
       }
@@ -96,7 +102,7 @@
     @include for-desktop-up {
       height: fit-content;
       width: fit-content;
-      margin-right: 4rem;
+      margin-right: 2rem;
       padding: 0.6rem 1.3rem;
       border-radius: 35px;
       transition: all ease 0.5s;
@@ -106,7 +112,7 @@
         content: "";
         position: absolute;
         inset: 0;
-        margin:  0;
+        margin: 0;
         transition: opacity 0.3s ease;
         transition-delay: 0ms;
         pointer-events: none;
@@ -126,7 +132,7 @@
       }
     }
     @include for-big-desktop-up {
-      margin-right: 8%;
+      margin-right: 5%;
     }
   }
 }

@@ -8,7 +8,7 @@ export default function Logo(props) {
         scrolled ? style.logo_container_scrolled : ""
       }`}
     >
-      <a class={style.logo_link} href="#acceuil">
+      <a className={style.logo_link} href="#acceuil">
         <svg
           className={`${style.logo} ${scrolled ? style.logo_scrolled : ""}`}
           width="100.02"
@@ -19,7 +19,7 @@ export default function Logo(props) {
           xmlns:cc="http://creativecommons.org/ns#"
           xmlns:dc="http://purl.org/dc/elements/1.1/"
           xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-          shape-rendering="crispEdges"
+          shapeRendering="crispEdges"
         >
           <metadata>
             <rdf:RDF>
@@ -32,23 +32,18 @@ export default function Logo(props) {
           </metadata>
           <g transform="translate(-29.99,-14.445)">
             <path
-              class="st0"
               d="m49.09 84.13c0 17.07 13.84 30.91 30.91 30.91s30.91-13.84 30.91-30.91v-38.28c0-17.07-13.83-30.91-30.9-30.91s-30.91 13.84-30.91 30.91v38.28z"
             />
             <path
-              class="st0"
               d="m99.57 21.92c15.94 51.61-41.14 88.63-39.51 52 0.49-11.04 18.1-25.25 24.54-32.75 8.35-9.72 7.58-26.07-6.17-26.16-11.14-0.07-16.1 12.37-16.1 12.37s3.75-5.87 10.49-6.29c7.46-0.47 19.88 12.42 7.03 25.05"
             />
             <path
-              class="st0"
               d="m56.14 103.79c-14.63-22 3.05-43.85 17.38-58.1 16.31-16.22-0.17-26.2-7.44-22.1"
             />
             <path
-              class="st0"
               d="m70.71 55.59c-21.93 22.43-20.29 49.76 7.12 48.11 25.7-1.55 33.07-32.22 33.07-32.22"
             />
             <path
-              class="st0"
               d="m62.96 65.11c-14.79 24.41 2.22 37.06 16.61 32.41 19.22-6.21 31.41-38.42 31.34-46.57"
             />
             <g
