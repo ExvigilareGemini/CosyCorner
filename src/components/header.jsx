@@ -4,7 +4,7 @@ import style from "../style/components/header.module.scss";
 import Logo from "./logo";
 import classnames from "classnames";
 
-export default function ScrollHeader() {
+export default function ScrollHeader({test}) {
   const props = headerProps;
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
@@ -14,6 +14,8 @@ export default function ScrollHeader() {
     setIsMenuOpen(!isMenuOpen);
   };
 
+
+console.log(test)
   // Change class of logo and menuBurger
   // classes change when scrolling more than 100px
   useEffect(() => {

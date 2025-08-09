@@ -1,14 +1,16 @@
 @use "../mixins" as *;
 
 .conditions {
-  margin: 30% 10%;
+  margin: 7rem 10%;
   font-size: 1.5rem;
+  text-align: justify;
+  text-wrap: balance;
   @include for-desktop-up {
-    margin: 20rem 0 20rem 6rem;
-    width: 80%;
+    margin: 7rem 6rem;
+    width: 70%;
   }
   @include for-big-desktop-up {
-    margin: 15rem 10%;
+    margin: 10rem 10%;
   }
 
   &_list {

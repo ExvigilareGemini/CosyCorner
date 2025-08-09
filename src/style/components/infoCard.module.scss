@@ -12,6 +12,7 @@
   border-radius: 25px;
   @include for-tablet-portrait-up {
     height: 400px;
+    margin: 3rem 10%;
   }
   @include for-tablet-landscape-up {
     width: 30%;
@@ -63,6 +64,8 @@
       font-size: 1.5rem;
       color: $primaryColor;
       cursor: default;
+      text-align: justify;
+      text-wrap: balance;
       @include for-tablet-landscape-up {
         font-size: 1.2rem;
       }

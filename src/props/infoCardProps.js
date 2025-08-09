@@ -18,6 +18,6 @@ export const infoCardProps = [
     link: "/assets/img/chambre.jpg", 
     alt: "Chambre",
     title: "Prestations",
-    text: "Des boissons telles que des cocktails individuels, bouteiiles de champagne et une sélection de softs, ainsi que de petites gourmandises comme des chips ou des Raffaello sont à disposition tout au long du séjour. Ces options, payantes, peuvent être consommées librement selon les envies.",
+    text: "Des boissons telles que des cocktails individuels, bouteilles de champagne et une sélection de softs, ainsi que de petites gourmandises comme des chips ou des Raffaello sont à disposition tout au long du séjour. Ces options, payantes, peuvent être consommées librement selon les envies.",
   },
 ];

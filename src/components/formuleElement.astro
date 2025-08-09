@@ -11,7 +11,7 @@ const formuleProps = Astro.props;
     class={`${formuleProps.key % 2 === 0 ? style.formuleElement_text_container : style.formuleElementRight_text_container}`}
     data-movable="text"
   >
-    <div>
+    <div class={style.formuleElement_text_wrapper}>
       {
         formuleProps.formule.textItems.map((item) => {
           return <p class={`${formuleProps.key % 2 === 0 ? style.formuleElement_text : style.formuleElementRight_text}`}>{item.text}</p>;

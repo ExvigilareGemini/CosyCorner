@@ -1,7 +1,7 @@
 ---
+import "../style/global.scss";
 import Layout from "@/layouts/Layout.astro";
 import Header from "../components/header.jsx";
-import "../style/global.scss";
 import Cover from "../components/cover.astro";
 import Info from "../components/info.astro";
 import Formule from "../components/formule.astro";
@@ -20,7 +20,7 @@ const { cover, info, formule, contact, conditions } = entry.data;
 
 <Layout>
   <main class="main">
-    <Header client:load />
+    <Header testProp="test" client:load />
     <Cover content={cover} />
     <Info content={info} />
     <Formule content={formule} />

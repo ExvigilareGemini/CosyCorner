@@ -4,14 +4,14 @@
 .cover {
   &_section {
     display: flex;
-    align-items: end;
     position: relative;
-    min-height: 1050px;
-    height: 120vh;
+    min-height: 750px;
+    height: 100vh;
     width: 100vw;
     overflow: hidden;
     @include for-tablet-portrait-up {
-      height: 850px;
+      height: 900px;
+      justify-content: center;
     }
     @include for-desktop-up {
       display: grid;
@@ -56,43 +56,23 @@
       color: $primaryColor;
       width: 100%;
       margin: 0 10%;
+      margin-top: calc(400px + 4rem);
+      text-align: justify;
+      @include for-tablet-portrait-up {
+        width: 50%;
+      }
+
       @include for-desktop-up {
-        grid-column: 2 / 5;
+        width: unset;
+        text-align: center;
+        grid-column: 5/9;
         grid-row: 3;
-        margin: 0;
+        margin: 2rem 0 0 0;
       }
     }
   }
 }
 
-.arrow_down {
-  grid-column: 6 / 7;
-  grid-row: 4;
-  width: 0;
-  height: 0;
-  border-left: 16px solid transparent;
-  border-right: 16px solid transparent;
-  border-top: 18px solid #fff;
-  top: 13px;
-  right: 4px;
-  background-color: #ff1976;
-  z-index: 200;
-}
 
-.arrow {
-  border: 1px solid #fff;
-  border-width: 0 0 2px 2px;
-  width: 100px;
-  height: 100px;
-  transform: rotate(-45deg) translateX(-70%);
-  margin-left: 50%;
-  opacity: 0.7;
-  &_container {
-    display: none;
-    @include for-desktop-up {
-      margin-bottom: 5rem;
-      grid-column: 6 / 8;
-      grid-row: 4;
-    }
-  }
-}
+
+
