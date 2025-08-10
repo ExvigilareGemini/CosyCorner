@@ -4,7 +4,7 @@ import style from "../style/components/header.module.scss";
 import Logo from "./logo";
 import classnames from "classnames";
 
-export default function ScrollHeader({test}) {
+export default function ScrollHeader({ onMainPage = true }) {
   const props = headerProps;
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
@@ -14,8 +14,6 @@ export default function ScrollHeader({test}) {
     setIsMenuOpen(!isMenuOpen);
   };
 
-
-console.log(test)
   // Change class of logo and menuBurger
   // classes change when scrolling more than 100px
   useEffect(() => {
@@ -84,42 +82,49 @@ console.log(test)
     [style.menuBurger_scrolled]: scrolled,
   });
 
-  return (
-    <header className={style.header}>
-      <div className={menuBurgerClass} onClick={toggleMenu}>
+  if (onMainPage) {
+    return (
+      <header className={style.header}>
+        <div className={menuBurgerClass} onClick={toggleMenu}>
+          <span
+            className={`${style.menuBurger_line} ${
+              isMenuOpen ? style.menuBurger_line_open : ""
+            }`}
+          ></span>
+        </div>
         <span
-          className={`${style.menuBurger_line} ${
-            isMenuOpen ? style.menuBurger_line_open : ""
+          className={`${style.menuBurger_circle} ${
+            isMenuOpen ? style.menuBurger_circle_open : ""
           }`}
         ></span>
-      </div>
-      <span
-        className={`${style.menuBurger_circle} ${
-          isMenuOpen ? style.menuBurger_circle_open : ""
-        }`}
-      ></span>
-      <div
-        className={`${style.link_container} ${
-          scrolled ? style.link_container_scrolled : ""
-        } ${isMenuOpen ? style.link_container_open : ""}`}
-      >
-        {props.links.map((link) => {
-          const targetId = link.href.replace("#", "");
-          const isActive = activeSection === targetId;
+        <div
+          className={`${style.link_container} ${
+            scrolled ? style.link_container_scrolled : ""
+          } ${isMenuOpen ? style.link_container_open : ""}`}
+        >
+          {props.links.map((link) => {
+            const targetId = link.href.replace("#", "");
+            const isActive = activeSection === targetId;
 
-          return (
-            <a
-              key={link.href}
-              href={link.href}
-              className={`${style.link} ${isActive ? style.link_active : ""}`}
-              onClick={toggleMenu}
-            >
-              {link.name}
-            </a>
-          );
-        })}
-      </div>
-        <Logo scrolled={scrolled} />
+            return (
+              <a
+                key={link.href}
+                href={link.href}
+                className={`${style.link} ${isActive ? style.link_active : ""}`}
+                onClick={toggleMenu}
+              >
+                {link.name}
+              </a>
+            );
+          })}
+        </div>
+        <Logo scrolled={scrolled} onMainPage={true} />
+      </header>
+    );
+  }
+  return (
+    <header className={style.headerSecondary}>
+      <Logo scrolled={true} onMainPage={false} />
     </header>
   );
 }

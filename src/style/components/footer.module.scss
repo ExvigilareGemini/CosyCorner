@@ -54,7 +54,7 @@
       }
     }
     &_title {
-      font-size: 2rem;
+      font-size: 1.7rem;
       @include for-desktop-up {
         font-size: 1.5rem;
         margin: 1rem 0 0.5rem;
@@ -82,7 +82,7 @@
       }
     }
     &_title {
-      font-size: 2rem;
+      font-size: 1.7rem;
       @include for-desktop-up {
         margin: unset;
         font-size: 1.5rem;
@@ -98,7 +98,7 @@
       flex-direction: column;
       justify-content: end;
       align-self: start;
-      margin: 0 2rem 0 0;
+      margin: 0 2rem ;
       @include for-desktop-up {
         margin: unset;
         width: 25%;
@@ -118,7 +118,7 @@
       fill: $primaryColor;
     }
     &_title {
-      font-size: 2rem;
+      font-size: 1.7rem;
       @include for-desktop-up {
         font-size: 1.5rem;
         margin: 1rem 0 0.5rem;

@@ -35,7 +35,9 @@
     &:hover {
       opacity: 0.9;
       transform: scale(1.03);
-      &::after{opacity: 0.1;}
+      &::after {
+        opacity: 0.1;
+      }
     }
     &::after {
       content: "";
@@ -230,4 +232,18 @@
       opacity: 0;
     }
   }
+}
+
+.headerSecondary {
+  // position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: fit-content;
+  z-index: 1000;
+  pointer-events: none;
+  height: 100px;
+  background-color: $secondaryColor;
+  @include for-desktop-up {
+  height: 150px;}
 }

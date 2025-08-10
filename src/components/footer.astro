@@ -3,9 +3,46 @@ import style from "../style/components/footer.module.scss";
 import { headerProps } from "../props/headerProps";
 import FbLogo from "../../public/assets/svg/facebook-svgrepo-com.svg";
 import InstaLogo from "../../public/assets/svg/instagram-svgrepo-com.svg";
-const { content } = Astro.props;
+const { content, onMainPage } = Astro.props;
 ---
 
+{(onMainPage === false) && 
+<footer class={style.footer}>
+  <div class={style.footer_contact_container}>
+    <h3 class={style.footer_contact_title}>Contact</h3>
+    <a href=`tel:${content.tel}` class={style.footer_contact_tel}
+        ><p>{content.tel}</p></a>
+    <a
+      class={style.footer_contact_mail}
+      href=`mailto:${content.mail}`
+      ><p>{content.mail}</p></a
+    >
+    <a href="https://www.google.com/maps/place/Chau.+de+Bruxelles+446,+1410+Waterloo,+Belgique/@50.7052916,4.4015802,17z" target="_blank" class={style.footer_contact_adress}><p>{content.adress}</p></a>
+  </div>
+
+  <div class={style.footer_social_container}>
+    <h3 class={style.footer_social_title}>Réseaux sociaux</h3>
+    <div class={style.footer_social_logo_container}>
+      <a
+        class={style.footer_social_link}
+        href="https://www.facebook.com/profile.php?id=61557682445457" 
+        target="_blank"
+      >
+        <FbLogo fill="currentColor" class={style.footer_social_logo} />
+      </a>
+      <a
+        class={style.footer_social_link}
+        href="https://www.instagram.com/cosy_corner_waterloo?igsh=ZjhoZGpkMXR6a20w&utm_source=qr"
+        target="_blank"
+      >
+        <InstaLogo fill="currentColor" class={style.footer_social_logo} />
+      </a>
+    </div>
+  </div>
+</footer>
+}
+
+{(onMainPage === true) && 
 <footer class={style.footer}>
   <div class={style.footer_contact_container}>
     <h3 class={style.footer_contact_title}>Contact</h3>
@@ -50,3 +87,6 @@ const { content } = Astro.props;
     </div>
   </div>
 </footer>
+}
+
+

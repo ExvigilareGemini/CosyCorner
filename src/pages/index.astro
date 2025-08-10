@@ -20,14 +20,14 @@ const { cover, info, formule, contact, conditions } = entry.data;
 
 <Layout>
   <main class="main">
-    <Header testProp="test" client:load />
+    <Header client:load />
     <Cover content={cover} />
     <Info content={info} />
     <Formule content={formule} />
     <Contact content={contact} />
     <Carousel/>
     <Conditions content={conditions} />
-    <Footer content={contact}/>
+    <Footer content={contact} onMainPage={true}/>
   </main>
 </Layout>
 

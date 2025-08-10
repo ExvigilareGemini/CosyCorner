@@ -5,17 +5,16 @@ import Header from "../components/header.jsx";
 import Rgpd from "@/components/rgpdContent.astro"
 import Footer from "../components/footer.astro";
 
-
 import { getEntry } from "astro:content";
 const entry = await getEntry("homepage", "index");
 const {contact} = entry.data;
 ---
 
 <Layout>
-  <main>
-    <Header client:load />
-    <Rgpd></Rgpd>
-    <Footer content={contact}/>
+  <main class="main">
+    <Header onMainPage={false} client:load />
+    <Rgpd content={contact}></Rgpd>
+    <Footer content={contact} onMainPage={false}/>
 
   </main>
 </Layout>

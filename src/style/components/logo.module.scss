@@ -89,3 +89,11 @@
     justify-content: center;
   }
 }
+
+.logoSecondary{
+    position: relative;
+  transform-origin: top center;
+  transition: all ease 1s;
+  fill: none;
+  stroke: $primaryColor;
+}
