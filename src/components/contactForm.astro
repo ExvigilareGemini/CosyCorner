@@ -1,12 +1,11 @@
 ---
 import style from "../style/components/contactForm.module.scss";
 export const prerender = false;
-import { actions } from "astro:actions";
 ---
 
 <h2 class={style.contactForm_title}>Formulaire de Contact</h2>
 
-<form method="POST" action={actions.sendContactEmail} class={style.contactForm}>
+<form method="POST" class={style.contactForm}>
   <div class={style.honeypot} aria-hidden="true">
     <label for="website">Laissez ce champ vide&nbsp;:</label>
     <input
@@ -27,7 +26,6 @@ import { actions } from "astro:actions";
       type="text"
       id="name"
       name="name"
-      required
       maxlength="100"
       pattern="[a-zA-ZÀ-ÿ\s\-']+"
       title="Seuls les lettres, espaces, traits d'union et apostrophes sont autorisés"
@@ -36,11 +34,11 @@ import { actions } from "astro:actions";
 
   <div class={style.contactForm_input_Container}>
     <label class={style.contactForm_label} for="firstName">Prénom* :</label>
-    <input class={style.contactForm_input}
+    <input
+      class={style.contactForm_input}
       type="text"
       id="firstName"
       name="firstName"
-      required
       maxlength="100"
       pattern="[a-zA-ZÀ-ÿ\s\-']+"
       title="Seuls les lettres, espaces, traits d'union et apostrophes sont autorisés"
@@ -49,49 +47,52 @@ import { actions } from "astro:actions";
 
   <div class={style.contactForm_input_Container}>
     <label class={style.contactForm_label} for="email">Email* :</label>
-    <input class={style.contactForm_input} type="email" id="email" name="email" required maxlength="254" />
+    <input
+      class={style.contactForm_input}
+      type="email"
+      id="email"
+      name="email"
+      maxlength="254"
+    />
   </div>
 
   <div class={style.contactForm_input_Container}>
     <label class={style.contactForm_label} for="tel">Téléphone* :</label>
-    <input class={style.contactForm_input} type="tel" id="tel" name="tel" required maxlength="254" />
+    <input
+      class={style.contactForm_input}
+      type="tel"
+      id="tel"
+      name="tel"
+      maxlength="254"
+    />
   </div>
 
   <div class={style.contactForm_input_Container}>
     <label class={style.contactForm_label} for="message">Message* :</label>
-    <textarea class={style.contactForm_input_large} id="message" name="message" required maxlength="2000" rows="6"
-    ></textarea>
+    <textarea
+      class={style.contactForm_input_large}
+      id="message"
+      name="message"
+      maxlength="2000"
+      rows="6"></textarea>
   </div>
 
-    <div class={style.contactForm_rgpd}>
-    <input
-      type="checkbox"
-      id="consent"
-      name="consent"
-      required
-    />
+  <div class={style.contactForm_rgpd}>
+    <input type="checkbox" id="consent" name="consent" />
     <label for="consent">
-      J’ai lu et j’accepte la <a href="/rgpd" target="_blank" rel="noopener noreferrer">
-      politique de confidentialité</a>. Les informations envoyées via ce formulaire seront utilisées uniquement pour répondre à ma demande et ne seront pas stockées dans une base de données.
+      J’ai lu et j’accepte la <a
+        href="/rgpd"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        politique de confidentialité</a
+      >. Les informations envoyées via ce formulaire seront utilisées uniquement
+      pour répondre à ma demande et ne seront pas stockées dans une base de
+      données.
     </label>
   </div>
 
-  <button class={style.contactForm_button} type="submit">ENVOYER</button>
+  <button class={style.contactForm_button}>ENVOYER</button>
 </form>
 
-<!-- Sécurity script -->
-<script>
-  document.getElementById("timestamp").value = Date.now().toString();
-
-  const form = document.querySelector("form");
-  const startTime = Date.now();
-
-  form.addEventListener("submit", function (e) {
-    const timeSpent = Date.now() - startTime;
-    if (timeSpent < 3000) {
-      e.preventDefault();
-      alert("Veuillez prendre le temps de remplir le formulaire correctement.");
-      return false;
-    }
-  });
-</script>
+<script src="../scripts/handleForm.js"></script>
