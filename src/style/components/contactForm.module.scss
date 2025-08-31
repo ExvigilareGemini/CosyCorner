@@ -11,12 +11,12 @@
   display: flex;
   flex-direction: column;
 
-&_title{
-  font-size: 2.5rem;
-}
+  &_title {
+    font-size: 2.5rem;
+  }
 
   &_label {
-          font-size: 1.5rem;
+    font-size: 1.5rem;
 
     @include for-desktop-up {
       font-size: 1.3rem;
@@ -25,7 +25,7 @@
 
   &_input {
     width: 80%;
-    margin: 1rem 0;
+    margin: 1rem 0 0 0;
     font-size: 1rem;
     border-left: none;
     border-right: none;
@@ -35,8 +35,9 @@
       width: 100%;
       font-size: 1rem;
     }
+
     &_large {
-      margin: 1rem 0;
+      margin: 1rem 0 0 0;
       font-size: 1rem;
       border: 1px solid black;
       @include for-desktop-up {
@@ -51,7 +52,7 @@
     }
   }
 
-  &_rgpd{
+  &_rgpd {
     font-size: 0.9rem;
   }
 
@@ -67,9 +68,24 @@
       padding: 2rem 4rem;
       font-size: 2rem;
       transition: all 0.3s;
-          &:hover {
-      transform: scale(1.02);
+      &:hover {
+        transform: scale(1.02);
+      }
     }
-    }
+  }
+
+  &_errorMessage {
+    color: #d62c2c;
+    margin: 0.5rem 0;
+    opacity: 0;
+    font-size: 1.1rem;
+  }
+}
+
+.wrong {
+  background-color: #fce4e4;
+  border: 1px solid #cc0033;
+  &_label {
+    color: #d62c2c;
   }
 }

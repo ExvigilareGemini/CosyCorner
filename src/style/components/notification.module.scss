@@ -1,0 +1,112 @@
+$notification-width: 320px;
+$notification-height: 85px;
+$successBg: rgb(162, 237, 164);
+$successTxt: rgb(38, 86, 40);
+$errorBg: rgb(236, 124, 124);
+$errorTxt: rgb(120, 17, 17);
+$grey: rgb(93, 93, 93);
+
+.notification {
+  display: flex;
+  align-items: flex-start;
+  width: $notification-width;
+  height: $notification-height;
+  margin: 2rem 0;
+  border-radius: 16px;
+  background-color: $successBg;
+  color: $successTxt;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  pointer-events: all;
+
+  opacity: 0;
+  transform: translateX(calc(100% + 20px));
+  transition: transform 1s;
+  &_container {
+    position: fixed;
+    bottom: calc(-85px - 4rem);
+    right: 20px;
+    z-index: 1000;
+    pointer-events: none;
+  }
+
+  &_wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &_closeButton {
+    position: absolute;
+    top: 0.1rem;
+    right: 0.3rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: $grey;
+
+    cursor: pointer;
+  }
+  &_message {
+    padding: 0 2rem;
+    font-size: 1.2rem;
+    text-align: center;
+  }
+  &_entering {
+    order: -1;
+    animation: slideInBounce 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+  &_leaving {
+    animation: slideOut 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+}
+
+.notificationError {
+  @extend .notification;
+  background: rgb(236, 124, 124);
+  &_closeButton {
+    @extend .notification_closeButton;
+  }
+  &_message {
+    @extend .notification_message;
+    color: rgb(120, 17, 17);
+  }
+  &_entering {
+    @extend .notification_entering;
+  }
+  &_leaving {
+    @extend .notification_leaving;
+  }
+}
+
+@keyframes slideInBounce {
+  0% {
+    transform: translateX(calc(100% + 40px));
+    opacity: 0;
+  }
+  70% {
+    transform: translateX(-8px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(calc(100% + 40px));
+    opacity: 0;
+  }
+}
+
+// Style pour les notifications multiples
+.notification_wrapper {
+  .notification:not(:first-child),
+  .notificationError:not(:first-child) {
+    margin-top: 8px;
+  }
+}

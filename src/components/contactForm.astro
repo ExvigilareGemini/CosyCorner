@@ -29,7 +29,9 @@ export const prerender = false;
       maxlength="100"
       pattern="[a-zA-ZÀ-ÿ\s\-']+"
       title="Seuls les lettres, espaces, traits d'union et apostrophes sont autorisés"
+      required
     />
+    <p class={style.contactForm_errorMessage} id="name_errorMessage">Test</p>
   </div>
 
   <div class={style.contactForm_input_Container}>
@@ -42,7 +44,11 @@ export const prerender = false;
       maxlength="100"
       pattern="[a-zA-ZÀ-ÿ\s\-']+"
       title="Seuls les lettres, espaces, traits d'union et apostrophes sont autorisés"
+      required
     />
+    <p class={style.contactForm_errorMessage} id="firstName_errorMessage">
+      Test
+    </p>
   </div>
 
   <div class={style.contactForm_input_Container}>
@@ -53,7 +59,9 @@ export const prerender = false;
       id="email"
       name="email"
       maxlength="254"
+      required
     />
+    <p class={style.contactForm_errorMessage} id="email_errorMessage">Test</p>
   </div>
 
   <div class={style.contactForm_input_Container}>
@@ -64,7 +72,9 @@ export const prerender = false;
       id="tel"
       name="tel"
       maxlength="254"
+      required
     />
+    <p class={style.contactForm_errorMessage} id="tel_errorMessage">Test</p>
   </div>
 
   <div class={style.contactForm_input_Container}>
@@ -74,11 +84,14 @@ export const prerender = false;
       id="message"
       name="message"
       maxlength="2000"
-      rows="6"></textarea>
+      rows="6"
+      required></textarea>
+    <p class={style.contactForm_errorMessage} id="message_errorMessage">Test</p>
   </div>
 
   <div class={style.contactForm_rgpd}>
-    <input type="checkbox" id="consent" name="consent" />
+    <input type="checkbox" id="consent" name="consent" required />
+
     <label for="consent">
       J’ai lu et j’accepte la <a
         href="/rgpd"
@@ -90,6 +103,7 @@ export const prerender = false;
       pour répondre à ma demande et ne seront pas stockées dans une base de
       données.
     </label>
+    <p class={style.contactForm_errorMessage} id="consent_errorMessage">Test</p>
   </div>
 
   <button class={style.contactForm_button}>ENVOYER</button>

@@ -1,0 +1,21 @@
+---
+import style from "@/style/components/notification.module.scss";
+---
+
+<div class={style.notification_container}>
+  <div class={style.notification_wrapper}>
+    <div class={style.notification}>
+      <button class={style.notification_closeButton}>x</button>
+      <p class={style.notification_message}>
+        Votre message a été envoyé avec succès !
+      </p>
+    </div>
+
+    <div class={style.notificationError}>
+      <button class={style.notificationError_closeButton}>x</button>
+      <p class={style.notificationError_message}>
+        Une erreur est survenue lors de l'envoi. Veuillez réessayer.
+      </p>
+    </div>
+  </div>
+</div>
