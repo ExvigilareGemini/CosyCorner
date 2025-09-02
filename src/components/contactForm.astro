@@ -1,112 +1,147 @@
 ---
 import style from "../style/components/contactForm.module.scss";
 export const prerender = false;
+import Image from "astro/components/Image.astro";
+import circleArrow from "../../dist/assets/img/CircularArrow.png";
 ---
 
-<h2 class={style.contactForm_title}>Formulaire de Contact</h2>
+<div class={style.contactForm_wrapper}>
+  <h2 class={style.contactForm_title}>Formulaire de Contact</h2>
 
-<form method="POST" class={style.contactForm}>
-  <div class={style.honeypot} aria-hidden="true">
-    <label for="website">Laissez ce champ vide&nbsp;:</label>
-    <input
-      type="text"
-      id="website"
-      name="website"
-      tabindex="-1"
-      autocomplete="off"
-    />
+  <form method="POST" class={style.contactForm}>
+    <div class={style.honeypot} aria-hidden="true">
+      <label for="website">Laissez ce champ vide&nbsp;:</label>
+      <input
+        type="text"
+        id="website"
+        name="website"
+        tabindex="-1"
+        autocomplete="off"
+      />
+    </div>
+
+    <input type="hidden" name="timestamp" id="timestamp" />
+
+    <div class={style.contactForm_input_Container}>
+      <label class={style.contactForm_label} for="name">Nom* :</label>
+      <input
+        class={style.contactForm_input}
+        type="text"
+        id="name"
+        name="name"
+        maxlength="100"
+        pattern="[a-zA-ZÀ-ÿ\s\-']+"
+        title="Seuls les lettres, espaces, traits d'union et apostrophes sont autorisés"
+        required
+      />
+      <p class={style.contactForm_errorMessage} id="name_errorMessage">Test</p>
+    </div>
+
+    <div class={style.contactForm_input_Container}>
+      <label class={style.contactForm_label} for="firstName">Prénom* :</label>
+      <input
+        class={style.contactForm_input}
+        type="text"
+        id="firstName"
+        name="firstName"
+        maxlength="100"
+        pattern="[a-zA-ZÀ-ÿ\s\-']+"
+        title="Seuls les lettres, espaces, traits d'union et apostrophes sont autorisés"
+        required
+      />
+      <p class={style.contactForm_errorMessage} id="firstName_errorMessage">
+        Test
+      </p>
+    </div>
+
+    <div class={style.contactForm_input_Container}>
+      <label class={style.contactForm_label} for="email">Email* :</label>
+      <input
+        class={style.contactForm_input}
+        type="email"
+        id="email"
+        name="email"
+        maxlength="254"
+        required
+      />
+      <p class={style.contactForm_errorMessage} id="email_errorMessage">Test</p>
+    </div>
+
+    <div class={style.contactForm_input_Container}>
+      <label class={style.contactForm_label} for="tel">Téléphone* :</label>
+      <input
+        class={style.contactForm_input}
+        type="tel"
+        id="tel"
+        name="tel"
+        maxlength="254"
+        required
+      />
+      <p class={style.contactForm_errorMessage} id="tel_errorMessage">Test</p>
+    </div>
+
+    <div class={style.contactForm_input_Container}>
+      <label class={style.contactForm_label} for="message">Message* :</label>
+      <textarea
+        class={style.contactForm_input_large}
+        id="message"
+        name="message"
+        maxlength="2000"
+        rows="6"
+        required></textarea>
+      <p class={style.contactForm_errorMessage} id="message_errorMessage">
+        Test
+      </p>
+    </div>
+
+    <div class={style.contactForm_rgpd}>
+      <input type="checkbox" id="consent" name="consent" required />
+
+      <label for="consent">
+        J’ai lu et j’accepte la <a
+          href="/rgpd"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          politique de confidentialité</a
+        >. Les informations envoyées via ce formulaire seront utilisées
+        uniquement pour répondre à ma demande et ne seront pas stockées dans une
+        base de données.
+      </label>
+      <p class={style.contactForm_errorMessage} id="consent_errorMessage">
+        Test
+      </p>
+    </div>
+
+    <button class={style.contactForm_button}>ENVOYER</button>
+  </form>
+
+  <div class={style.contactForm_sendingScreen_container}>
+    <div class={style.contactForm_sendingScreen_letter_container}>
+      <p class={style.contactForm_sendingScreen_letter}>E</p>
+      <p class={style.contactForm_sendingScreen_letter}>N</p>
+      <p class={style.contactForm_sendingScreen_letter}>V</p>
+      <p class={style.contactForm_sendingScreen_letter}>O</p>
+      <p class={style.contactForm_sendingScreen_letter}>I</p>
+      <p class={style.contactForm_sendingScreen_letter}>E</p>
+      <span class={style.contactForm_sendingScreen_rotatingRectangle}></span>
+      <span class={style.contactForm_sendingScreen_rotatingRectangle_2}></span>
+    </div>
   </div>
 
-  <input type="hidden" name="timestamp" id="timestamp" />
-
-  <div class={style.contactForm_input_Container}>
-    <label class={style.contactForm_label} for="name">Nom* :</label>
-    <input
-      class={style.contactForm_input}
-      type="text"
-      id="name"
-      name="name"
-      maxlength="100"
-      pattern="[a-zA-ZÀ-ÿ\s\-']+"
-      title="Seuls les lettres, espaces, traits d'union et apostrophes sont autorisés"
-      required
-    />
-    <p class={style.contactForm_errorMessage} id="name_errorMessage">Test</p>
-  </div>
-
-  <div class={style.contactForm_input_Container}>
-    <label class={style.contactForm_label} for="firstName">Prénom* :</label>
-    <input
-      class={style.contactForm_input}
-      type="text"
-      id="firstName"
-      name="firstName"
-      maxlength="100"
-      pattern="[a-zA-ZÀ-ÿ\s\-']+"
-      title="Seuls les lettres, espaces, traits d'union et apostrophes sont autorisés"
-      required
-    />
-    <p class={style.contactForm_errorMessage} id="firstName_errorMessage">
-      Test
+  <div class={style.contactForm_resultScreen_container}>
+    <p class={style.contactForm_resultScreen_text}>
+      Votre message a été envoyé avec succés
     </p>
+    <div class={style.contactForm_resultScreen_containerReload}>
+      <p class={style.contactForm_resultScreen_textReload}>Envoyer un nouveau message</p>
+      <Image
+      class={style.contactForm_resultScreen_circleArrow}
+      src={circleArrow}
+      alt="Envoyer un nouveau message"
+      />
+    </div>
   </div>
-
-  <div class={style.contactForm_input_Container}>
-    <label class={style.contactForm_label} for="email">Email* :</label>
-    <input
-      class={style.contactForm_input}
-      type="email"
-      id="email"
-      name="email"
-      maxlength="254"
-      required
-    />
-    <p class={style.contactForm_errorMessage} id="email_errorMessage">Test</p>
-  </div>
-
-  <div class={style.contactForm_input_Container}>
-    <label class={style.contactForm_label} for="tel">Téléphone* :</label>
-    <input
-      class={style.contactForm_input}
-      type="tel"
-      id="tel"
-      name="tel"
-      maxlength="254"
-      required
-    />
-    <p class={style.contactForm_errorMessage} id="tel_errorMessage">Test</p>
-  </div>
-
-  <div class={style.contactForm_input_Container}>
-    <label class={style.contactForm_label} for="message">Message* :</label>
-    <textarea
-      class={style.contactForm_input_large}
-      id="message"
-      name="message"
-      maxlength="2000"
-      rows="6"
-      required></textarea>
-    <p class={style.contactForm_errorMessage} id="message_errorMessage">Test</p>
-  </div>
-
-  <div class={style.contactForm_rgpd}>
-    <input type="checkbox" id="consent" name="consent" required />
-
-    <label for="consent">
-      J’ai lu et j’accepte la <a
-        href="/rgpd"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        politique de confidentialité</a
-      >. Les informations envoyées via ce formulaire seront utilisées uniquement
-      pour répondre à ma demande et ne seront pas stockées dans une base de
-      données.
-    </label>
-    <p class={style.contactForm_errorMessage} id="consent_errorMessage">Test</p>
-  </div>
-
-  <button class={style.contactForm_button}>ENVOYER</button>
-</form>
+</div>
 
 <script src="../scripts/handleForm.js"></script>

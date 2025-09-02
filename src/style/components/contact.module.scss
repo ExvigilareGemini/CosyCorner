@@ -8,7 +8,7 @@
   height: fit-content; // ou toute autre valeur selon vos besoins
   margin: 6rem 5%;
   z-index: 1;
-align-items: center;
+  align-items: center;
   @include for-desktop-up {
     justify-content: space-between;
     margin: 8rem 10% 0 10%;
@@ -45,7 +45,7 @@ align-items: center;
       padding: 2rem;
       margin: 4rem 0 2rem 0;
       border-radius: 16px;
-      @include for-tablet-portrait-up{
+      @include for-tablet-portrait-up {
         width: 50%;
         align-self: center;
       }
@@ -68,7 +68,7 @@ align-items: center;
   }
   &_mail {
     color: rgb(228, 151, 9);
-      font-size: 1.3rem;
+    font-size: 1.3rem;
   }
   &_image {
     height: 100%;
@@ -85,14 +85,12 @@ align-items: center;
   }
 
   &_map {
-
-    &_adress{
+    &_adress {
       color: $primaryColor;
       font-size: 1.5rem;
       margin: 2rem 0;
       @include for-desktop-up {
-      margin: 2rem;
-
+        margin: 2rem;
       }
     }
 
@@ -116,4 +114,6 @@ align-items: center;
       height: 100%;
     }
   }
+
+
 }

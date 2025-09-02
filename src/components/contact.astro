@@ -11,19 +11,27 @@ const { content } = Astro.props;
     <h2 class={style.contact_title}>Contactez nous</h2>
     <p class={style.contact_datasText}>
       Téléphone : <a href=`tel:${content.tel}` class={style.contact_phoneNumber}
-        >{content.tel}</a>
+        >{content.tel}</a
+      >
     </p>
 
     <p class={style.contact_datasText}>
       Email : <a href=`mailto:${content.mail}` class={style.contact_mail}
-        >{content.mail}</a>
+        >{content.mail}</a
+      >
     </p>
 
     <ContactForm />
+
+    
   </div>
 
   <div class={style.contact_map_container}>
-    <a class={style.contact_map_adress} href="https://www.google.com/maps/place/Chau.+de+Bruxelles+446,+1410+Waterloo,+Belgique/@50.7052916,4.4015802,17z" target="_blank">{content.adress}</a>
+    <a
+      class={style.contact_map_adress}
+      href="https://www.google.com/maps/place/Chau.+de+Bruxelles+446,+1410+Waterloo,+Belgique/@50.7052916,4.4015802,17z"
+      target="_blank">{content.adress}</a
+    >
     <Map client:only />
   </div>
 </section>

@@ -8,11 +8,15 @@
 }
 
 .contactForm {
+  position: relative;
   display: flex;
   flex-direction: column;
-
+  z-index: 1000;
+  background-color: $primaryColor;
   &_title {
+    position: relative;
     font-size: 2.5rem;
+    z-index: 1000;
   }
 
   &_label {
@@ -46,6 +50,7 @@
       }
     }
     &_Container {
+      position: relative;
       display: flex;
       flex-direction: column;
       width: 100%;
@@ -80,6 +85,121 @@
     opacity: 0;
     font-size: 1.1rem;
   }
+
+  &_wrapper {
+    position: relative;
+  }
+
+  &_sendingScreen {
+    &_container {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+      padding: 0 1rem;
+      margin-left: -1rem;
+      background-color: $primaryColor;
+      opacity: 1;
+      z-index: 500;
+      &_hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
+    }
+    &_letter {
+      margin: 0 0.3rem;
+      animation: upAndDown 2s infinite;
+
+      &:nth-child(1) {
+        animation-delay: 0ms;
+      }
+      &:nth-child(2) {
+        animation-delay: 100ms;
+      }
+      &:nth-child(3) {
+        animation-delay: 200ms;
+      }
+      &:nth-child(4) {
+        animation-delay: 300ms;
+      }
+      &:nth-child(5) {
+        animation-delay: 400ms;
+      }
+      &:nth-child(6) {
+        animation-delay: 500ms;
+      }
+      &_container {
+        display: flex;
+        position: relative;
+      }
+    }
+    &_rotatingRectangle {
+      position: absolute;
+      width: 150px;
+      border-radius: 100px;
+      top: 50%;
+      left: 50%;
+      border: 2px solid $secondaryColor;
+      aspect-ratio: 1/1.5;
+      opacity: 0.5;
+      transform: translate(-50%, -50%) rotate(90deg);
+      transform-origin: center;
+      @include for-tablet-landscape-up {
+        width: 200px;
+        border-radius: 160px;
+      }
+      &_2 {
+        @extend .contactForm_sendingScreen_rotatingRectangle;
+        transform: translate(-50%, -50%) rotate(0);
+        animation: rotateRectangle 4s infinite;
+      }
+    }
+  }
+
+  &_resultScreen {
+    &_container {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+      padding: 0 1rem;
+      margin-left: -1rem;
+      background-color: $primaryColor;
+      opacity: 1;
+      z-index: 250;
+    }
+    &_containerReload {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 2rem 0 0 0;
+    }
+    &_textReload {
+      font-size: 1.2rem;
+      margin: 0.5rem;
+    }
+    &_circleArrow {
+      width: 30px;
+      height: auto;
+      padding: 0.5rem;
+      cursor: pointer;
+    }
+  }
+
+  &_hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
 }
 
 .wrong {
@@ -87,5 +207,38 @@
   border: 1px solid #cc0033;
   &_label {
     color: #d62c2c;
+  }
+}
+
+@keyframes upAndDown {
+  0% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+}
+
+@keyframes rotateRectangle {
+  0% {
+    transform: translate(-50%, -50%) rotate(0);
+  }
+  // 25% {
+  //   transform: translate(-50%, -50%) rotate(90deg);
+  // }
+  50% {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+  // 75% {
+  //   transform: translate(-50%, -50%) rotate(180deg);
+  // }
+  100% {
+    transform: translate(-50%, -50%) rotate(180deg);
   }
 }

@@ -1,15 +1,13 @@
 import { actions, isInputError } from "astro:actions";
-import style from "../style/components/contactForm.module.scss";
-import styleNotif from "@/style/components/notification.module.scss";
+import styleContactForm from "../style/components/contactForm.module.scss";
 
 const form = document.querySelector("form");
-const notifSuccess = document.querySelector(`.${styleNotif.notification}`);
-const notifError = document.querySelector(`.${styleNotif.notificationError}`);
-const closeBtn = document.querySelector(
-  `.${styleNotif.notification_closeButton}`
+const loadingSendingScreen = document.querySelector(
+  `.${styleContactForm.contactForm_sendingScreen_container}`
 );
-const closeBtnError = document.querySelector(
-  `.${styleNotif.notificationError_closeButton}`
+
+const resetFormButton = document.querySelector(
+  `.${styleContactForm.contactForm_resultScreen_circleArrow}`
 );
 
 const registeredErrors = new Set();
@@ -87,9 +85,12 @@ function addErrorToField(field, message) {
   const errorInput = document.querySelector(`#${field}`);
   const errorMessage = document.querySelector(`#${field}_errorMessage`);
   const errorLabel = document.querySelector(`label[for=${field}]`);
-
-  if (errorInput) errorInput.classList.add(style.wrong);
-  if (errorLabel) errorLabel.classList.add(style.wrong_label);
+  console.log(111);
+  console.log(errorInput);
+  console.log(errorMessage);
+  console.log(errorLabel);
+  if (errorInput) errorInput.classList.add(styleContactForm.wrong);
+  if (errorLabel) errorLabel.classList.add(styleContactForm.wrong_label);
   if (errorMessage) {
     errorMessage.style.opacity = "1";
     errorMessage.innerHTML = message;
@@ -101,8 +102,8 @@ function removeErrorFromField(field) {
   const errorMessage = document.querySelector(`#${field}_errorMessage`);
   const errorLabel = document.querySelector(`label[for=${field}]`);
 
-  if (errorInput) errorInput.classList.remove(style.wrong);
-  if (errorLabel) errorLabel.classList.remove(style.wrong_label);
+  if (errorInput) errorInput.classList.remove(styleContactForm.wrong);
+  if (errorLabel) errorLabel.classList.remove(styleContactForm.wrong_label);
   if (errorMessage) {
     errorMessage.style.opacity = "0";
     errorMessage.innerHTML = "";
@@ -175,26 +176,6 @@ if (consentField) {
   });
 }
 
-// Make the toaster notification appear
-// isError = true make the error box appear
-function showNotif(isError = false) {
-  if (isError) {
-    notifError.classList.add(styleNotif.notification_entering);
-  } else {
-    notifSuccess.classList.add(styleNotif.notification_entering);
-  }
-}
-
-// Make the toaster notification disappear
-// isError = true make the error box disappear
-function hideNotif(isError = false) {
-  if (isError) {
-    notifError.classList.remove(styleNotif.notification_entering);
-  } else {
-    notifSuccess.classList.remove(styleNotif.notification_entering);
-  }
-}
-
 form?.addEventListener("submit", async (event) => {
   event.preventDefault();
 
@@ -202,9 +183,12 @@ form?.addEventListener("submit", async (event) => {
     // Validation côté client avant l'envoi
     const { hasErrors, errors } = validateFormClientSide();
     if (hasErrors) {
-      console.log("Erreurs de validation côté client:", errors);
+      // console.log("Erreurs de validation côté client:", errors);
       return;
     }
+
+    // Hide the contactForm, making the "loading/sending screen" appear
+    form.classList.add(styleContactForm.contactForm_hidden);
 
     // Envoi au serveur seulement si validation OK
     const formData = new FormData(form);
@@ -212,43 +196,52 @@ form?.addEventListener("submit", async (event) => {
 
     // Gestion de la réponse serveur
     if (isInputError(error) && error?.fields) {
-      console.log("Erreurs de validation serveur :", error.fields);
+      // console.log("Erreurs de validation serveur :", error.fields);
       Object.keys(error.fields).forEach((field) => {
         const serverError = error.fields[field][0]; // Premier message d'erreur
         addErrorToField(field, serverError);
         registeredErrors.add(field);
       });
     } else if (error) {
-      // console.error("Erreur serveur:", error);
-      // Afficher une erreur générale à l'utilisateur
-      showNotif(true);
-      setTimeout(() => {
-        hideNotif(true);
-      }, 5000);
+      loadingSendingScreen.classList.add(
+        styleContactForm.contactForm_sendingScreen_container_hidden
+      );
+      loadingSendingScreen.innerHTML =
+        "Echec de l'envoie du message, veuillez réessayer";
     } else {
       // Nettoyer toutes les erreurs et réinitialiser
       registeredErrors.forEach((field) => removeErrorFromField(field));
       registeredErrors.clear();
       form.reset();
 
-      showNotif();
-      setTimeout(() => {
-        hideNotif();
-      }, 5000);
+      // Hide the "loading/sending screen", ùaking the result screen appear
+      loadingSendingScreen.classList.add(
+        styleContactForm.contactForm_sendingScreen_container_hidden
+      );
     }
   } catch (err) {
-    // console.error("Erreur inattendue:", err);
-    showNotif(true);
-    setTimeout(() => {
-      hideNotif(true);
-    }, 5000);
+    // Hide the "loading/sending screen", ùaking the result screen appear
+    loadingSendingScreen.innerHTML =
+      "Echec de l'envoie du message, veuillez réessayer";
   }
 });
 
-closeBtn.addEventListener("click", () => {
-  hideNotif();
+function resetFormState() {
+  form.classList.remove(styleContactForm.contactForm_hidden);
+  loadingSendingScreen.classList.remove(
+    styleContactForm.contactForm_sendingScreen_container_hidden
+  );
+  loadingSendingScreen.innerHTML = "Votre message a été envoyé avec succés";
+}
+
+resetFormButton.addEventListener("click", () => {
+  resetFormState();
 });
 
-closeBtnError.addEventListener("click", () => {
-  hideNotif(true);
-});
+
+// Test function by clicking on the body
+// const body = document.querySelector("body");
+// body.addEventListener("click", () => {
+//   console.log("Clicked");
+// loadingSendingScreen.classList.add(styleContactForm.contactForm_sendingScreen_container_hidden)
+// });
