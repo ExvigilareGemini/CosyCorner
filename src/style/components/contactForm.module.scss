@@ -1,12 +1,6 @@
 @use "../variables" as *;
 @use "../mixins" as *;
 
-.honeypot {
-  position: absolute;
-  left: -9999px;
-  top: 0;
-}
-
 .contactForm {
   position: relative;
   display: flex;
@@ -82,7 +76,6 @@
   &_errorMessage {
     color: #d62c2c;
     margin: 0.5rem 0;
-    opacity: 0;
     font-size: 1.1rem;
   }
 
@@ -199,6 +192,18 @@
   &_hidden {
     opacity: 0;
     pointer-events: none;
+  }
+
+  // Honeypot
+  &_businessEmail {
+    position: absolute !important;
+    left: -5000px !important;
+    top: -5000px !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
   }
 }
 

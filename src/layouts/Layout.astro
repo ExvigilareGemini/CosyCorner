@@ -1,13 +1,27 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; 
+                 script-src 'self' 'unsafe-inline'; 
+                 style-src 'self' 'unsafe-inline' fonts.googleapis.com; 
+                 font-src 'self' fonts.gstatic.com data:; 
+                 img-src 'self' data: https: blob:; 
+                 connect-src 'self'; 
+                 object-src 'none'; 
+                 base-uri 'self'; 
+                 form-action 'self';"
+    />
+    <meta charset="UTF-8" /><meta
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+    /><link rel="icon" type="image/svg+xml" href="/favicon.svg" /><meta
+      name="generator"
+      content={Astro.generator}
+    /><title>Astro Basics</title></head
+  >
 </html>
+<body>
+  <slot />
+</body>

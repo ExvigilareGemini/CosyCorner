@@ -1,6 +1,15 @@
 import { actions, isInputError } from "astro:actions";
 import styleContactForm from "../style/components/contactForm.module.scss";
 
+// Initialize timestamp on page loading
+const formInitTime = Date.now();
+document.addEventListener("DOMContentLoaded", () => {
+  const timestampField = document.getElementById("timestamp");
+  if (timestampField) {
+    timestampField.value = formInitTime.toString();
+  }
+});
+
 const form = document.querySelector("form");
 const loadingSendingScreen = document.querySelector(
   `.${styleContactForm.contactForm_sendingScreen_container}`
@@ -12,23 +21,78 @@ const resetFormButton = document.querySelector(
 
 const registeredErrors = new Set();
 
+const sanitizeInput = (value) => {
+  if (typeof value !== "string") return value;
+
+  // Remove only truly dangerous patterns with precise regex
+  return value
+    .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, "")
+    .replace(/\bjavascript:/gi, "") // Word boundary to avoid breaking normal text
+    .replace(/\bon\w+\s*=/gi, "") // Word boundary + space/= required for event handlers
+    .trim();
+};
+
+// Client-side header injection protection
+const sanitizeEmailHeader = (value) => {
+  if (typeof value !== "string") return value;
+  
+  // Remove ONLY characters that can inject email headers
+  return value
+    .replace(/[\r\n]/g, '') // Remove actual line breaks
+    .replace(/%0[aAdD]/gi, '') // Remove URL-encoded line breaks
+    .replace(/\x00-\x1F/g, '') // Remove control characters
+    .trim();
+};
+
+const hasEmailHeaderInjection = (value) => {
+  if (typeof value !== "string") return false;
+  
+  const dangerousPatterns = [
+    /[\r\n]/,           // Line breaks
+    /\bcc:/i,           // CC header
+    /\bbcc:/i,          // BCC header  
+    /\bto:/i,           // TO header
+    /\bfrom:/i,         // FROM header
+    /\bsubject:/i,      // SUBJECT header
+    /\bcontent-type:/i, // Content-Type header
+    /%0[aA]/,           // URL encoded \n
+    /%0[dD]/,           // URL encoded \r
+  ];
+  
+  return dangerousPatterns.some(pattern => pattern.test(value));
+};
+
 // Fonctions de validation côté client (miroir du schéma Zod)
 const clientValidation = {
   name: (value) => {
-    if (!value || value.trim().length < 2) {
+    const sanitized = sanitizeEmailHeader(sanitizeInput(value));
+    
+    // Check for injection attempts BEFORE processing
+    if (hasEmailHeaderInjection(value)) {
+      return "Caractères non autorisés détectés dans le nom";
+    }
+    
+    if (!sanitized || sanitized.trim().length < 2) {
       return "Le nom doit contenir au moins 2 caractères";
     }
-    if (value.length > 100) {
+    if (sanitized.length > 100) {
       return "Le nom ne peut pas dépasser 100 caractères";
     }
     return null;
   },
 
   firstName: (value) => {
-    if (!value || value.trim().length < 2) {
+    const sanitized = sanitizeEmailHeader(sanitizeInput(value));
+    
+    // Check for injection attempts BEFORE processing
+    if (hasEmailHeaderInjection(value)) {
+      return "Caractères non autorisés détectés dans le prénom";
+    }
+    
+    if (!sanitized || sanitized.trim().length < 2) {
       return "Le prénom doit contenir au moins 2 caractères";
     }
-    if (value.length > 100) {
+    if (sanitized.length > 100) {
       return "Le prénom ne peut pas dépasser 100 caractères";
     }
     return null;
@@ -38,6 +102,12 @@ const clientValidation = {
     if (!value) {
       return "L'email est requis";
     }
+    
+    // Check for injection attempts BEFORE processing
+    if (hasEmailHeaderInjection(value)) {
+      return "Format d'email non autorisé";
+    }
+    
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(value)) {
       return "Adresse email invalide";
@@ -64,10 +134,11 @@ const clientValidation = {
   },
 
   message: (value) => {
-    if (!value || value.trim().length < 10) {
+    const sanitized = sanitizeInput(value);
+    if (!sanitized || sanitized.trim().length < 10) {
       return "Le message doit contenir au moins 10 caractères";
     }
-    if (value.length > 2000) {
+    if (sanitized.length > 2000) {
       return "Le message ne peut pas dépasser 2000 caractères";
     }
     return null;
@@ -85,10 +156,6 @@ function addErrorToField(field, message) {
   const errorInput = document.querySelector(`#${field}`);
   const errorMessage = document.querySelector(`#${field}_errorMessage`);
   const errorLabel = document.querySelector(`label[for=${field}]`);
-  console.log(111);
-  console.log(errorInput);
-  console.log(errorMessage);
-  console.log(errorLabel);
   if (errorInput) errorInput.classList.add(styleContactForm.wrong);
   if (errorLabel) errorLabel.classList.add(styleContactForm.wrong_label);
   if (errorMessage) {
@@ -180,10 +247,21 @@ form?.addEventListener("submit", async (event) => {
   event.preventDefault();
 
   try {
+
+
+    const formInputs = form.querySelectorAll(
+      'input[type="text"], input[type="email"], input[type="tel"], textarea'
+    );
+    formInputs.forEach((input) => {
+      if (input.type !== "checkbox" && input.type !== "hidden") {
+        // Apply both sanitizations
+        input.value = sanitizeEmailHeader(sanitizeInput(input.value));
+      }
+    });
+
     // Validation côté client avant l'envoi
     const { hasErrors, errors } = validateFormClientSide();
     if (hasErrors) {
-      // console.log("Erreurs de validation côté client:", errors);
       return;
     }
 
@@ -196,7 +274,6 @@ form?.addEventListener("submit", async (event) => {
 
     // Gestion de la réponse serveur
     if (isInputError(error) && error?.fields) {
-      // console.log("Erreurs de validation serveur :", error.fields);
       Object.keys(error.fields).forEach((field) => {
         const serverError = error.fields[field][0]; // Premier message d'erreur
         addErrorToField(field, serverError);
@@ -237,7 +314,6 @@ function resetFormState() {
 resetFormButton.addEventListener("click", () => {
   resetFormState();
 });
-
 
 // Test function by clicking on the body
 // const body = document.querySelector("body");
