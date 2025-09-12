@@ -9,10 +9,10 @@
   margin: 0;
   background-color: $secondaryColor;
   color: $primaryColor;
-  padding: 2rem 0;
+  padding: 2rem 0 0 0;
   @include for-tablet-portrait-up {
     width: 80%;
-    padding: 2rem 10%;
+    padding: 2rem 10% 0 10%;
     justify-content: space-around;
   }
 
@@ -125,5 +125,21 @@
         margin: 1rem 0 0.5rem;
       }
     }
+  }
+
+  &_mention{
+    margin: 0.5rem 0 1rem 0;
+      &_container{
+    width: 100%;
+    margin: 2rem 0 0 0;
+    order: 10;
+    font-size: 1rem;
+    text-align: center;
+    color: $primaryColor;
+     a:visited {
+      color: $primaryColor;
+    }
+  }
+
   }
 }
