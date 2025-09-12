@@ -4,7 +4,6 @@ import * as nodemailer from "nodemailer";
 import DOMPurify from "isomorphic-dompurify";
 import rateLimiter from "../utils/rateLimiter.js";
 
-
 // Schéma de validation Zod pour le téléphone dans le formulaire de contact
 const globalPhoneSchema = z.preprocess(
   (val) => val ?? "",
@@ -58,18 +57,18 @@ const contactSchema = z.object({
       }, "Caractères non autorisés détectés")
   ),
 
-email: z.preprocess(
-  (val) => val ?? "",
-  z
-    .string()
-    .email("Adresse email invalide")
-    .max(254, "Email trop long")
-    .refine((email) => {
-      // Simple check for header injection without modifying the email
-      const dangerousPatterns = /[\r\n]|javascript:|data:|vbscript:/i;
-      return !dangerousPatterns.test(email);
-    }, "Format d'email non autorisé")
-),
+  email: z.preprocess(
+    (val) => val ?? "",
+    z
+      .string()
+      .email("Adresse email invalide")
+      .max(254, "Email trop long")
+      .refine((email) => {
+        // Simple check for header injection without modifying the email
+        const dangerousPatterns = /[\r\n]|javascript:|data:|vbscript:/i;
+        return !dangerousPatterns.test(email);
+      }, "Format d'email non autorisé")
+  ),
 
   tel: globalPhoneSchema,
 
@@ -115,19 +114,24 @@ export const server = {
     accept: "form",
     input: contactSchema,
     handler: async (input, context) => {
-
       // Rate limiting check - FIRST security layer
       const rateLimitResult = rateLimiter.isAllowed(context.request);
-      
+
       if (!rateLimitResult.allowed) {
-        console.warn(`[SECURITY] Rate limit exceeded for IP: ${rateLimiter.getClientIP(context.request)}`);
-        
+        console.warn(
+          `[SECURITY] Rate limit exceeded for IP: ${rateLimiter.getClientIP(
+            context.request
+          )}`
+        );
+
         // Calculate remaining time in minutes
-        const remainingTime = Math.ceil((rateLimitResult.resetTime - Date.now()) / (1000 * 60));
-        
+        const remainingTime = Math.ceil(
+          (rateLimitResult.resetTime - Date.now()) / (1000 * 60)
+        );
+
         throw new ActionError({
           code: "TOO_MANY_REQUESTS",
-          message: `Trop de tentatives. Réessayez dans ${remainingTime} minute(s).`
+          message: `Trop de tentatives. Réessayez dans ${remainingTime} minute(s).`,
         });
       }
 
@@ -159,13 +163,19 @@ export const server = {
           service: "gmail",
           host: "smtp.gmail.com",
           port: 587,
-          secure: false, // true pour 465, false pour les autres ports
+          secure: false,
           auth: {
             user: import.meta.env.EMAIL_USER,
             pass: import.meta.env.EMAIL_APP_PASSWORD,
           },
-          debug: true,
-          logger: true,
+          // Additional security options
+          tls: {
+            rejectUnauthorized: true, // Reject invalid certificates
+            minVersion: "TLSv1.2", // Minimum TLS version
+          },
+          connectionTimeout: 10000, // Connection timeout
+          greetingTimeout: 5000, // Greeting timeout
+          socketTimeout: 15000, // Socket timeout
         });
 
         await transporter.verify();
@@ -304,18 +314,19 @@ Cet email a été envoyé automatiquement.
           },
         };
       } catch (emailError) {
-  // Always log errors securely 
-  console.error("[EMAIL_ERROR] Contact form submission failed", {
-    errorCode: emailError.code || 'UNKNOWN',
-    timestamp: new Date().toISOString()
-  });
+        // Always log errors securely
+        console.error("[EMAIL_ERROR] Contact form submission failed", {
+          errorCode: emailError.code || "UNKNOWN",
+          timestamp: new Date().toISOString(),
+        });
 
-  // Always return generic message
-  throw new ActionError({
-    code: "INTERNAL_SERVER_ERROR",
-    message: "Service temporairement indisponible. Veuillez réessayer plus tard.",
-  });
-}
+        // Always return generic message
+        throw new ActionError({
+          code: "INTERNAL_SERVER_ERROR",
+          message:
+            "Service temporairement indisponible. Veuillez réessayer plus tard.",
+        });
+      }
     },
   }),
 };
