@@ -1,7 +1,7 @@
 export const formuleProps = [
   {
     textItems: [
-      { text: "Tarif par heure pour deux personnes :" },
+      { text: "Tarif par heure :" },
       { text: "- 2h : 170€" },
       { text: "- 3h : 190€" },
       { text: "- 4h : 210€" },
@@ -25,11 +25,9 @@ export const formuleProps = [
     textItems: [
       { text: "Champagne 25€" },
       { text: "Apéritifs individuels 4€" },
-      { text: "Softs 2€" },
+      { text: "Bières et softs 2€" },
       { text: "Chips 4€" },
       { text: "Raffaelo 6€" },
-      { text: "Bouteille apéritifs sans alcool 15€" },
-      { text: "Bouteille de vin 15€" },
     ],
     link: "/assets/img/salon.jpeg",
   },

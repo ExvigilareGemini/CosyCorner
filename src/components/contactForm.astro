@@ -6,7 +6,7 @@ import circleArrow from "../../public/assets/img/CircularArrow.png";
 ---
 
 <div class={style.contactForm_wrapper}>
-  <h2 class={style.contactForm_title}>Formulaire de Contact</h2>
+  <h2 class={style.contactForm_title}>Formulaire de contact</h2>
 
   <form method="POST" class={style.contactForm}>
 
@@ -95,7 +95,7 @@ import circleArrow from "../../public/assets/img/CircularArrow.png";
         name="message"
         maxlength="2000"
         rows="6"
-        placeholder="Bonjour, je souhaite louer votre bien pour la période du..."
+        placeholder="Bonjour, je souhaite réserver pour le..."
         required></textarea>
       <p class={style.contactForm_errorMessage} id="message_errorMessage">
       </p>
@@ -105,15 +105,13 @@ import circleArrow from "../../public/assets/img/CircularArrow.png";
       <input type="checkbox" id="consent" name="consent" required />
 
       <label for="consent">
-        J’ai lu et j’accepte la <a
+        J’accepte la <a
           href="/rgpd"
           target="_blank"
           rel="noopener noreferrer"
         >
           politique de confidentialité</a
-        >. Les informations envoyées via ce formulaire seront utilisées
-        uniquement pour répondre à ma demande et ne seront pas stockées dans une
-        base de données.
+        >, le règlement et les conditions de l'établissement.
       </label>
       <p class={style.contactForm_errorMessage} id="consent_errorMessage">
       </p>

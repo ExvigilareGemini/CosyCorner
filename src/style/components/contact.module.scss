@@ -46,6 +46,7 @@
       margin: 4rem 0 2rem 0;
       border-radius: 16px;
       @include for-tablet-portrait-up {
+        min-width: 320px;
         width: 50%;
         align-self: center;
       }
