@@ -1,0 +1,20 @@
+---
+import "../style/global.scss";
+import Layout from "@/layouts/Layout.astro";
+import Header from "../components/header.jsx";
+import CGVContent from "@/components/CGVContent.astro"
+import Footer from "../components/footer.astro";
+
+import { getEntry } from "astro:content";
+const entry = await getEntry("homepage", "index");
+const {contact} = entry.data;
+---
+
+<Layout>
+  <main class="main">
+    <Header onMainPage={false} client:load />
+    <CGVContent></CGVContent>
+    <Footer content={contact} onMainPage={false}/>
+
+  </main>
+</Layout>

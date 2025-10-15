@@ -142,4 +142,11 @@
   }
 
   }
+
+  &_link{
+    color: $primaryColor;
+    &:visited{
+      color: $primaryColor;
+    }
+  }
 }

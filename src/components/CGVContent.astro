@@ -1,0 +1,132 @@
+---
+import style from "../style/components/CGV.module.scss"
+const {content} = Astro.props;
+---
+
+<div class={style.CGV_container}>
+        <header>
+            <h1>Conditions Générales de Vente et d'Utilisation</h1>
+            <div class="company-info">
+                <strong>Cosy Corner Waterloo</strong><br>
+                Exploité par Batisservices SRL<br>
+                TVA BE0804.538.190<br>
+                Ikaroslaan 1, 1930 Zaventem
+            </div>
+        </header>
+
+        <section>
+            <h2>1. Objet</h2>
+            <p>Les présentes Conditions Générales de Vente et d'Utilisation (CGV) régissent toute réservation effectuée auprès de Batisservices SRL, TVA BE0804.538.190, dont le siège est situé Ikaroslaan 1, 1930 Zaventem, exploitant l'établissement Cosy Corner Waterloo.</p>
+            <p><strong>Toute réservation implique l'acceptation intégrale des présentes conditions.</strong></p>
+        </section>
+
+        <section>
+            <h2>2. Réservation et paiement</h2>
+            <p>Les réservations peuvent être effectuées par e-mail, téléphone ou via des plateformes partenaires.</p>
+            <ul>
+                <li>Le paiement intégral est exigé au moment de la réservation.</li>
+                <li>La réservation n'est confirmée qu'après réception du paiement et validation par l'établissement.</li>
+            </ul>
+            <p>L'établissement se réserve le droit de refuser toute réservation, sans justification.</p>
+        </section>
+
+        <section>
+            <h2>3. Accès au Bien</h2>
+            <p>Les informations nécessaires à l'accès au logement sont communiquées après confirmation de la réservation.</p>
+            <ul>
+                <li>Le nombre maximal d'occupants autorisés est de 2 personnes, sauf mention contraire.</li>
+                <li>Aucune personne extérieure n'est autorisée sans accord préalable.</li>
+            </ul>
+            <p class="important">Toute présence non autorisée entraînera l'expulsion immédiate et sans remboursement, ainsi que la facturation éventuelle de frais supplémentaires.</p>
+        </section>
+
+        <section>
+            <h2>4. Utilisation des lieux</h2>
+            <p>Le logement doit être utilisé paisiblement, proprement et conformément à sa destination (séjour de détente ou d'hébergement temporaire).</p>
+            <p><strong>Sont strictement interdits :</strong></p>
+            <ul>
+                <li>les fêtes, événements ou activités professionnelles non autorisées ;</li>
+                <li>la consommation de drogues ou substances illicites ;</li>
+                <li>le tabac à l'intérieur ;</li>
+                <li>tout comportement bruyant ou inapproprié troublant le voisinage.</li>
+            </ul>
+            <p>Le respect des horaires d'arrivée et de départ est obligatoire. Tout dépassement non autorisé pourra entraîner des frais supplémentaires.</p>
+        </section>
+
+        <section>
+            <h2>5. Caution et dégradations</h2>
+            <p>Une caution peut être demandée (préautorisation ou dépôt) afin de couvrir les éventuels dommages, vols ou manquements.</p>
+            <p>En cas de dégradation ou de salissure à l'appréciation exclusive de l'établissement, la caution pourra être retenue partiellement ou totalement, sans préjudice d'autres recours.</p>
+            <p><strong>Toute détérioration du mobilier, du spa ou du sauna sera facturée au coût réel de réparation ou de remplacement.</strong></p>
+        </section>
+
+        <section>
+            <h2>6. Annulation, modification et non-présentation</h2>
+            
+            <h3>6.1 Annulation ou modification</h3>
+            <p><strong>Toute réservation est ferme et définitive dès validation du paiement.</strong></p>
+            <ul>
+                <li><strong>Plus de 48 heures avant l'arrivée prévue :</strong> aucun remboursement ne sera effectué, mais un report unique peut être proposé, à la discrétion de l'établissement, selon les disponibilités.</li>
+                <li><strong>Moins de 48 heures avant l'arrivée :</strong> aucun remboursement, avoir ou report, quelle qu'en soit la raison (maladie, empêchement, conditions météo, etc.).</li>
+            </ul>
+            <p class="important">Le montant total reste dû dans tous les cas.</p>
+
+            <h3>6.2 Non-présentation</h3>
+            <p>En cas de non-présentation, la réservation est considérée comme consommée. Aucun remboursement ni report ne sera effectué.</p>
+
+            <h3>6.3 Annulation par l'établissement</h3>
+            <p>En cas d'impossibilité exceptionnelle de fournir la prestation (panne, incident, force majeure, etc.), aucun remboursement n'est dû. Un report pourra être proposé selon les disponibilités.</p>
+        </section>
+
+        <section>
+            <h2>7. Utilisation du spa et du sauna</h2>
+            <div class="highlight">
+                <p><strong>L'utilisateur reconnaît être informé des risques liés à l'utilisation du spa et du sauna (température, hygiène, contre-indications médicales, etc.) et en assume l'entière responsabilité.</strong></p>
+            </div>
+            <p><strong>Règles à respecter :</strong></p>
+            <ul>
+                <li>se doucher avant utilisation ;</li>
+                <li>ne pas utiliser d'huiles, savons, produits ou objets dans le spa ou le sauna ;</li>
+                <li>ne pas y entrer sous l'influence d'alcool, de médicaments ou de drogues.</li>
+            </ul>
+            <p>L'établissement décline toute responsabilité en cas d'accident, brûlure, malaise ou dommage corporel résultant d'un usage non conforme.</p>
+        </section>
+
+        <section>
+            <h2>8. Hygiène et propreté</h2>
+            <p>Le logement est nettoyé et désinfecté avant chaque location. Il doit être rendu dans un état correct.</p>
+            <p>Toute salissure excessive sera à l'appréciation exclusive de l'établissement et pourra entraîner des frais de nettoyage supplémentaires prélevés sur la caution.</p>
+        </section>
+
+        <section>
+            <h2>9. Responsabilité</h2>
+            <p><strong>L'établissement ne peut être tenu responsable :</strong></p>
+            <ul>
+                <li>des pertes, vols ou oublis d'effets personnels ;</li>
+                <li>des coupures temporaires d'électricité, d'eau ou d'internet ;</li>
+                <li>des dommages liés à une mauvaise utilisation des équipements.</li>
+            </ul>
+            <p>Aucune indemnisation ne sera accordée pour les préjudices indirects (perte d'un événement, désagrément, etc.).</p>
+        </section>
+
+        <section>
+            <h2>10. Force majeure</h2>
+            <p>Aucune des parties ne pourra être tenue responsable en cas d'inexécution résultant d'un cas de force majeure : panne majeure, incendie, inondation, pandémie, interdiction administrative, etc.</p>
+        </section>
+
+        <section>
+            <h2>11. Données personnelles (RGPD)</h2>
+            <p>Les données collectées lors de la réservation servent uniquement à la gestion du séjour et à la sécurité du logement. Elles sont traitées conformément au Règlement Général sur la Protection des Données (UE 2016/679).</p>
+            <p>Toute demande d'accès, de rectification ou de suppression peut être adressée à : <a href="mailto:cosy.corner.waterloo@gmail.com">cosy.corner.waterloo@gmail.com</a>.</p>
+        </section>
+
+        <section>
+            <h2>12. Droit applicable et juridiction</h2>
+            <p>Les présentes conditions sont régies par le droit belge.</p>
+            <p>Tout litige sera soumis aux tribunaux de l'arrondissement du siège social de Batisservices SRL.</p>
+        </section>
+
+        <footer>
+            <p>En cochant la case d'acceptation lors de la réservation, le client reconnaît avoir lu, compris et accepté sans réserve les présentes Conditions Générales de Vente et d'Utilisation.</p>
+        </footer>
+    </div>

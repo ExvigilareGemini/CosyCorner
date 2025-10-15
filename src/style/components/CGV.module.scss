@@ -1,0 +1,22 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.CGV {
+  &_container {
+        padding: 1.5rem;
+    text-align: justify;
+    text-wrap: balance;
+    font-size: 1.5rem;
+    @include for-tablet-landscape-up {
+      padding: 3rem;
+      text-align: unset;
+    }
+    @include for-desktop-up {
+      padding: 0;
+      width: 60%;
+    }
+    @include for-big-desktop-up {
+      width: 50%;
+    }
+  }
+}

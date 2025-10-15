@@ -1,3 +1,4 @@
+@use "../variables" as *;
 @use "../mixins" as *;
 
 .conditions {
@@ -16,4 +17,11 @@
       font-size: 1.2rem;
     }
   }
+  &_link{
+    color: $secondaryColor;
+    &:visited{
+      color: $secondaryColor;
+    }
+  }
+
 }

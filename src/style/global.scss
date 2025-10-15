@@ -1,3 +1,4 @@
+@use "./variables" as *;
 @use "./mixins" as *;
 
 @font-face {
@@ -18,6 +19,8 @@ body {
   margin: 0;
   width: 100vw;
   overflow-x: hidden;
+  color: $secondaryColor;
+  background-color: $bgColor;
   @include for-desktop-up {
     font-size: 1.5rem;
     display: flex;
