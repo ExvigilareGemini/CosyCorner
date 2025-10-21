@@ -1,9 +1,5 @@
 import style from "@/style/components/formuleElement.module.scss";
 
-const images = document.querySelectorAll('[data-movable="image"]');
-const texts = document.querySelectorAll('[data-movable="text"]');
-const hiders = document.querySelectorAll('[data-movable="hider"]');
-
 const targets = document.querySelectorAll(`.${style.formuleElement}, .${style.formuleElementRight}`);
 
 const callback = (entries, observer) => {
