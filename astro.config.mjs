@@ -1,30 +1,45 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
 
-import react from '@astrojs/react';
+import react from "@astrojs/react";
 
-import node from '@astrojs/node';
+import node from "@astrojs/node";
 
-// https://astro.build/config
 export default defineConfig({
   integrations: [react()],
   alias: { "@": "./src" },
 
-  // Configuration de sécurité
+  // Security configuration
   security: {
-    // Protection CSRF activée par défaut avec astro:actions
     checkOrigin: true,
   },
 
-  // Configuration des variables d'environnement
   vite: {
     define: {
-      // Assure que les variables d'environnement sont bien chargées
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+      "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV),
+    },
+    build: {
+      minify: "terser",
+      terserOptions: {
+        compress: {
+          drop_console: true,
+          drop_debugger: true,
+          pure_funcs: ["console.log", "console.info"],
+        },
+      },
+      cssCodeSplit: true,
+      cssMinify: true,
+    },
+    css: {
+      devSourcemap: false,
     },
   },
 
+  build: {
+    inlineStylesheets: 'auto',
+  },
+
   adapter: node({
-    mode: 'standalone',
+    mode: "standalone",
   }),
 });

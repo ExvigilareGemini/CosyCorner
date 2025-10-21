@@ -10,13 +10,13 @@ export default function Logo(props) {
           scrolled ? style.logo_container_scrolled : ""
         }`}
       >
-        <a className={style.logo_link} href="#acceuil">
+        <a className={style.logo_link} href="#acceuil" aria-label="Retour à l'accueil">
           <svg
             className={`${style.logo} ${scrolled ? style.logo_scrolled : ""}`}
             width="100.02"
             height="130.62"
             viewBox="0 0 100.02 130.62"
-            alt="logo"
+            alt="Logo Cosy Corner"
           >
             <g transform="translate(-29.99,-14.445)">
               <path d="m49.09 84.13c0 17.07 13.84 30.91 30.91 30.91s30.91-13.84 30.91-30.91v-38.28c0-17.07-13.83-30.91-30.9-30.91s-30.91 13.84-30.91 30.91v38.28z" />

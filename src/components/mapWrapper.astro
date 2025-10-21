@@ -1,0 +1,77 @@
+---
+// Component made for performance, permit to make the map appear in a sort of lazy load
+import style from "../style/components/leaflet.module.scss";
+---
+
+<div id="map-container" data-map class={style.mapContainer}>
+  <div class="map-placeholder">
+    <!-- Optional: Add a loading skeleton or placeholder -->
+    <p style="text-align: center; padding: 2rem;">Chargement de la carte...</p>
+  </div>
+</div>
+
+<script>
+  // This script runs once when the component is loaded
+  const loadMap = async () => {
+    const mapContainer = document.querySelector("[data-map]");
+
+    if (!mapContainer) return;
+
+    // Use IntersectionObserver to detect when map enters viewport
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(async (entry) => {
+          if (entry.isIntersecting) {
+            try {
+              // Clear placeholder
+              mapContainer.innerHTML = "";
+
+              // Dynamically import React and React-DOM
+              const React = await import("react");
+              const ReactDOM = await import("react-dom/client");
+
+              // Dynamically import your Map component
+              const MapModule = await import("./Map");
+              const Map = MapModule.default;
+
+              // Create root and render
+              const root = ReactDOM.createRoot(mapContainer);
+              root.render(React.createElement(Map));
+
+              // Stop observing after loading
+              observer.disconnect();
+            } catch (error) {
+              console.error("Error loading map:", error);
+              mapContainer.innerHTML =
+                '<p style="color: red;">Erreur lors du chargement de la carte</p>';
+            }
+          }
+        });
+      },
+      {
+        // Optional: Start loading slightly before it's visible
+        rootMargin: "50px",
+      }
+    );
+
+    observer.observe(mapContainer);
+  };
+
+  // Run when DOM is ready
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", loadMap);
+  } else {
+    loadMap();
+  }
+</script>
+
+<style>
+  .map-placeholder {
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+  }
+</style>

@@ -3,7 +3,7 @@ import { Image } from "astro:assets";
 import coverImage from "../../public/assets/img/acceuil_resultat.webp";
 import style from "../style/components/cover.module.scss";
 
-const {content} = Astro.props;
+const { content } = Astro.props;
 ---
 
 <section class={style.cover_section}>
@@ -11,6 +11,11 @@ const {content} = Astro.props;
     src={coverImage}
     alt="Sauna, image de couverture"
     class={style.cover_image}
+    loading="eager"
+    fetchpriority="high"
+    quality={75}
+    widths={[640, 768, 1024, 1280]}
+    sizes="100vw"
   />
   <div class={style.cover_text_container}>
     <!-- <h1 class={style.cover_text_title}>{content.title}</h1>

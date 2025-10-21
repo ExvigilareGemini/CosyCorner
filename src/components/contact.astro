@@ -1,6 +1,6 @@
 ---
 import style from "../style/components/contact.module.scss";
-import Map from "../components/map.jsx";
+import MapWrapper from "@/components/mapWrapper.astro"
 import ContactForm from "./contactForm.astro";
 const { content } = Astro.props;
 ---
@@ -33,6 +33,6 @@ const { content } = Astro.props;
       href="https://www.google.com/maps/place/Chau.+de+Bruxelles+446,+1410+Waterloo,+Belgique/@50.7052916,4.4015802,17z"
       target="_blank">{content.adress}</a
     >
-    <Map client:only />
+    <MapWrapper />
   </div>
 </section>

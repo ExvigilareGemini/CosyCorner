@@ -1,12 +1,13 @@
 {
-  "name": "super-spiral",
+  "name": "cosycorner",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev --host",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "start": "node server/entry.mjs"
   },
   "dependencies": {
     "@astrojs/node": "^9.2.2",
@@ -20,8 +21,7 @@
     "classnames": "^2.5.1",
     "clsx": "^2.1.1",
     "dompurify": "^3.2.6",
-    "isomorphic-dompurify": "^2.26.0",
-    "jsdom": "^26.1.0",
+    "isomorphic-dompurify": "^2.29.0",
     "leaflet": "^1.9.4",
     "nodemailer": "^7.0.5",
     "rate-limiter-flexible": "^7.1.1",
@@ -32,6 +32,8 @@
   },
   "devDependencies": {
     "@types/nodemailer": "^7.0.1",
-    "sass": "^1.87.0"
+    "jsdom": "^26.1.0",
+    "sass": "^1.87.0",
+    "terser": "^5.44.0"
   }
 }

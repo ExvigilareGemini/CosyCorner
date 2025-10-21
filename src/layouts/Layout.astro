@@ -1,3 +1,8 @@
+---
+const description =
+  "Découvrez nos services de location. Tarifs compétitifs et formules flexibles.";
+---
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -13,16 +18,56 @@
                  base-uri 'self'; 
                  form-action 'self';"
     />
-    <meta charset="UTF-8" /><meta
-      name="viewport"
-      content="width=device-width, initial-scale=1"
-    />  
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=1" />
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=1" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=1" />
-  <title>Cosy Corner</title></head
-  >
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=1" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=1" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=1" />
+    
+    <!-- Preload font -->
+    <link rel="preload" href="/fonts/garamond.ttf" as="font" type="font/ttf" crossorigin />
+    
+    <!-- Inline critical global styles -->
+<style is:global lang="scss">
+  @use "../style/variables" as *;
+  @use "../style/mixins" as *;
+
+  @font-face {
+    font-family: "Garamond";
+    src: url("/fonts/garamond.ttf") format("truetype"), 
+         url('/fonts/eb-garamond-regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  body {
+    margin: 0;
+    max-width: 100%;
+  }
+
+  .main {
+    font-family: "Garamond", sans-serif;
+    margin: 0;
+    width: 100vw;
+    overflow-x: hidden;
+    color: $secondaryColor;
+    background-color: $bgColor;
+    @include for-desktop-up {
+      font-size: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+</style>
+    
+    <title>Cosy Corner</title>
+    <meta name="description" content={description} />
+    <meta property="og:description" content={description} />
+  </head>
+  <body>
+    <slot />
+  </body>
 </html>
-<body>
-  <slot />
-</body>
