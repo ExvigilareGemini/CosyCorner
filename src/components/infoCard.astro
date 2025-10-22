@@ -1,0 +1,60 @@
+---
+import style from "../style/components/infoCard.module.scss";
+const { card, index } = Astro.props;
+const { link, title, text, alt } = card;
+const offsetClass = style[`offset_${index}`];
+---
+
+<div class:list={[style.infocard, offsetClass, style.isOffscreen]} data-key={`${index}`}>
+  <img src={link} alt={alt} class={style.infocard_image} data-key={`${index}`} />
+  <div
+    class={style.infocard_text_container} data-key={`${index}`}
+  >
+    <h2 class={style.infocard_title}>{title}</h2>
+    <p class={style.infocard_text}>{text}</p>
+    <span class={style.infocard_text_cross} data-key={`${index}`}> X </span>
+  </div>
+  <div class={style.infocard_learnMore} data-key={`${index}`}>
+    <p>{title}</p>
+  </div>
+</div>
+
+
+
+<script>
+  import style from "../style/components/infoCard.module.scss";
+
+  const buttons = document.querySelectorAll(`.${style.infocard_learnMore}`);
+  const images = document.querySelectorAll(`.${style.infocard_image}`);
+  const containers = document.querySelectorAll(`.${style.infocard_text_container}`);
+  const crosses = document.querySelectorAll(`.${style.infocard_text_cross}`);
+  const infocardElements = document.querySelectorAll(`.${style.infocard}`)
+  
+  
+
+  function toggleHiddenClass(dataKey){
+    containers[dataKey].classList.toggle(`${style.infocard_text_container_hidden}`)
+    buttons[dataKey].classList.toggle(`${style.infocard_learnMore_hidden}`)
+    infocardElements[dataKey].classList.toggle(`${style.infocard_hidden}`)
+  }
+
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+        toggleHiddenClass(btn.getAttribute('data-key'))
+    });
+  });
+
+  images.forEach((img) => {
+    img.addEventListener("click", () => {
+        toggleHiddenClass(img.getAttribute('data-key'))
+    });
+  });
+
+  crosses.forEach((cross) => {
+    cross.addEventListener("click", () => {
+        toggleHiddenClass(cross.getAttribute('data-key'))
+    });
+  });
+
+
+</script>

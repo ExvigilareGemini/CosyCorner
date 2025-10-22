@@ -1,13 +1,14 @@
 ---
 import { infoCardProps } from "../props/infoCardProps";
-import InfoCard from "./infoCard";
+// import InfoCard from "./infoCard";
+import InfoCard from "./infoCard.astro";
 import style from "../style/components/infoCards.module.scss";
 ---
 
 <div class={style.infocards_container}>
   {
     infoCardProps.map((card, index) => (
-      <InfoCard card={card} key={card.index} index={index} />
+      <InfoCard card={card} index={index} />
     ))
   }
 </div>
