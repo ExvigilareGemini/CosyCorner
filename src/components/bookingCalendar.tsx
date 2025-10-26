@@ -1,5 +1,7 @@
 // src/components/BookingCalendar.tsx
 import { useEffect, useState } from 'react';
+import style from "../style/components/booking.module.scss";
+
 
 interface EventType {
   id: string;
@@ -115,13 +117,13 @@ export default function BookingCalendar({ theme = 'light' }) {
   }, [selectedEvent, theme]);
 
   return (
-    <div className="booking-wrapper">
+    <div className={style.booking_container}>
       {/* Sélecteur de formule */}
-      <div className="event-selector">
+      <div className={style.booking_selector}>
         {eventTypes.map((event) => (
           <button
             key={event.id}
-            className={`event-card ${selectedEvent.id === event.id ? 'active' : ''}`}
+            className={`${style.booking_eventCard} ${selectedEvent.id === event.id ? `${style.active}` : ''}`}
             onClick={() => setSelectedEvent(event)}
           >
             <h3>{event.name}</h3>
@@ -132,7 +134,7 @@ export default function BookingCalendar({ theme = 'light' }) {
       </div>
 
       {/* Calendrier */}
-      <div className="booking-container">
+      <div className={style.booking}>
         <div id="cal-booking-embed" style={{ width: "100%", height: "100%", overflow: "scroll" }} />
       </div>
     </div>

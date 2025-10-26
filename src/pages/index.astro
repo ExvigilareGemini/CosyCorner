@@ -5,7 +5,6 @@ import Header from "../components/header.jsx";
 import Cover from "../components/cover.astro";
 import Info from "../components/info.astro";
 import Formule from "../components/formule.astro";
-import BookingCalendar from "@/components/bookingCalendar.tsx";
 import Contact from "../components/contact.astro";
 import Carousel from "@/components/carousel.astro";
 import Conditions from "../components/conditions.astro";
@@ -26,10 +25,7 @@ const { cover, info, formule, contact, conditions } = entry.data;
     <Cover content={cover} />
     <Info content={info} />
     <Formule content={formule} />
-    <BookingCalendar
-      client:load
-      calLink="cosy-corner-esj1gr/2h"
-    />
+
     <Contact content={contact} />
     <Carousel />
     <Conditions content={conditions} />

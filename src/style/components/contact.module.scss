@@ -1,9 +1,11 @@
 @use "../variables" as *;
 @use "../mixins" as *;
+@use "sass:color";
 
 .contact {
   position: relative;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   height: fit-content; // ou toute autre valeur selon vos besoins
   margin: 6rem 5%;
@@ -54,6 +56,23 @@
             );
       filter: blur(10px);
     }
+  }
+
+  &_bigTitle{
+    color: $primaryColor;
+        &::after {
+      content: "";
+      display: block;
+      height: 3px;
+      background-color: color.adjust($primaryColor, $lightness: -10%);
+      width: 12rem;
+    }
+  }
+
+  &_wrapper{
+    display: flex;
+    width: 100%;
+    flex-wrap: nowrap;
   }
 
   &_datasText {
