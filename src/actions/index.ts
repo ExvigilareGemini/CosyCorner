@@ -246,7 +246,7 @@ Consentement accepté : Oui
         // Email de confirmation pour l'expéditeur
         const confirmationMail = {
           from: {
-            name: "Votre Site Web",
+            name: "Cosy Corner",
             address: import.meta.env.EMAIL_USER,
           },
           to: sanitizedInput.email,

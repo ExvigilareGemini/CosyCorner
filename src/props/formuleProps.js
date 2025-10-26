@@ -5,7 +5,7 @@ export const formuleProps = [
       { text: "- 2h : 170€" },
       { text: "- 3h : 190€" },
       { text: "- 4h : 210€" },
-      { text: "au delà, 20€ par heure supplémentaire" },
+      { text: "au delà, 40€ par heure supplémentaire" },
     ],
     link: "/assets/img/tarifparheure_resultat.webp",
   },
