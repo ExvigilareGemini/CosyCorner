@@ -5,12 +5,12 @@ import Header from "../components/header.jsx";
 import Cover from "../components/cover.astro";
 import Info from "../components/info.astro";
 import Formule from "../components/formule.astro";
+import BookingCalendar from "@/components/bookingCalendar.tsx";
 import Contact from "../components/contact.astro";
 import Carousel from "@/components/carousel.astro";
 import Conditions from "../components/conditions.astro";
 import Footer from "../components/footer.astro";
 import Notification from "@/components/notification.astro";
-
 
 // Get the content of the page in the index.md file
 import { getEntry } from "astro:content";
@@ -26,11 +26,15 @@ const { cover, info, formule, contact, conditions } = entry.data;
     <Cover content={cover} />
     <Info content={info} />
     <Formule content={formule} />
+    <BookingCalendar
+      client:load
+      calLink="cosy-corner-esj1gr/2h"
+    />
     <Contact content={contact} />
-    <Carousel/>
+    <Carousel />
     <Conditions content={conditions} />
-    <Footer content={contact} onMainPage={true}/>
-    <Notification/>
+    <Footer content={contact} onMainPage={true} />
+    <Notification />
   </main>
 </Layout>
 

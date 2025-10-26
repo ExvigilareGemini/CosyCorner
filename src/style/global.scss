@@ -29,3 +29,7 @@ body {
     align-items: center;
   }
 }
+
+div[data-testid="event-meta-description"] {
+  background-color: wheat;
+}
